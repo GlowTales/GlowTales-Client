@@ -1,0 +1,41 @@
+/* 나눔스퀘어라운드 웹폰트 v1.11  https://github.com/innks/NanumSquareRound */
+@font-face {
+  font-family: NanumSquareRound;
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local("NanumSquareRoundL"),
+    url(./NanumSqueareRound/NanumSquareRoundL.woff2) format("woff2"),
+    url(./NanumSqueareRound/NanumSquareRoundL.woff) format("woff"),
+    url(./NanumSqueareRound/NanumSquareRoundL.ttf) format("truetype");
+}
+@font-face {
+  font-family: NanumSquareRound;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("NanumSquareRoundR"),
+    url(./NanumSqueareRound/NanumSquareRoundR.woff2) format("woff2"),
+    url(./NanumSqueareRound/NanumSquareRoundR.woff) format("woff"),
+    url(./NanumSqueareRound/NanumSquareRoundR.ttf) format("truetype");
+}
+@font-face {
+  font-family: NanumSquareRound;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("NanumSquareRoundB"),
+    url(./NanumSqueareRound/NanumSquareRoundB.woff2) format("woff2"),
+    url(./NanumSqueareRound/NanumSquareRoundB.woff) format("woff"),
+    url(./NanumSqueareRound/NanumSquareRoundB.ttf) format("truetype");
+}
+@font-face {
+  font-family: NanumSquareRound;
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local("NanumSquareRoundEB"),
+    url(./NanumSqueareRound/NanumSquareRoundEB.woff2) format("woff2"),
+    url(./NanumSqueareRound/NanumSquareRoundEB.woff) format("woff"),
+    url(./NanumSqueareRound/NanumSquareRoundEB.ttf) format("truetype");
+}

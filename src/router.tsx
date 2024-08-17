@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import LoginPage from "@pages/LoginPage";
-import OnboardingPage from "@/pages/OnboardingPage";
-import SplashScreen from "./pages/SplashScreen";
+import OnboardingPage from "@pages/OnboardingPage";
+import SplashScreen from "@pages/SplashScreen";
 
 const router = createBrowserRouter([
   {

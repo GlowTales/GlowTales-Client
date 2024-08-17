@@ -1,20 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import LogoMain from "./pages/LogoMain";
-import Login from "./pages/Login";
-import Onboarding from "./pages/Onboarding";
+import LoginPage from "@pages/LoginPage";
+import OnboardingPage from "@/pages/OnboardingPage";
+import SplashScreen from "./pages/SplashScreen";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <LogoMain />,
+    element: <SplashScreen />,
   },
   {
     path: "/login",
-    element: <Login />,
+    element: <LoginPage />,
   },
   {
     path: "/onboading",
-    element: <Onboarding />,
+    element: <OnboardingPage />,
   },
 ]);
 

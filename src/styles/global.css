@@ -25,7 +25,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100%; /* 화면 스크롤 방지를 위해 최소높이 지정 */
+  min-height: 99vh; /* 화면 스크롤 방지를 위해 최소높이 지정 */
   margin: 0;
   padding: 0;
   background-color: white;
@@ -35,6 +35,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
 }
 
 /*모바일+아이패드 세로) 화면 너비: 0 ~ 800 */

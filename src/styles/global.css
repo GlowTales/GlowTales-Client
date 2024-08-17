@@ -1,66 +1,65 @@
+@import "./fonts/NanumSquareRound.css";
+
 html {
-    -webkit-text-size-adjust​: none;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    font-size: 62.5%;
-    overflow: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: 65px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    display: flex;
-    justify-content: center;
-    font-family: "Pretendard";
+  -webkit-text-size-adjust​: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 62.5%;
+  overflow: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-padding-top: 65px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  display: flex;
+  justify-content: center;
+  font-family: "NanumSquareRound", sans-serif;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100%; /* 화면 스크롤 방지를 위해 최소높이 지정 */
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  box-shadow: 10px -50px 50px 15px rgba(220, 220, 220, 0.22),
+    -10px -50px 50px 15px rgba(197, 197, 197, 0.22);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*모바일+아이패드 세로) 화면 너비: 0 ~ 800 */
+@media (min-width: 0px) {
+  html {
+    font-size: 8px;
   }
-  
-  html::-webkit-scrollbar {
-    display: none;
+}
+
+/* 데스크톱) 화면 너비: 1024 ~ */
+@media (min-width: 900px) {
+  html {
+    font-size: 10px;
   }
-  
   body {
-    width: 100%;
-    height: fit-content;
-    /* 화면 스크롤 방지를 위해 최소높이 지정 */
-    min-height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    box-shadow: 10px -50px 50px 15px rgba(220, 220, 220, 0.22),
-      -10px -50px 50px 15px rgba(197, 197, 197, 0.22);
-    /* 드래그 방지 */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+    width: 768px;
   }
-  
-  /*모바일+아이패드 세로) 화면 너비: 0 ~ 800 */
-  @media (min-width: 0px) {
-    html {
-      font-size: 8px;
-    }
-  }
-  
-  /* 데스크톱) 화면 너비: 1024 ~ */
-  @media (min-width: 900px) {
-    html {
-      font-size: 10px;
-    }
-    body {
-      width: 768px;
-    }
-  }
-  
-  img {
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
-    -khtml-user-drag: none;
-    -moz-user-drag: none;
-    -o-user-drag: none;
-  }
-  
+}
+
+img {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+}

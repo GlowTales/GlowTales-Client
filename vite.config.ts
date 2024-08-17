@@ -10,11 +10,6 @@ export default defineConfig({
       { find: "@", replacement: path.resolve(__dirname, "src") },
       { find: "@pages", replacement: path.resolve(__dirname, "src/pages") },
       { find: "@assets", replacement: path.resolve(__dirname, "src/assets") },
-      { find: "@utils", replacement: path.resolve(__dirname, "src/utils") },
-      {
-        find: "@constant",
-        replacement: path.resolve(__dirname, "src/utils/constant"),
-      },
       { find: "@styles", replacement: path.resolve(__dirname, "src/styles") },
       { find: "@types", replacement: path.resolve(__dirname, "src/types") },
       {
@@ -24,15 +19,7 @@ export default defineConfig({
       {
         find: "@common",
         replacement: path.resolve(__dirname, "src/components/common"),
-      },
-      {
-        find: "@ranking",
-        replacement: path.resolve(__dirname, "src/components/ranking"),
-      },
-      {
-        find: "@login",
-        replacement: path.resolve(__dirname, "src/components/login"),
-      },
+      }
     ],
   },
 });

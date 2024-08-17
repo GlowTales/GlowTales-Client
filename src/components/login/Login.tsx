@@ -1,10 +1,7 @@
 import { CommonWrapper } from "@common/common.styled";
 import { LoginBtn, LogoBox, Title } from "./Login.styled";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
-
   const toLogin = () => {};
 
   return (

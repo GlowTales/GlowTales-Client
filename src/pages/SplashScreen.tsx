@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Splash from "@/components/splash/Splash";
-import { CommonWrapper } from "@/components/common/common.styled";
+import { CommonWrapper } from "@common/common.styled";
+import Splash from "@components/splash/Splash";
 
 const SplashScreen = () => {
   const navigate = useNavigate();

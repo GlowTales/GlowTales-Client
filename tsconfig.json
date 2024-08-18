@@ -5,7 +5,7 @@
       "@pages/*": ["src/pages/*"],
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/styles/*"],
-      "@types/*": ["src/types/*"],
+      "@type/*": ["src/type/*"],
       "@components/*": ["src/components/*"],
       "@common/*": ["src/components/common/*"]
     }

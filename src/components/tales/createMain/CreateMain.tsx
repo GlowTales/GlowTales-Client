@@ -8,15 +8,15 @@ const CreateMain = () => {
     <>
       <Header text="동화 만들기" />
       <S.Wrapper>
-        <img src="/graphic.png" id="topGraphic" />
+        <img src="/topGraphic.png" id="topGraphic" />
         <S.SelectContainer>
           <S.Title>동화를 만들어볼까요?</S.Title>
           <S.OptionContainer>
-            <SelectOption text="사진" />
-            <SelectOption text="글" />
+            <SelectOption text="사진으로" imgURL="/picture.png" />
+            <SelectOption text="글로" imgURL="/text.png" />
           </S.OptionContainer>
         </S.SelectContainer>
-        <img src="/graphic.png" id="btmGraphic" />
+        <img src="/btmGraphic.png" id="btmGraphic" />
       </S.Wrapper>
       <TabBar />
     </>

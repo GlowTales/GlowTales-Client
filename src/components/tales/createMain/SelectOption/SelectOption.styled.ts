@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 40%;
-  height: 90%;
+  width: 220px;
+  height: 100%;
+  max-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -18,7 +19,10 @@ export const Wrapper = styled.div`
 `;
 
 export const box = styled.div`
-  width: 60%;
-  height: 50%;
-  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 55%;
+  }
 `;

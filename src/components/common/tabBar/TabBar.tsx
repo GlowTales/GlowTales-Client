@@ -20,24 +20,27 @@ const TabBar = () => {
     tabs.find((tab) => tab.path === location.pathname)?.id || 1;
 
   return (
-    <S.TabBarContainer>
-      {tabs.map((tab) => (
-        <S.TabWrapper>
-          <S.TabCircle
-            key={tab.id}
-            isSelected={selectedTab === tab.id}
-          ></S.TabCircle>
-          <S.TabBackground />
-          <S.TabContents
-            isSelected={selectedTab === tab.id}
-            onClick={() => navigate(tab.path)}
-          >
-            <img className="tab-icon" src={tab.icon} />
-            <span className="tab-text">{tab.label}</span>
-          </S.TabContents>
-        </S.TabWrapper>
-      ))}
-    </S.TabBarContainer>
+    <>
+      <S.Margin />
+      <S.TabBarContainer>
+        {tabs.map((tab) => (
+          <S.TabWrapper>
+            <S.TabCircle
+              key={tab.id}
+              isSelected={selectedTab === tab.id}
+            ></S.TabCircle>
+            <S.TabBackground />
+            <S.TabContents
+              isSelected={selectedTab === tab.id}
+              onClick={() => navigate(tab.path)}
+            >
+              <img className="tab-icon" src={tab.icon} />
+              <span className="tab-text">{tab.label}</span>
+            </S.TabContents>
+          </S.TabWrapper>
+        ))}
+      </S.TabBarContainer>
+    </>
   );
 };
 

@@ -1,10 +1,13 @@
+import { SelectOptionProps } from "@type/selectOption";
 import * as S from "./SelectOption.styled";
 
-const SelectOption = ({ text }: { text: string }) => {
+const SelectOption = ({ text, imgURL }: SelectOptionProps) => {
   return (
     <S.Wrapper>
-      <S.box />
-      <div>{text}으로 만들기</div>
+      <S.box>
+        <img src={imgURL} />
+      </S.box>
+      <div>{text} 만들기</div>
     </S.Wrapper>
   );
 };

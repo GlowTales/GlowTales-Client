@@ -40,7 +40,7 @@ export const DropdownMenu = styled.div<{ isOpen: boolean }>`
   border: 1.5px solid #d8d8d8;
   border-radius: 0 0 5px 5px;
   border-top: none;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
   z-index: 1000;
   font-size: 2rem;
   font-weight: 700;

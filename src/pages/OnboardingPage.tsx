@@ -27,9 +27,11 @@ const nationElements: DropdownElement[] = [
 
 const OnboardingPage = () => {
   const [result, setResult] = useState<string | number | undefined>();
+
   useEffect(() => {
     console.log(result);
   }, [result]);
+  
   return <Dropdown selectList={nationElements} setter={setResult} width="55%"/>;
 };
 

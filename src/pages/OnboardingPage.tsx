@@ -1,4 +1,4 @@
-import Dropdown from "@components/common/Dropdown";
+import Dropdown from "@common/dropDown/Dropdown";
 import { DropdownElement } from "@type/dropdown";
 import { useEffect, useState } from "react";
 
@@ -31,8 +31,10 @@ const OnboardingPage = () => {
   useEffect(() => {
     console.log(result);
   }, [result]);
-  
-  return <Dropdown selectList={nationElements} setter={setResult} width="55%"/>;
+
+  return (
+    <Dropdown selectList={nationElements} setter={setResult} width="55%" />
+  );
 };
 
 export default OnboardingPage;

@@ -7,7 +7,7 @@ const SelectOption = ({ text, imgURL }: SelectOptionProps) => {
       <S.box>
         <img src={imgURL} />
       </S.box>
-      <div>{text}으로 만들기</div>
+      <div>{text} 만들기</div>
     </S.Wrapper>
   );
 };

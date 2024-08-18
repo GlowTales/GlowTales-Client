@@ -12,8 +12,8 @@ const CreateMain = () => {
         <S.SelectContainer>
           <S.Title>동화를 만들어볼까요?</S.Title>
           <S.OptionContainer>
-            <SelectOption text="사진" imgURL="/picture.png" />
-            <SelectOption text="글" imgURL="/text.png" />
+            <SelectOption text="사진으로" imgURL="/picture.png" />
+            <SelectOption text="글로" imgURL="/text.png" />
           </S.OptionContainer>
         </S.SelectContainer>
         <img src="/btmGraphic.png" id="btmGraphic" />

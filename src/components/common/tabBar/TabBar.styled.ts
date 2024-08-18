@@ -10,6 +10,7 @@ export const TabBarContainer = styled.div`
   background-color: #fff;
   position: fixed;
   bottom: 0;
+  box-shadow: 0 -2px 8px -6px rgba(0, 0, 0, 0.3);
   z-index: 1;
   @media (min-width: 900px) {
     width: 768px;
@@ -50,7 +51,7 @@ export const TabItem = styled.div<{ isSelected: boolean }>`
     transform: translateX(-50%);
     background-color: #fff;
     border-radius: 50%;
-    z-index: -1;
+    box-shadow: 0 -2px 8px -6px rgba(0, 0, 0, 0.3);
     opacity: ${({ isSelected }) => (isSelected ? "1" : "0")};
     transition: opacity 0.3s;
   }

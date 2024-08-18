@@ -1,9 +1,8 @@
-import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./TabBar.styled";
 import { FaHome, FaBook, FaPencilAlt } from "react-icons/fa";
 
-const TabBar: React.FC = () => {
+const TabBar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 

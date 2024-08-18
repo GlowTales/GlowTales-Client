@@ -14,8 +14,10 @@ export const Wrapper = styled.div`
   }
   #btmGraphic {
     width: 100%;
-    height: 23%;
+    height: 24%;
   }
+  padding-bottom: 60px;
+  overflow: auto;
 `;
 
 export const Title = styled.div`

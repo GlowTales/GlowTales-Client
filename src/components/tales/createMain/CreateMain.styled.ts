@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow-x: hidden;
-  gap: 3rem;
+  gap: 2.5rem;
   #topGraphic {
     width: 100%;
     height: auto;

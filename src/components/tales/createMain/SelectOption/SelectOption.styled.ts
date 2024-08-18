@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 40%;
+  width: 224px;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -18,7 +18,10 @@ export const Wrapper = styled.div`
 `;
 
 export const box = styled.div`
-  width: 60%;
-  height: 50%;
-  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 55%;
+  }
 `;

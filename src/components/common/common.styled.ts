@@ -6,7 +6,7 @@ export const CommonWrapper = styled.div`
   justify-content: space-evenly;
   align-items: center;
   min-height: 100vh;
-  width: 100%;
+  width: 90%;
 `;
 
 export const ColumnFlexBox = styled.div<{ gap: string }>`

@@ -23,7 +23,7 @@ export const TabItem = styled.div<{ isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   position: relative;
   cursor: pointer;
 

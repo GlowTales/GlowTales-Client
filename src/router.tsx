@@ -3,6 +3,7 @@ import LoginPage from "@pages/LoginPage";
 import OnboardingPage from "@pages/OnboardingPage";
 import SplashScreen from "@pages/SplashScreen";
 import CreatePage from "@pages/CreatePage";
+import KakaoRedirect from "@pages/KakaoRedirect";
 
 const router = createBrowserRouter([
   {
@@ -14,12 +15,16 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/onboading",
+    path: "/onboarding",
     element: <OnboardingPage />,
   },
   {
     path: "/createTale",
     element: <CreatePage />,
+  },
+  {
+    path: "/kakao",
+    element: <KakaoRedirect />,
   },
 ]);
 

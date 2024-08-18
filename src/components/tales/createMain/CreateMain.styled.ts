@@ -18,6 +18,11 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const Title = styled.div`
+  font-size: 2.5rem;
+  font-weight: 800;
+`;
+
 export const SelectContainer = styled.div`
   width: 100%;
   height: 60%;
@@ -28,7 +33,10 @@ export const SelectContainer = styled.div`
   background-color: white;
 `;
 
-export const Title = styled.div`
-  font-size: 4rem;
-  font-weight: 800;
+export const OptionContainer = styled.div`
+  width: 65%;
+  height: 65%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 `;

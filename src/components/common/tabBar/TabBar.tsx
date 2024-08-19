@@ -24,7 +24,7 @@ const TabBar = () => {
       <S.Margin />
       <S.TabBarContainer>
         {tabs.map((tab) => (
-          <S.TabWrapper>
+          <S.TabWrapper key={tab.id}>
             <S.TabCircle
               key={tab.id}
               isSelected={selectedTab === tab.id}

@@ -19,7 +19,9 @@ export default defineConfig({
       {
         find: "@common",
         replacement: path.resolve(__dirname, "src/components/common"),
-      }
+      },
+      { find: "@utils", replacement: path.resolve(__dirname, "src/utils") },
+      { find: "@apis", replacement: path.resolve(__dirname, "src/apis") },
     ],
   },
 });

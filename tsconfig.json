@@ -7,7 +7,9 @@
       "@styles/*": ["src/styles/*"],
       "@type/*": ["src/type/*"],
       "@components/*": ["src/components/*"],
-      "@common/*": ["src/components/common/*"]
+      "@common/*": ["src/components/common/*"],
+      "@utils/*": ["src/utils/*"],
+      "@apis/*": ["src/apis/*"]
     }
   },
   "files": [],

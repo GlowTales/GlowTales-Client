@@ -1,11 +1,10 @@
 import LoadingSpinner from "@common/spinner/LoadingSpinner";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { postCode } from "@apis/login";
 
 const KakaoRedirect = () => {
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);

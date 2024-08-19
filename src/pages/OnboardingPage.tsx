@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { CommonWrapper } from "@common/common.styled";
 import NextBtn from "@components/common/NextBtn";
 
-const nationElements: DropdownElement[] = [
+export const nationElements: DropdownElement[] = [
   {
     text: "선택해주세요",
     value: null,

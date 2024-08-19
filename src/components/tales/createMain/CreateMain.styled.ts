@@ -34,6 +34,11 @@ export const SelectContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    max-height: 100%;
+  }
 `;
 
 export const OptionContainer = styled.div`
@@ -42,4 +47,8 @@ export const OptionContainer = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  @media (max-width: 600px) {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
 `;

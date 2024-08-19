@@ -16,13 +16,23 @@ export const Wrapper = styled.div`
     font-size: 1.7rem;
     font-weight: 700;
   }
+  cursor: pointer;
 `;
 
-export const box = styled.div`
+export const ImgBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   img {
     width: 55%;
   }
+`;
+
+export const ImgInput = styled.input`
+  display: none;
+`;
+
+export const ImgLabel = styled.label`
+  height: 250px;
+  width: 220px;
 `;

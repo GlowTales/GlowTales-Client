@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
 import { DropdownElement, DropdownProps } from "@type/dropdown";
-import {
-  DropdownButton,
-  DropdownContainer,
-  DropdownImage,
-  DropdownItem,
-  DropdownMenu,
-} from "./Dropdown.styled";
+import * as S from "./Dropdown.styled";
 
 const Dropdown = ({ selectList, setter, width }: DropdownProps) => {
   const [selectedText, setSelectedText] = useState<string>(
@@ -38,27 +32,29 @@ const Dropdown = ({ selectList, setter, width }: DropdownProps) => {
   };
 
   return (
-    <DropdownContainer width={width}>
-      <DropdownButton>
-        {selectedImage && <DropdownImage src={selectedImage} alt="현재 선택" />}
+    <S.DropdownContainer width={width}>
+      <S.DropdownButton>
+        {selectedImage && (
+          <S.DropdownImage src={selectedImage} alt="현재 선택" />
+        )}
         {selectedText || "옵션 선택"}
         <img
           src="/dropdowntri.png"
           alt="드롭다운 삼각형"
           onClick={toggleDropdown}
         />
-      </DropdownButton>
-      <DropdownMenu isOpen={isOpen}>
+      </S.DropdownButton>
+      <S.DropdownMenu isOpen={isOpen}>
         {selectList.map((element, index) => (
-          <DropdownItem key={index} onClick={() => handleSelect(element)}>
+          <S.DropdownItem key={index} onClick={() => handleSelect(element)}>
             {element.imgURL && (
-              <DropdownImage src={element.imgURL} alt="선택지" />
+              <S.DropdownImage src={element.imgURL} alt="선택지" />
             )}
             {element.text}
-          </DropdownItem>
+          </S.DropdownItem>
         ))}
-      </DropdownMenu>
-    </DropdownContainer>
+      </S.DropdownMenu>
+    </S.DropdownContainer>
   );
 };
 

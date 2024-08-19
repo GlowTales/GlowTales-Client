@@ -32,7 +32,7 @@ const nationElements: DropdownElement[] = [
 ];
 
 const OnboardingPage = () => {
-  const [result, setResult] = useState<string | number | undefined>();
+  const [result, setResult] = useState<string | number | null>();
 
   useEffect(() => {
     console.log(result);

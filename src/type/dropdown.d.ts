@@ -1,6 +1,6 @@
 export interface DropdownProps {
   selectList: DropdownElement[];
-  setter: (value: string | number) => void;
+  setter: (value: string | number | null) => void;
   width?: string;
 }
 

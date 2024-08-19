@@ -4,12 +4,13 @@ import { createWithImg } from "../../../../apis/createTales";
 
 const InputImg = () => {
   const insertImg = (e: ChangeEvent<HTMLInputElement>) => {
-    let reader = new FileReader();
+    new FileReader();
     const file = e.target.files?.[0];
     const formData = new FormData();
     if (file) {
       formData.append("file", file);
       const result = createWithImg(formData);
+      console.log(result);
     }
   };
   return (

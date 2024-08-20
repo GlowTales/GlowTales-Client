@@ -2,7 +2,6 @@ import Dropdown from "@common/dropDown/Dropdown";
 import { DropdownElement } from "@type/dropdown";
 import { useEffect, useState } from "react";
 import { CommonWrapper } from "@common/common.styled";
-import NextBtn from "@components/common/NextBtn";
 
 const nationElements: DropdownElement[] = [
   {
@@ -41,13 +40,6 @@ const OnboardingPage = () => {
   return (
     <CommonWrapper>
       <Dropdown selectList={nationElements} setter={setResult} width="55%" />
-      <NextBtn
-        isActive={result ? true : false}
-        text="다음"
-        handleBtn={() => {
-          console.log("선택완");
-        }}
-      />
     </CommonWrapper>
   );
 };

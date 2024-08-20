@@ -7,28 +7,28 @@ import { useEffect, useState } from "react";
 const SelectKeyword = () => {
   const result = keywordData.result.map((i) => i.keyword);
 
-  const [selectedKeyword, setSelectedKeyword] = useState<string[]>([]); // 선택된 값들의 배열 관리
-  const [isAcitve, setIsActive] = useState(false);
+  const [selectedKeywordIndices, setSelectedKeywordIndices] = useState<
+    number[]
+  >([]);
+  const [isActive, setIsActive] = useState(false);
 
-  const handleClick = (item: string) => {
-    if (selectedKeyword.includes(item)) {
-      setSelectedKeyword(
-        selectedKeyword.filter((selectedItem) => selectedItem !== item)
+  const handleClick = (index: number) => {
+    if (selectedKeywordIndices.includes(index)) {
+      setSelectedKeywordIndices(
+        selectedKeywordIndices.filter(
+          (selectedIndex) => selectedIndex !== index
+        )
       );
-    } else if (selectedKeyword.length >= 3) {
+    } else if (selectedKeywordIndices.length >= 3) {
       alert("최대 3개까지 선택 가능합니다!");
     } else {
-      setSelectedKeyword([...selectedKeyword, item]);
+      setSelectedKeywordIndices([...selectedKeywordIndices, index]);
     }
   };
 
   useEffect(() => {
-    if (selectedKeyword.length > 0) {
-      setIsActive(true);
-    } else {
-      setIsActive(false);
-    }
-  }, [selectedKeyword]);
+    setIsActive(selectedKeywordIndices.length > 0);
+  }, [selectedKeywordIndices]);
 
   return (
     <>
@@ -42,8 +42,8 @@ const SelectKeyword = () => {
           {result.map((item, idx) => (
             <S.Keyword
               key={idx}
-              isSelected={selectedKeyword.includes(item)}
-              onClick={() => handleClick(item)}
+              isSelected={selectedKeywordIndices.includes(idx)}
+              onClick={() => handleClick(idx)}
             >
               {item}
             </S.Keyword>
@@ -51,9 +51,15 @@ const SelectKeyword = () => {
         </S.KeywordWrapper>
         <NextBtn
           width="85%"
-          isActive={isAcitve}
+          isActive={isActive}
           text="다음"
-          handleBtn={() => console.log(selectedKeyword)}
+          handleBtn={() => {
+            const selectedKeywords = selectedKeywordIndices.map(
+              (index) => result[index]
+            );
+            console.log(selectedKeywords);
+            console.log(selectedKeywordIndices);
+          }}
         />
       </S.Wrapper>
     </>

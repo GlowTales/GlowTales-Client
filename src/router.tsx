@@ -6,6 +6,7 @@ import SplashScreen from "@pages/SplashScreen";
 import CreatePage from "@pages/CreatePage";
 import KakaoRedirect from "@pages/KakaoRedirect";
 import LearningPage from "@pages/LearningPage";
+import SelectKeywordPage from "@pages/SelectKeywordPage";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/learning",
     element: <LearningPage />,
+  },
+  {
+    path: "/selectKeyword",
+    element: <SelectKeywordPage />,
   },
 ]);
 

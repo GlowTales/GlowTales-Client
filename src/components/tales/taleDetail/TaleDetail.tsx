@@ -6,32 +6,20 @@ import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 
 const TaleDetail = () => {
-  const [result, setResult] = useState<(string | number | null)[]>([
-    null,
-    null,
-    null,
-  ]);
   const [mood, setMood] = useState<string | number | null>(null);
   const [characters, setCharacters] = useState<string | number | null>(null);
   const [contents, setContents] = useState<string | number | null>(null);
   const [isActive, setIsActive] = useState(false);
   const [btnText, setBtnText] = useState<string>("단어를 선택해주세요");
 
-  const updateResult = () => {
-    setResult([mood, characters, contents]);
-  };
+  const result = [mood, characters, contents];
 
-  useEffect(() => {
-    updateResult();
-  }, [mood, characters, contents]);
-
-  const isFormValid = () =>
-    [mood, characters, contents].every((value) => value !== null);
+  const isFormValid = () => result.every((value) => value !== null);
 
   useEffect(() => {
     if (isFormValid()) {
       setIsActive(true);
-      setBtnText("다음 단계로");
+      setBtnText("동화 생성하기");
     } else {
       setIsActive(false);
       setBtnText("단어를 선택해주세요");
@@ -39,18 +27,16 @@ const TaleDetail = () => {
   }, [mood, characters, contents]);
 
   const handleBtn = async () => {
-    if (isFormValid()) {
-      const requestData = {
-        mood,
-        characters,
-        contents,
-      };
+    const requestData = {
+      mood,
+      characters,
+      contents,
+    };
 
-      try {
-        console.log(requestData);
-      } catch (error) {
-        console.error("API 요청 중 에러 발생:", error);
-      }
+    try {
+      console.log(requestData);
+    } catch (error) {
+      throw error;
     }
   };
 

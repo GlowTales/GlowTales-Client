@@ -12,7 +12,7 @@ const TaleDetail = () => {
   const [isActive, setIsActive] = useState(false);
   const [btnText, setBtnText] = useState<string>("단어를 선택해주세요");
 
-  const result = [mood, characters, contents];
+  const result: (string | number | null)[] = [mood, characters, contents];
 
   const isFormValid = () => result.every((value) => value !== null);
 

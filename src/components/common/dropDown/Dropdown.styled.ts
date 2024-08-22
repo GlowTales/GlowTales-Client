@@ -10,7 +10,7 @@ export const DropdownButton = styled.button`
   padding: 1.5rem;
   background-color: white;
   border: 1.5px solid #d8d8d8;
-  border-radius: 5px 5px 0 0;
+  border-radius: 5px;
   text-align: left;
   display: flex;
   align-items: center;

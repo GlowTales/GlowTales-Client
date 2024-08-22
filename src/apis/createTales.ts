@@ -1,10 +1,13 @@
-import axios from "axios";
+import LocalStorage from "@utils/localStorage";
+import { getAuthAxios } from "./authAxois";
 
 const baseURL = import.meta.env.VITE_PUBLIC_SERVER_URL;
 
 export const createWithImg = async (body: FormData): Promise<string[]> => {
   try {
-    const response = await axios.post(`${baseURL}/tale/keyword`, body, {
+    const access = LocalStorage.getItem('access');
+    const authAxios = getAuthAxios(access);
+    const response = await authAxios.post(`${baseURL}/tales/keyword`, body, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

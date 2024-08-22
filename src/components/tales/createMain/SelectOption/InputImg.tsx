@@ -3,14 +3,17 @@ import * as S from "./SelectOption.styled";
 import { createWithImg } from "../../../../apis/createTales";
 
 const InputImg = () => {
-  const insertImg = (e: ChangeEvent<HTMLInputElement>) => {
-    new FileReader();
+  const insertImg = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    const formData = new FormData();
     if (file) {
+      const formData = new FormData();
       formData.append("file", file);
-      const result = createWithImg(formData);
-      console.log(result);
+      try {
+        const result = await createWithImg(formData);
+        console.log(result);
+      } catch (error) {
+        console.error("파일 업로드 중 오류 발생:", error);
+      }
     }
   };
   return (

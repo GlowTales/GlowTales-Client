@@ -3,6 +3,7 @@ import * as S from "./SelectKeyword.styeld";
 import keywordData from "./data.json";
 import NextBtn from "@components/common/NextBtn";
 import { useEffect, useState } from "react";
+import { CommonTitle } from "@components/common/common.styled";
 
 const SelectKeyword = () => {
   const result = keywordData.result.map((i) => i.keyword);
@@ -11,6 +12,7 @@ const SelectKeyword = () => {
     number[]
   >([]);
   const [isActive, setIsActive] = useState(false);
+  const [btnText, setBtnText] = useState<string>("단어를 선택해주세요");
 
   const handleClick = (index: number) => {
     if (selectedKeywordIndices.includes(index)) {
@@ -27,7 +29,10 @@ const SelectKeyword = () => {
   };
 
   useEffect(() => {
-    setIsActive(selectedKeywordIndices.length > 0);
+    if (selectedKeywordIndices.length > 0) {
+      setIsActive(true);
+      setBtnText("다음");
+    }
   }, [selectedKeywordIndices]);
 
   return (
@@ -35,8 +40,8 @@ const SelectKeyword = () => {
       <Header text="동화 만들기" />
       <S.Wrapper>
         <S.TitleWrapper>
-          <S.Title>사진에서 단어를 추출했어요</S.Title>
-          <S.Title>원하는 단어를 골라주세요</S.Title>
+          <CommonTitle>사진에서 단어를 추출했어요</CommonTitle>
+          <CommonTitle>원하는 단어를 골라주세요</CommonTitle>
         </S.TitleWrapper>
         <S.KeywordWrapper>
           {result.map((item, idx) => (
@@ -52,7 +57,7 @@ const SelectKeyword = () => {
         <NextBtn
           width="85%"
           isActive={isActive}
-          text="다음"
+          text={btnText}
           handleBtn={() => {
             const selectedKeywords = selectedKeywordIndices.map(
               (index) => result[index]

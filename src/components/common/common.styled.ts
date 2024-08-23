@@ -32,3 +32,9 @@ export const CommonBtn = styled.div<{ width?: string; isActive: boolean }>`
   border-radius: 6px;
   cursor: ${({ isActive }) => (isActive ? "pointer" : "not-allowed")};
 `;
+
+export const CommonTitle = styled.div`
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-align: center;
+`;

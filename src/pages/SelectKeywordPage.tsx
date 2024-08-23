@@ -1,4 +1,4 @@
-import SelectKeyword from "@components/selectKeyword/SelectKeyword";
+import SelectKeyword from "@components/tales/selectKeyword/SelectKeyword";
 
 const SelectKeywordPage = () => {
   return <SelectKeyword />;

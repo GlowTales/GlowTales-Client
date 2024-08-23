@@ -43,7 +43,7 @@ export const SelectContainer = styled.div`
 
 export const OptionContainer = styled.div`
   width: 65%;
-  height: 85%;
+  height: 90%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;

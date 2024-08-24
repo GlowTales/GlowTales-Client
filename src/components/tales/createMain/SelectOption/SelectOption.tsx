@@ -1,6 +1,7 @@
 import { SelectOptionProps } from "@type/selectOption";
 import * as S from "./SelectOption.styled";
 import InputImg from "./InputImg";
+import { useNavigate } from "react-router-dom";
 
 const SelectOption = ({ text, imgURL, setIsLoading }: SelectOptionProps) => {
   if (text.includes("사진")) {
@@ -16,8 +17,14 @@ const SelectOption = ({ text, imgURL, setIsLoading }: SelectOptionProps) => {
       </S.ImgLabel>
     );
   } else {
+    const navigate = useNavigate();
+
     return (
-      <S.Wrapper>
+      <S.Wrapper
+        onClick={() => {
+          navigate("/taleDetail");
+        }}
+      >
         <S.ImgBox>
           <img src={imgURL} />
         </S.ImgBox>

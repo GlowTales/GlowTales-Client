@@ -38,8 +38,9 @@ export const TaleWrapper = styled.div`
   height: 75%;
   max-height: 75%;
   overflow-y: scroll;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin-bottom: 1rem;
+  line-height: 3rem;
 `;
 
 export const BtnWrapper = styled.div`

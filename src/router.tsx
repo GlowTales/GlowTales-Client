@@ -3,12 +3,13 @@ import LoginPage from "@pages/LoginPage";
 import OnboardingPage from "@pages/OnboardingPage";
 import HomePage from "@pages/HomePage";
 import SplashScreen from "@pages/SplashScreen";
-import CreatePage from "@pages/CreatePage";
 import KakaoRedirect from "@pages/KakaoRedirect";
 import LearningPage from "@pages/LearningPage";
 import SelectKeywordPage from "@pages/SelectKeywordPage";
 import TaleDetailPage from "@pages/TaleDetailPage";
-import ReadTale from "@components/tales/readTale/ReadTale";
+import ReadTalePage from "@pages/ReadTalePage";
+import CreateMainPage from "@pages/CreateMainPage";
+import CreateTalePage from "@pages/CreateTalePage";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/createTale",
-    element: <CreatePage />,
+    element: <CreateMainPage />,
   },
   {
     path: "/kakao",
@@ -48,8 +49,12 @@ const router = createBrowserRouter([
     element: <TaleDetailPage />,
   },
   {
+    path: "/create",
+    element: <CreateTalePage />,
+  },
+  {
     path: "/readTale",
-    element: <ReadTale />,
+    element: <ReadTalePage />,
   },
 ]);
 

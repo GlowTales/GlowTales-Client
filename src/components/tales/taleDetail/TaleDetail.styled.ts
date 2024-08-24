@@ -28,3 +28,17 @@ export const SemiTitle = styled.div`
   font-weight: 700;
   color: #909090;
 `;
+
+export const CharacterWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  font-size: 1.6rem;
+  gap: 1rem;
+`;
+
+export const Characters = styled.div`
+  border: 1px solid #d8d8d8;
+  border-radius: 3px;
+  background-color: #f7f7f7;
+  padding: 1rem;
+`;

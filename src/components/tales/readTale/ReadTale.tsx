@@ -7,12 +7,10 @@ import NextBtn from "@components/common/NextBtn";
 import LoadingScreen from "@components/common/spinner/LoadingScreen";
 import { createTale } from "@apis/createTales";
 import { useLocation } from "react-router-dom";
-import { CreateTaleData } from "@type/createTale";
 
 const ReadTale = () => {
   const location = useLocation();
-  const state = location.state as { requestData?: CreateTaleData };
-  const requestData = state.requestData;
+  const { requestData } = location.state || {};
 
   const [result, setResult] = useState<string | number | null>(null);
   const [data, setData] = useState(null);

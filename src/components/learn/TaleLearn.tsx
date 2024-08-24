@@ -23,15 +23,29 @@ const TaleLearn = () => {
     isNextBtnActive,
     handleNextStep,
   } = useLearning();
+
+  const progressPercentage =
+    currentStep < 2
+      ? (currentStep + 1) * 20
+      : currentStep < 4
+        ? 40
+        : currentStep < 6
+          ? 60
+          : 80;
+
   return (
     <Wrapper>
-      {currentStep < 3 ? (
+      {currentStep < 7 ? (
         <>
-          <ProgressBar percentage={(currentStep + 1) * 20} />
+          <ProgressBar percentage={progressPercentage} />
           {currentStep === 0 && <LearnTaleKeys />}
-          {currentStep === 1 && <ChoiceQuiz setter={setChoice} />}
-          {currentStep === 3 && choice && <EssayQuiz setter={setEssay} />}
-          {currentStep === 5 && choice && essay && (
+          {(currentStep === 1 || currentStep === 2) && (
+            <ChoiceQuiz setter={setChoice} currentStep={currentStep} />
+          )}
+          {(currentStep === 3 || currentStep === 4) && choice && (
+            <EssayQuiz setter={setEssay} />
+          )}
+          {(currentStep === 5 || currentStep === 6) && choice && essay && (
             <SentenceQuiz setter={setSentence} />
           )}
           <NextBtn

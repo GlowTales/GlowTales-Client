@@ -5,7 +5,7 @@ export interface ColorSet {
 }
 
 export interface SelectListProps {
-  selectList: SelectOptionElement[];
+  selectList: SelectListElement[];
   setter: (value: string | number | null) => void;
   width?: string;
 }

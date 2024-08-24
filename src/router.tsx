@@ -8,6 +8,7 @@ import KakaoRedirect from "@pages/KakaoRedirect";
 import LearningPage from "@pages/LearningPage";
 import SelectKeywordPage from "@pages/SelectKeywordPage";
 import TaleDetailPage from "@pages/TaleDetailPage";
+import ReadTale from "@components/tales/readTale/ReadTale";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
   {
     path: "/taleDetail",
     element: <TaleDetailPage />,
+  },
+  {
+    path: "/readTale",
+    element: <ReadTale />,
   },
 ]);
 

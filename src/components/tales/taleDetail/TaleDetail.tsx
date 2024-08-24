@@ -4,8 +4,14 @@ import Dropdown from "@components/common/dropDown/Dropdown";
 import { nationElements } from "@pages/OnboardingPage";
 import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const TaleDetail = () => {
+  const location = useLocation();
+  const { selectKeywords } = location.state || {};
+
+  const navigate = useNavigate();
+
   const [mood, setMood] = useState<string | number | null>(null);
   const [characters, setCharacters] = useState<string | number | null>(null);
   const [contents, setContents] = useState<string | number | null>(null);
@@ -13,7 +19,8 @@ const TaleDetail = () => {
   const [btnText, setBtnText] = useState<string>("단어를 선택해주세요");
 
   const result: (string | number | null)[] = [mood, characters, contents];
-
+  const detail = "구체적";
+  const chr = ["최재영"];
   const isFormValid = () => result.every((value) => value !== null);
 
   useEffect(() => {
@@ -28,16 +35,13 @@ const TaleDetail = () => {
 
   const handleBtn = async () => {
     const requestData = {
+      detail,
+      keywords: selectKeywords,
       mood,
-      characters,
+      characters: chr,
       contents,
     };
-
-    try {
-      console.log(requestData);
-    } catch (error) {
-      throw error;
-    }
+    navigate("/readTale", { state: { requestData } });
   };
 
   return (

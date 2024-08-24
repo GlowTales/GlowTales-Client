@@ -2,12 +2,12 @@ import { SelectOptionProps } from "@type/selectOption";
 import * as S from "./SelectOption.styled";
 import InputImg from "./InputImg";
 
-const SelectOption = ({ text, imgURL }: SelectOptionProps) => {
+const SelectOption = ({ text, imgURL, setIsLoading }: SelectOptionProps) => {
   if (text.includes("사진")) {
     return (
       <S.ImgLabel htmlFor="imageInput">
         <S.Wrapper>
-          <InputImg />
+          <InputImg setIsLoading={setIsLoading} />
           <S.ImgBox>
             <img src={imgURL} />
           </S.ImgBox>

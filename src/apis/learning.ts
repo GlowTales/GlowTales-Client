@@ -19,7 +19,7 @@ export const getQuizAndAnswer = async (languageTaleId: number) => {
   try {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
-    const response = await authAxios.get(`${baseURL}/quiz/74`);
+    const response = await authAxios.get(`${baseURL}/quiz/${languageTaleId}`);
     return response.data;
   } catch (error) {
     throw error;

@@ -1,12 +1,10 @@
-import { createQuiz, getQuizAndAnswer } from "@apis/learning";
 import Header from "@components/common/header/Header";
 import TaleLearn from "@components/learn/TaleLearn";
-import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const TaleLearnPage = () => {
   const { id } = useParams();
-  const taleId = Number(id);
+  Number(id);
   //   useEffect(() => {
   //     const getQuiz = async (taleId: number) => {
   //       const quiz = await createQuiz({

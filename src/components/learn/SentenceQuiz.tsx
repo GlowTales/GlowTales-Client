@@ -2,7 +2,7 @@ interface SentenceQuizProps {
   setter: (value: string | number | null) => void;
 }
 
-const SentenceQuiz = ({ setter }: SentenceQuizProps) => {
+const SentenceQuiz = ({}: SentenceQuizProps) => {
   return <div>SentenceQuiz</div>;
 };
 

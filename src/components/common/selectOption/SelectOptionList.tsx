@@ -1,9 +1,9 @@
-import { SelectOptionProps } from "@type/selectOption";
+import { SelectListProps } from "@type/selectList";
 import SelectBtn from "./SelectBtn";
-import * as S from "./SelectOption.styled";
+import * as S from "./SelectOptionList.styled";
 import { useState } from "react";
 
-const SelectOption = (props: SelectOptionProps) => {
+const SelectOptionList = (props: SelectListProps) => {
   const [selectedValue, setSelectedValue] = useState<string | number | null>(
     null
   );
@@ -54,4 +54,4 @@ const SelectOption = (props: SelectOptionProps) => {
   );
 };
 
-export default SelectOption;
+export default SelectOptionList;

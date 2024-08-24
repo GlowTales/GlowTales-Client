@@ -1,5 +1,5 @@
-import { SelectBtnProps } from "@type/selectOption";
-import * as S from "./SelectOption.styled";
+import { SelectBtnProps } from "@type/selectList";
+import * as S from "./SelectOptionList.styled";
 import { colorSets } from "@utils/defaultData";
 
 const SelectBtn = (props: SelectBtnProps) => {

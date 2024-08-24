@@ -1,24 +1,8 @@
-export interface ColorSet {
-  background: string;
-  border: string;
-  color: string;
-}
-
-export interface SelectOptionProps {
-  selectList: SelectOptionElement[];
-  setter: (value: string | number | null) => void;
-  width?: string;
-}
-
-export interface SelectOptionElement {
+export interface SelectOptionProps extends InputImgProps {
+  imgURL: string;
   text: string;
-  state: "correct" | "wrong" | "selected" | "default";
-  value: string | number;
 }
 
-export interface SelectBtnProps {
-  text: string;
-  colorName: string;
-  imgURL?: string;
-  onClick: () => void;
+export interface InputImgProps {
+  setIsLoading?: React.Dispatch<React.SetStateAction<boolean>>;
 }

@@ -1,4 +1,4 @@
-import { ColorSet } from "@type/selectOption";
+import { ColorSet } from "@type/selectList";
 import styled from "styled-components";
 
 export const SelectOptionContainer = styled.div<{ width?: string }>`

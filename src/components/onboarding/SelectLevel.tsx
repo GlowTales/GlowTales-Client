@@ -1,7 +1,7 @@
-import SelectOption from "@components/common/selectOption/SelectOption";
 import * as S from "./onboarding.styled";
 import useSelectLevel from "@hooks/useSelectLevel";
 import { nationElements } from "@utils/defaultData";
+import SelectOptionList from "@common/selectOption/SelectOptionList";
 
 interface SelectLevelProps {
   languageId: number | string;
@@ -23,7 +23,7 @@ const SelectLevel = ({ languageId, setter }: SelectLevelProps) => {
     <S.Container>
       <S.Title>{language?.text}를 얼마나 알고 계신가요?</S.Title>
       <S.SubContainer>
-        <SelectOption
+        <SelectOptionList
           selectList={levelOptions.map((option) => ({
             text: option.text,
             value: option.value,

@@ -42,7 +42,6 @@ export const getAuthAxios = (token: string | null) => {
   // Axios 인스턴스 생성
   const authAxios = axios.create({
     baseURL,
-    timeout: 8000,
     headers: {
       Authorization: `Bearer ${token}`,
     },

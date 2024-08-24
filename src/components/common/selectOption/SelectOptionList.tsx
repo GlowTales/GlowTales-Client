@@ -1,12 +1,8 @@
 import { SelectListProps } from "@type/selectList";
 import SelectBtn from "./SelectBtn";
 import * as S from "./SelectOptionList.styled";
-import { useState } from "react";
 
 const SelectOptionList = (props: SelectListProps) => {
-  const [selectedValue, setSelectedValue] = useState<string | number | null>(
-    null
-  );
   const getColorName = (state: string) => {
     switch (state) {
       case "correct":
@@ -35,7 +31,6 @@ const SelectOptionList = (props: SelectListProps) => {
   };
 
   const handleSelect = (value: string | number | null) => {
-    setSelectedValue(value);
     props.setter(value);
   };
 

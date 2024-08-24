@@ -1,5 +1,5 @@
 import { DropdownElement } from "@type/dropdown";
-import { ColorSet } from "@type/selectOption";
+import { ColorSet } from "@type/selectList";
 
 export const nationElements: DropdownElement[] = [
   {

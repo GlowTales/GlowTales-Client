@@ -1,5 +1,5 @@
 import { colorSets } from "@utils/defaultData";
-import React, { ChangeEvent, FocusEvent, KeyboardEvent } from "react";
+import React, { ChangeEvent, KeyboardEvent } from "react";
 import styled from "styled-components";
 
 interface AgeInputProps {
@@ -16,7 +16,7 @@ const AgeInput = ({ age, setter }: AgeInputProps) => {
     setter(newValue);
   };
 
-  const handleBlur = (event: FocusEvent<HTMLInputElement>) => {
+  const handleBlur = () => {
     setIsEditing(false);
   };
 

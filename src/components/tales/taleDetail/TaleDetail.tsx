@@ -1,9 +1,9 @@
 import Header from "@components/common/header/Header";
 import * as S from "./TaleDetail.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
-import { nationElements } from "@pages/OnboardingPage";
 import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
+import { nationElements } from "@utils/defaultData";
 
 const TaleDetail = () => {
   const [mood, setMood] = useState<string | number | null>(null);

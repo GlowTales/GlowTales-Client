@@ -3,7 +3,7 @@ import Dropdown from "@common/dropDown/Dropdown";
 import { DropdownProps } from "@type/dropdown";
 import { Meta, StoryObj } from "@storybook/react";
 import { fn } from "@storybook/test";
-import { nationElements } from "@pages/OnboardingPage";
+import { nationElements } from "@utils/defaultData";
 
 const meta: Meta<DropdownProps> = {
   title: "Components/Dropdown",

@@ -1,3 +1,4 @@
+import { colorSets } from "@utils/defaultData";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -35,3 +36,20 @@ export const Wrapper = styled.div`
   min-height: 88%;
 `;
 
+export const Input = styled.input<{ $isInputValid: string | null }>`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  height: 5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  border: 1px solid
+    ${({ $isInputValid }) =>
+      $isInputValid ? colorSets["yellow"].border : colorSets["gray"].border};
+  background-color: ${({ $isInputValid }) =>
+    $isInputValid ? colorSets["yellow"].background : "none"};
+  border-radius: 6px;
+`;

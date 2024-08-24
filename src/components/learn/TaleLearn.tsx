@@ -43,7 +43,11 @@ const TaleLearn = () => {
             <ChoiceQuiz setter={setChoice} currentStep={currentStep} />
           )}
           {(currentStep === 3 || currentStep === 4) && choice && (
-            <EssayQuiz setter={setEssay} />
+            <EssayQuiz
+              setter={setEssay}
+              currentStep={currentStep}
+              answer="사랑"
+            />
           )}
           {(currentStep === 5 || currentStep === 6) && choice && essay && (
             <SentenceQuiz setter={setSentence} />

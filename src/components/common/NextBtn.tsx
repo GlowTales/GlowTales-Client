@@ -11,7 +11,7 @@ const NextBtn = (props: NextBtnProps) => {
   return (
     <CommonBtn
       width={props.width}
-      onClick={props.handleBtn}
+      onClick={props.isActive ? props.handleBtn : () => {}}
       isActive={props.isActive}
     >
       {props.text}

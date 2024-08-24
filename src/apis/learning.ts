@@ -8,7 +8,7 @@ export const createQuiz = async (body: LearningInfoData) => {
   try {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
-    const response = await authAxios.post(`${baseURL}/quiz`, body);
+    const response = await authAxios.post(`${baseURL}/quiz/`, body);
     return response.data;
   } catch (error) {
     throw error;
@@ -19,7 +19,7 @@ export const getQuizAndAnswer = async (languageTaleId: number) => {
   try {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
-    const response = await authAxios.get(`${baseURL}/quiz/${languageTaleId}`);
+    const response = await authAxios.get(`${baseURL}/quiz/74`);
     return response.data;
   } catch (error) {
     throw error;

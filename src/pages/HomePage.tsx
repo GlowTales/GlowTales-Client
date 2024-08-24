@@ -12,7 +12,7 @@ const HomePage = () => {
   };
   const handleBtn2 = async () => {
     try {
-      const response = getWord();
+      const response = getStudiedTales(true);
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -20,7 +20,7 @@ const HomePage = () => {
   };
   const handleBtn3 = async () => {
     try {
-      const response = getStudiedTales(true);
+      const response = getWord();
       console.log(response);
     } catch (error) {
       console.log(error);

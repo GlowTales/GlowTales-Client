@@ -9,8 +9,11 @@ const Login = () => {
 
   return (
     <CommonWrapper>
-      <S.Title>{`{메인소개 멘트}`}</S.Title>
-      <S.LogoBox>{`{로고이미지}`}</S.LogoBox>
+      <S.Title>
+        <div>메인 소개 멘트 어쩌구</div>
+        <div>글로우테일로 동화를 어쩌구</div>
+      </S.Title>
+      <S.Image src="/loginGraphic.png" />
       <S.LoginBtn>
         <img id="login-bubble" src="./loginBubble.png" alt="3초 로그인" />
         <img

@@ -15,9 +15,15 @@ const KakaoRedirect = () => {
         if (code) {
           const result = await postCode(code);
           if (result) {
-            setTimeout(() => {
-              navigate(`/onboarding`);
-            }, 1000);
+            if (!result.isActive) {
+              setTimeout(() => {
+                navigate(`/onboarding`);
+              }, 1000);
+            } else {
+              setTimeout(() => {
+                navigate(`/home`);
+              }, 1000);
+            }
           }
         }
       } catch (err) {

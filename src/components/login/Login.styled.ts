@@ -1,18 +1,20 @@
 import styled from "styled-components";
 
 export const Title = styled.div`
-  font-size: 3.4rem;
+  font-size: 3rem;
   font-weight: 800;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 `;
 
-export const LogoBox = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  height: 250px;
-  border-radius: 15px;
-  background-color: #efefed;
+export const Image = styled.img`
+  width: 55%;
+  height: auto; /* 비율 유지 */
+  max-width: 600px;
 `;
 
 export const LoginBtn = styled.div`

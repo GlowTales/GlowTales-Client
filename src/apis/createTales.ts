@@ -34,6 +34,19 @@ export const createTale = async (body: CreateTaleData) => {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
     const response = await authAxios.post(`${baseURL}/tales/`, body);
+    return response.data.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const getTale = async (lanId: number, taleId: number) => {
+  try {
+    const access = LocalStorage.getItem("access");
+    const authAxios = getAuthAxios(access);
+    const response = await authAxios.get(
+      `${baseURL}/tales/detail/lan?languageId=${lanId}&taleId=${taleId}`
+    );
     return response.data;
   } catch (error) {
     throw error;

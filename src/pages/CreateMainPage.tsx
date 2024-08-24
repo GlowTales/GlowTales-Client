@@ -1,7 +1,7 @@
 import CreateMain from "@components/tales/createMain/CreateMain";
 
-const CreatePage = () => {
+const CreateMainPage = () => {
   return <CreateMain />;
 };
 
-export default CreatePage;
+export default CreateMainPage;

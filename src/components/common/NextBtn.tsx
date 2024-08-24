@@ -3,14 +3,18 @@ import { CommonBtn } from "./common.styled";
 interface NextBtnProps {
   isActive: boolean;
   text: string;
-  width: string;
+  width?: string;
   handleBtn: () => void;
 }
 
-const NextBtn = ({ width, isActive, text, handleBtn }: NextBtnProps) => {
+const NextBtn = (props: NextBtnProps) => {
   return (
-    <CommonBtn width={width} onClick={handleBtn} isActive={isActive}>
-      {text}
+    <CommonBtn
+      width={props.width}
+      onClick={props.handleBtn}
+      isActive={props.isActive}
+    >
+      {props.text}
     </CommonBtn>
   );
 };

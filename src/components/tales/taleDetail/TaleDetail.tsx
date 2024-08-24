@@ -1,10 +1,11 @@
 import Header from "@components/common/header/Header";
 import * as S from "./TaleDetail.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
-import { nationElements } from "@pages/OnboardingPage";
 import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
+import { nationElements } from "@utils/defaultData";
 import { useLocation, useNavigate } from "react-router-dom";
+
 
 const TaleDetail = () => {
   const location = useLocation();

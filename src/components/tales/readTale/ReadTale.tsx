@@ -4,13 +4,13 @@ import Dropdown from "@components/common/dropDown/Dropdown";
 import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 import { getTale } from "@apis/createTales";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { nationElements } from "@utils/defaultData";
 import { ResponseTaleData } from "@type/createTale";
 
 const ReadTale = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  //   const navigate = useNavigate();
   const { response } = location.state || {};
 
   const [language, setLanguage] = useState<string | number | null>(2);

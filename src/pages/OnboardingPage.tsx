@@ -2,6 +2,7 @@ import Dropdown from "@common/dropDown/Dropdown";
 import { DropdownElement } from "@type/dropdown";
 import { useEffect, useState } from "react";
 import { CommonWrapper } from "@common/common.styled";
+import ProgressBar from "@components/common/progressBar/ProgressBar";
 
 export const nationElements: DropdownElement[] = [
   {
@@ -39,6 +40,7 @@ const OnboardingPage = () => {
 
   return (
     <CommonWrapper>
+      <ProgressBar percentage={100} />
       <Dropdown selectList={nationElements} setter={setResult} width="55%" />
     </CommonWrapper>
   );

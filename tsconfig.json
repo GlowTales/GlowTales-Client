@@ -9,7 +9,8 @@
       "@components/*": ["src/components/*"],
       "@common/*": ["src/components/common/*"],
       "@utils/*": ["src/utils/*"],
-      "@apis/*": ["src/apis/*"]
+      "@apis/*": ["src/apis/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   },
   "files": [],

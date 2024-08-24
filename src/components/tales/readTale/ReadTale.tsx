@@ -2,17 +2,34 @@ import Header from "@components/common/header/Header";
 import * as S from "./ReadTale.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
 import { nationElements } from "@pages/OnboardingPage";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 import LoadingScreen from "@components/common/spinner/LoadingScreen";
+import { createTale } from "@apis/createTales";
+import { useLocation } from "react-router-dom";
 
 const ReadTale = () => {
+  const location = useLocation();
+  const { requestData } = location.state || {};
+
   const [result, setResult] = useState<string | number | null>(null);
-  const data = null;
+  const [data, setData] = useState(null);
 
   const onClick = () => {
     console.log(result);
   };
+
+  useEffect(() => {
+    const getTale = async () => {
+      if (requestData) {
+        const response = await createTale(requestData);
+        setData(response);
+        console.log(response);
+      }
+    };
+    getTale();
+  }, []);
+
   return (
     <>
       <Header text="동화 읽기" />

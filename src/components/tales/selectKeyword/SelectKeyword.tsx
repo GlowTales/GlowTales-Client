@@ -1,12 +1,15 @@
 import Header from "@components/common/header/Header";
 import * as S from "./SelectKeyword.styeld";
-import keywordData from "./data.json";
 import NextBtn from "@components/common/NextBtn";
 import { useEffect, useState } from "react";
 import { CommonTitle } from "@components/common/common.styled";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SelectKeyword = () => {
-  const result = keywordData.result.map((i) => i.keyword);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const { keywords } = location.state || {};
 
   const [selectedKeywordIndices, setSelectedKeywordIndices] = useState<
     number[]
@@ -14,7 +17,14 @@ const SelectKeyword = () => {
   const [isActive, setIsActive] = useState(false);
   const [btnText, setBtnText] = useState<string>("단어를 선택해주세요");
 
-  const handleClick = (index: number) => {
+  useEffect(() => {
+    if (selectedKeywordIndices.length > 0) {
+      setIsActive(true);
+      setBtnText("다음");
+    }
+  }, [selectedKeywordIndices]);
+
+  const handleComponents = (index: number) => {
     if (selectedKeywordIndices.includes(index)) {
       setSelectedKeywordIndices(
         selectedKeywordIndices.filter(
@@ -28,13 +38,12 @@ const SelectKeyword = () => {
     }
   };
 
-  useEffect(() => {
-    if (selectedKeywordIndices.length > 0) {
-      setIsActive(true);
-      setBtnText("다음");
-    }
-  }, [selectedKeywordIndices]);
-
+  const handleNextBtn = () => {
+    const selectKeywords = selectedKeywordIndices.map(
+      (index) => keywords[index]
+    );
+    navigate("/taleDetail", { state: { selectKeywords } });
+  };
   return (
     <>
       <Header text="동화 만들기" />
@@ -44,27 +53,22 @@ const SelectKeyword = () => {
           <CommonTitle>원하는 단어를 골라주세요</CommonTitle>
         </S.TitleWrapper>
         <S.KeywordWrapper>
-          {result.map((item, idx) => (
-            <S.Keyword
-              key={idx}
-              isSelected={selectedKeywordIndices.includes(idx)}
-              onClick={() => handleClick(idx)}
-            >
-              {item}
-            </S.Keyword>
-          ))}
+          {keywords &&
+            keywords.map((item: string, idx: number) => (
+              <S.Keyword
+                key={idx}
+                isSelected={selectedKeywordIndices.includes(idx)}
+                onClick={() => handleComponents(idx)}
+              >
+                {item}
+              </S.Keyword>
+            ))}
         </S.KeywordWrapper>
         <NextBtn
           width="85%"
           isActive={isActive}
           text={btnText}
-          handleBtn={() => {
-            const selectedKeywords = selectedKeywordIndices.map(
-              (index) => result[index]
-            );
-            console.log(selectedKeywords);
-            console.log(selectedKeywordIndices);
-          }}
+          handleBtn={handleNextBtn}
         />
       </S.Wrapper>
     </>

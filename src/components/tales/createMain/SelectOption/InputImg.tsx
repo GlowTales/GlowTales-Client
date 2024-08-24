@@ -1,19 +1,20 @@
 import { ChangeEvent } from "react";
 import * as S from "./SelectOption.styled";
-import { createWithImg } from "../../../../apis/createTales";
+import { createKeyword } from "../../../../apis/createTales";
+import { useNavigate } from "react-router-dom";
+import { InputImgProps } from "@type/selectOption";
 
-const InputImg = () => {
+const InputImg = ({ setIsLoading }: InputImgProps) => {
+  const navigate = useNavigate();
+
   const insertImg = async (e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const formData = new FormData();
       formData.append("file", file);
-      try {
-        const result = await createWithImg(formData);
-        console.log(result);
-      } catch (error) {
-        console.error("파일 업로드 중 오류 발생:", error);
-      }
+      if (setIsLoading) setIsLoading(true);
+      const keywords: string[] = await createKeyword(formData);
+      navigate("/selectKeyword", { state: { keywords } });
     }
   };
   return (

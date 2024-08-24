@@ -1,12 +1,12 @@
 import Header from "@components/common/header/Header";
 import * as S from "./ReadTale.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
-import { nationElements } from "@pages/OnboardingPage";
 import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 import LoadingScreen from "@components/common/spinner/LoadingScreen";
 import { createTale } from "@apis/createTales";
 import { useLocation } from "react-router-dom";
+import { nationElements } from "@utils/defaultData";
 
 const ReadTale = () => {
   const location = useLocation();

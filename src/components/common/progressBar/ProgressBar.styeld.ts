@@ -15,9 +15,9 @@ export const Progress = styled.div<{ $percentage: number }>`
   background-color: #ffd600;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  border-top-right-radius: ${(props) => (props.$percentage === 100 ? 20 : 0)}px;
+  border-top-right-radius: ${(props) => (props.$percentage >= 99 ? 20 : 0)}px;
   border-bottom-right-radius: ${(props) =>
-    props.$percentage === 100 ? 20 : 0}px;
+    props.$percentage >= 99 ? 20 : 0}px;
   height: 100%;
   width: ${(props) => props.$percentage}%;
   transition: width 0.5s ease-in-out;

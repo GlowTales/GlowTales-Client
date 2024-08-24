@@ -13,10 +13,12 @@ export interface SelectOptionProps {
 export interface SelectOptionElement {
   text: string;
   state: "correct" | "wrong" | "selected" | "default";
+  value: string | number;
 }
 
 export interface SelectBtnProps {
   text: string;
   colorName: string;
   imgURL?: string;
+  onClick: () => void;
 }

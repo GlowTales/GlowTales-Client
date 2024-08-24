@@ -1,8 +1,12 @@
 import { SelectOptionProps } from "@type/selectOption";
 import SelectBtn from "./SelectBtn";
 import * as S from "./SelectOption.styled";
+import { useState } from "react";
 
 const SelectOption = (props: SelectOptionProps) => {
+  const [selectedValue, setSelectedValue] = useState<string | number | null>(
+    null
+  );
   const getColorName = (state: string) => {
     switch (state) {
       case "correct":
@@ -29,7 +33,12 @@ const SelectOption = (props: SelectOptionProps) => {
         return "";
     }
   };
-  
+
+  const handleSelect = (value: string | number | null) => {
+    setSelectedValue(value);
+    props.setter(value);
+  };
+
   return (
     <S.SelectOptionContainer width={props.width}>
       {props.selectList.map((element) => (
@@ -38,6 +47,7 @@ const SelectOption = (props: SelectOptionProps) => {
           text={element.text}
           colorName={getColorName(element.state)}
           imgURL={getImgURL(element.state)}
+          onClick={() => handleSelect(element.value)}
         />
       ))}
     </S.SelectOptionContainer>

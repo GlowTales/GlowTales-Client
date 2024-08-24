@@ -8,7 +8,7 @@ export const SelectOptionContainer = styled.div<{ width?: string }>`
   align-items: center;
   position: relative;
   gap: 1rem;
-  width: ${({ width }) => (width ? width : "50%")};
+  width: ${({ width }) => (width ? width : "100%")};
 `;
 
 export const SelectBtnWrapper = styled.div<{ $colorSet: ColorSet }>`

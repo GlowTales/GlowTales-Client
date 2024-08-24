@@ -1,3 +1,4 @@
+import { registerUser } from "@apis/login";
 import { useState, useEffect } from "react";
 
 const useOnboarding = () => {
@@ -9,12 +10,21 @@ const useOnboarding = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isStepCompleted, setIsStepCompleted] = useState([false, false, false]);
 
-  const handleNextStep = () => {
-    if (currentStep < 2) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      console.log(languageId, learningLevel, age);
+  const handleNextStep = async () => {
+    try {
+      if (languageId && learningLevel && age) {
+        const result = await registerUser({
+          languageId: Number(languageId),
+          learningLevel: String(learningLevel),
+          age: Number(age),
+        });
+        if (!result) throw new Error("회원 등록 실패");
+        console.log("회원 등록 성공:", result);
+      }
+    } catch (error) {
+      console.error("회원 등록 중 오류 발생:", error);
     }
+    setCurrentStep((prev) => prev + 1);
   };
 
   const checkStepCompletion = () => {

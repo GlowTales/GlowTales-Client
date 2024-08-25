@@ -1,10 +1,7 @@
 import SelectOptionList from "@components/common/selectOption/SelectOptionList";
 import * as S from "./learn.styled";
 import { useState } from "react";
-interface ChoiceQuizProps {
-  setter: (value: string | number | null) => void;
-  currentStep: number;
-}
+import { ChoiceQuizProps } from "@type/learning";
 
 const dummy = [
   { text: "사랑", value: true },

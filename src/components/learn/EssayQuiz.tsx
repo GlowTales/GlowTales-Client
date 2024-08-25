@@ -1,11 +1,7 @@
 import { useState } from "react";
 import * as S from "./learn.styled";
 import SelectBtn from "@components/common/selectOption/SelectBtn";
-interface EssayQuizProps {
-  setter: (value: string | number | null) => void;
-  currentStep: number;
-  answer: string;
-}
+import { EssayQuizProps } from "@type/learning";
 
 const EssayQuiz = ({ setter, currentStep, answer }: EssayQuizProps) => {
   const [inputValue, setInputValue] = useState<string>("");

@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import * as S from "./learn.styled";
-
-interface SentenceQuizProps {
-  setter: (value: string | number | null) => void;
-  currentStep: number;
-  quizData: SentenceQuizData;
-}
-interface SentenceQuizData {
-  question: string;
-  sequenceList: Array<{ order: number; word: string }>;
-}
+import { SentenceQuizProps } from "@type/learning";
 
 const shuffleArray = (array: Array<{ order: number; word: string }>) => {
   const shuffled = [...array];

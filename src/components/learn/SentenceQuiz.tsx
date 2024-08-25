@@ -11,7 +11,7 @@ const shuffleArray = (array: Array<{ order: number; word: string }>) => {
   return shuffled;
 };
 
-const SentenceQuiz = ({ setter, currentStep, quizData }: SentenceQuizProps) => {
+const SentenceQuiz = ({ setter, data, isQuizGraded }: SentenceQuizProps) => {
   const [selectedWords, setSelectedWords] = useState<
     Array<{ order: number; word: string }>
   >([]);
@@ -20,8 +20,9 @@ const SentenceQuiz = ({ setter, currentStep, quizData }: SentenceQuizProps) => {
   >([]);
 
   useEffect(() => {
-    setShuffledWords(shuffleArray(quizData.sequenceList));
-  }, []);
+    setSelectedWords([]);
+    setShuffledWords(shuffleArray(data.sequenceList));
+  }, [data]);
 
   const handleWordClick = (wordObj: { order: number; word: string }) => {
     setSelectedWords((prev) => {
@@ -35,9 +36,9 @@ const SentenceQuiz = ({ setter, currentStep, quizData }: SentenceQuizProps) => {
   };
 
   const isCorrectOrder = () => {
-    if (selectedWords.length !== quizData.sequenceList.length) return false;
+    if (selectedWords.length !== data.sequenceList.length) return false;
     return selectedWords.every(
-      (wordObj, index) => wordObj.order === quizData.sequenceList[index].order
+      (wordObj, index) => wordObj.order === data.sequenceList[index].order
     );
   };
 
@@ -49,9 +50,7 @@ const SentenceQuiz = ({ setter, currentStep, quizData }: SentenceQuizProps) => {
       return (
         <S.WordButton
           key={wordObj.order}
-          onClick={
-            currentStep !== 6 ? () => handleWordClick(wordObj) : () => {}
-          }
+          onClick={!isQuizGraded ? () => handleWordClick(wordObj) : () => {}}
           $isSelected={!!isSelected}
         >
           {wordObj.word}
@@ -61,7 +60,7 @@ const SentenceQuiz = ({ setter, currentStep, quizData }: SentenceQuizProps) => {
   };
 
   useEffect(() => {
-    if (selectedWords.length === quizData.sequenceList.length) {
+    if (selectedWords.length === data.sequenceList.length) {
       const completedSentence = selectedWords
         .map((wordObj) => wordObj.word)
         .join(" ");
@@ -74,28 +73,26 @@ const SentenceQuiz = ({ setter, currentStep, quizData }: SentenceQuizProps) => {
   return (
     <S.Container>
       <S.Title>
-        {currentStep !== 6
+        {!isQuizGraded
           ? "문장을 배열해볼까요?"
           : isCorrectOrder()
             ? "정답입니다!"
             : "오답입니다"}
       </S.Title>
       <S.SubContainer>
-        <S.SubTitle>{quizData.question}</S.SubTitle>
+        <S.SubTitle>{data.question}</S.SubTitle>
         <S.SelectedSentence
           $isPlaceholder={selectedWords.length === 0}
-          $state={
-            currentStep !== 6 ? "gray" : isCorrectOrder() ? "green" : "red"
-          }
+          $state={!isQuizGraded ? "gray" : isCorrectOrder() ? "green" : "red"}
         >
           {selectedWords.length === 0
             ? "단어를 선택해주세요"
             : selectedWords.map((wordObj) => wordObj.word).join(" ")}
         </S.SelectedSentence>
-        {currentStep === 6 && !isCorrectOrder() && (
+        {isQuizGraded && !isCorrectOrder() && (
           <S.ResultSentence $isCorrect={isCorrectOrder()}>
             {"정답: " +
-              quizData.sequenceList.map((wordObj) => wordObj.word).join(" ")}
+              data.sequenceList.map((wordObj) => wordObj.word).join(" ")}
           </S.ResultSentence>
         )}
       </S.SubContainer>

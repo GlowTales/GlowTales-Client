@@ -4,27 +4,36 @@ export interface LearningInfoData {
   learningLevel: "1000" | "2000" | "3000" | "4000" | "5000";
 }
 
-interface ChoiceQuizProps {
-  setter: (value: string | number | null) => void;
-  currentStep: number;
+export interface QuizData {
+  essayQuestions: EssayQuestions[];
+  multipleChoices: MultipleChoices[];
+  sentenceArrangements: SentenceArrangements[];
+  totalSteps: number;
 }
-
-interface EssayQuizProps {
-  setter: (value: string | number | null) => void;
-  currentStep: number;
+export interface EssayQuestions {
+  question: string;
   answer: string;
 }
-interface SentenceQuizProps {
-  setter: (value: string | number | null) => void;
-  currentStep: number;
-  quizData: SentenceQuizData;
+export interface MultipleChoices {
+  question: string;
+  choiceList: Array<{ ids: number; sunji: string; isCorrect: number }>;
 }
-interface SentenceQuizData {
+export interface SentenceArrangements {
   question: string;
   sequenceList: Array<{ order: number; word: string }>;
 }
 
-interface SpeakPracticeProps {
+interface BaseQuizProps<T> {
+  setter: (value: string | number | null) => void;
+  data: T;
+  isQuizGraded: boolean;
+}
+
+export type ChoiceQuizProps = BaseQuizProps<MultipleChoices>;
+export type EssayQuizProps = BaseQuizProps<EssayQuestions>;
+export type SentenceQuizProps = BaseQuizProps<SentenceArrangements>;
+
+export interface SpeakPracticeProps {
   title: string;
   text1: string;
   text2: string;

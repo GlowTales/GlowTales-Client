@@ -72,7 +72,6 @@ export const WordButton = styled.button<{ $isSelected: boolean }>`
   font-size: 2rem;
   font-weight: 400;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 `;
 
 export const ResultSentence = styled.div<{ $isCorrect: boolean }>`

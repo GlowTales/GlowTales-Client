@@ -30,15 +30,15 @@ const SelectOptionList = (props: SelectListProps) => {
     }
   };
 
-  const handleSelect = (value: string | number | null) => {
-    props.setter(value);
+  const handleSelect = (text: string | number | null) => {
+    props.setter(text);
   };
 
   return (
     <S.SelectOptionContainer width={props.width}>
-      {props.selectList.map((element) => (
+      {props.selectList.map((element, id) => (
         <SelectBtn
-          key={element.text}
+          key={id}
           text={element.text}
           colorName={getColorName(element.state)}
           imgURL={getImgURL(element.state)}

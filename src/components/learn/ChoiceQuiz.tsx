@@ -1,47 +1,46 @@
 import SelectOptionList from "@components/common/selectOption/SelectOptionList";
 import * as S from "./learn.styled";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChoiceQuizProps } from "@type/learning";
 
-const dummy = [
-  { text: "사랑", value: true },
-  { text: "엄마", value: false },
-  { text: "우정", value: false },
-  { text: "추억", value: false },
-  { text: "행복", value: false },
-];
-
-const ChoiceQuiz = ({ setter, currentStep }: ChoiceQuizProps) => {
+const ChoiceQuiz = ({
+  setter,
+  data,
+  isQuizGraded,
+}: ChoiceQuizProps) => {
   const [select, setSelect] = useState<string | number | null>(null);
+
+  useEffect(() => {
+    setter(null);
+    setSelect(null);
+  }, [data]);
 
   const handleOptionChange = (text: string | number | null) => {
     setSelect(text as string);
     setter(text);
-    console.log(select);
   };
 
   return (
     <S.Container>
-      <S.Title>Love는 무슨 뜻인가요?</S.Title>
+      <S.Title>{data.question}</S.Title>
       <S.SubContainer>
         <SelectOptionList
-          selectList={dummy.map((option) => ({
-            text: option.text,
-            value: option.text,
-            state:
-              currentStep === 2
-                ? option.text === select
-                  ? option.text === "사랑"
-                    ? "correct"
-                    : "wrong"
-                  : option.text === "사랑"
-                    ? "correct"
-                    : "default"
-                : option.text === select
-                  ? "selected"
-                  : "default",
+          selectList={data.choiceList.map((option, id) => ({
+            text: option.sunji,
+            value: id + 1,
+            state: isQuizGraded
+              ? id + 1 === select
+                ? option.isCorrect === 1
+                  ? "wrong"
+                  : "correct"
+                : option.isCorrect === 0
+                  ? "correct"
+                  : "default"
+              : id + 1 === select
+                ? "selected"
+                : "default",
           }))}
-          setter={currentStep === 1 ? handleOptionChange : () => {}}
+          setter={handleOptionChange}
         />
       </S.SubContainer>
     </S.Container>

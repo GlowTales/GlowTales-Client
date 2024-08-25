@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./learn.styled";
 import SelectBtn from "@components/common/selectOption/SelectBtn";
 import { EssayQuizProps } from "@type/learning";
 
-const EssayQuiz = ({ setter, currentStep, answer }: EssayQuizProps) => {
+const EssayQuiz = ({
+  setter,
+  data,
+  isQuizGraded,
+}: EssayQuizProps) => {
   const [inputValue, setInputValue] = useState<string>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,11 +16,16 @@ const EssayQuiz = ({ setter, currentStep, answer }: EssayQuizProps) => {
     setter(trimmedValue);
   };
 
+  useEffect(() => {
+    setter(null);
+    setInputValue("");
+  }, [data]);
+
   return (
     <S.Container>
-      <S.Title>Love는 무슨 뜻인가요?</S.Title>
+      <S.Title>{data.question}</S.Title>
       <S.SubContainer>
-        {currentStep !== 4 ? (
+        {!isQuizGraded ? (
           <S.Input
             type="text"
             value={inputValue}
@@ -28,13 +37,13 @@ const EssayQuiz = ({ setter, currentStep, answer }: EssayQuizProps) => {
           <>
             <SelectBtn
               text={inputValue}
-              colorName={inputValue === answer ? "green" : "red"}
-              imgURL={inputValue === answer ? "/correct.png" : "/wrong.png"}
+              colorName={inputValue === "답" ? "green" : "red"}
+              imgURL={inputValue === "답" ? "/correct.png" : "/wrong.png"}
               onClick={() => {}}
             />
-            {inputValue !== answer && (
+            {inputValue !== "답" && (
               <SelectBtn
-                text={answer}
+                text={"답"}
                 colorName="green"
                 imgURL="/correct.png"
                 onClick={() => {}}

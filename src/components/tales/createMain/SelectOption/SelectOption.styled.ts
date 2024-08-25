@@ -1,6 +1,7 @@
+import { ColorSet } from "@type/selectList";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ $colorSet: ColorSet }>`
   width: 220px;
   height: 100%;
   max-height: 250px;
@@ -8,10 +9,11 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  background-color: ${({ $colorSet }) => $colorSet.background};
+  color: ${({ $colorSet }) => $colorSet.color};
+  border: 1px solid ${({ $colorSet }) => $colorSet.border};
   border-radius: 12px;
-  border: 1px solid #f7a300;
   padding: 30px, 20px, 30px, 20px;
-  background-color: #fff7cc;
   div {
     font-size: 1.7rem;
     font-weight: 700;

@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 import {
   charElements,
+  colorSets,
   contentElements,
   moodElements,
 } from "@utils/defaultData";
@@ -95,7 +96,9 @@ const TaleDetail = () => {
           <S.CharacterWrapper>
             {selectedCharText.length > 0 &&
               selectedCharText.map((item, idx) => (
-                <S.Characters key={idx}>{item}</S.Characters>
+                <S.Characters $colorSet={colorSets.darkGray} key={idx}>
+                  {item}
+                </S.Characters>
               ))}
           </S.CharacterWrapper>
         </S.SectionWrapper>

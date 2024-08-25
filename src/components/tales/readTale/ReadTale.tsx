@@ -1,23 +1,25 @@
+import { useEffect, useState } from "react";
 import Header from "@components/common/header/Header";
 import * as S from "./ReadTale.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
-import { useEffect, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 import { getTale } from "@apis/createTales";
 import { useLocation } from "react-router-dom";
 import { nationElements } from "@utils/defaultData";
 import { ResponseTaleData } from "@type/createTale";
+import { toggleSpeech } from "@utils/speechUtil";
 
 const ReadTale = () => {
   const location = useLocation();
-  //   const navigate = useNavigate();
   const { response } = location.state || {};
 
   const [language, setLanguage] = useState<string | number | null>(2);
   const [data, setData] = useState<ResponseTaleData>();
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
-  const onClick = () => {
-    console.log(data);
+  const handleDivClick = (index: number) => {
+    setSelectedIndex((prevIndex) => (prevIndex === index ? null : index));
   };
 
   useEffect(() => {
@@ -25,9 +27,15 @@ const ReadTale = () => {
       const tale = await getTale(Number(language) || 2, response);
       setData(tale);
     };
-
     fetchData();
   }, [language, response]);
+
+  const handleSpeechButtonClick = () => {
+    if (data) {
+      const textToSpeak = data.story.replace(/\n/g, " ");
+      toggleSpeech(textToSpeak, isSpeaking, setIsSpeaking);
+    }
+  };
 
   return (
     <>
@@ -47,22 +55,33 @@ const ReadTale = () => {
               />
             </S.ReadTaleHead>
             <S.TaleWrapper>
-              {data.story.split("\n").map((line, index) => (
-                <div key={index}>{line}</div>
+              {data.story.split("\n").map((line, idx) => (
+                <div
+                  key={idx}
+                  onClick={() => handleDivClick(idx)}
+                  style={{
+                    backgroundColor:
+                      selectedIndex === idx ? "#FFF4B3" : "transparent",
+                    padding: "5px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {line}
+                </div>
               ))}
             </S.TaleWrapper>
             <S.BtnWrapper>
               <NextBtn
                 width="48%"
                 isActive={true}
-                text="음성으로 듣기"
-                handleBtn={onClick}
+                text={isSpeaking ? "🟩중지" : "🔊음성으로 듣기"}
+                handleBtn={handleSpeechButtonClick}
               />
               <NextBtn
                 width="48%"
                 isActive={true}
                 text="학습하기"
-                handleBtn={onClick}
+                handleBtn={() => {}}
               />
             </S.BtnWrapper>
           </>

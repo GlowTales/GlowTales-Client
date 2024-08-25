@@ -85,15 +85,29 @@ const SentenceQuiz = ({ setter, data, isQuizGraded }: SentenceQuizProps) => {
           $isPlaceholder={selectedWords.length === 0}
           $state={!isQuizGraded ? "gray" : isCorrectOrder() ? "green" : "red"}
         >
+          {isQuizGraded && (
+            <S.SelectIcon
+              src={isCorrectOrder() ? "/correct.png" : "/wrong.png"}
+              alt="선택지"
+            />
+          )}
           {selectedWords.length === 0
             ? "단어를 선택해주세요"
             : selectedWords.map((wordObj) => wordObj.word).join(" ")}
         </S.SelectedSentence>
         {isQuizGraded && !isCorrectOrder() && (
-          <S.ResultSentence $isCorrect={isCorrectOrder()}>
-            {"정답: " +
-              data.sequenceList.map((wordObj) => wordObj.word).join(" ")}
-          </S.ResultSentence>
+          <S.SelectedSentence
+            $isPlaceholder={selectedWords.length === 0}
+            $state={"green"}
+          >
+            {isQuizGraded && (
+              <S.SelectIcon
+                src={isCorrectOrder() ? "/correct.png" : "/wrong.png"}
+                alt="선택지"
+              />
+            )}
+            {data.sequenceList.map((wordObj) => wordObj.word).join(" ")}
+          </S.SelectedSentence>
         )}
       </S.SubContainer>
       <S.WordButtonContainer>{renderWordButtons()}</S.WordButtonContainer>

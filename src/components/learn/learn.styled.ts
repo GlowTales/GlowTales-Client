@@ -87,7 +87,7 @@ export const SelectedSentence = styled.div<{
 }>`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   padding: 1rem 1.5rem;
   width: 90%;
@@ -120,4 +120,11 @@ export const PreSubTitle = styled.div`
   font-size: 1.6rem;
   font-weight: 400;
   color: #f7a300;
+`;
+
+export const SelectIcon = styled.img`
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-right: 10px;
+  vertical-align: middle;
 `;

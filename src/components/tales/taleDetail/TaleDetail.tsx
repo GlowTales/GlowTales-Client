@@ -23,8 +23,6 @@ const TaleDetail = () => {
   const [selectedCharText, setSelectedCharText] = useState<string[]>([]);
   const [selectedCharValue, setSelectedCharValue] = useState<string[]>([]);
 
-  const result: (string | number | null)[] = [mood, contents];
-
   const availableCharacters = useMemo(() => {
     return charElements.filter(
       (element) => !selectedCharValue.includes(element.value as string)

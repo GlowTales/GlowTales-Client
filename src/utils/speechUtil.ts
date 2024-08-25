@@ -17,17 +17,22 @@ export const speakText = (
   const detectedLang = franc(text);
   const langCode = getLangCode(detectedLang);
 
-  const utterance = new SpeechSynthesisUtterance(text.replace(/\n/g, " "));
+  const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = langCode;
   utterance.rate = 0.6;
 
+  window.speechSynthesis.cancel();
+
   if (onEnd) {
-    utterance.onend = () => onEnd();
+    utterance.onend = () => {
+      onEnd();
+    };
   }
   if (onPause) {
     utterance.onpause = () => onPause();
   }
 
+  // 새로운 음성 재생
   window.speechSynthesis.speak(utterance);
 };
 
@@ -40,8 +45,9 @@ export const toggleSpeech = (
     window.speechSynthesis.pause();
     setIsSpeaking(false);
   } else {
-    new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.cancel();
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+    }
 
     speakText(
       text,

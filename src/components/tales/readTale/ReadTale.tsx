@@ -5,7 +5,7 @@ import Dropdown from "@components/common/dropDown/Dropdown";
 import NextBtn from "@components/common/NextBtn";
 import { getTale } from "@apis/createTales";
 import { useLocation } from "react-router-dom";
-import { nationElements } from "@utils/defaultData";
+import { commonLanguageElements } from "@utils/defaultData";
 import { ResponseTaleData } from "@type/createTale";
 import { speakText, toggleSpeech } from "@utils/speechUtil";
 
@@ -13,7 +13,7 @@ const ReadTale = () => {
   const location = useLocation();
   const { response } = location.state || {};
 
-  const [language, setLanguage] = useState<string | number | null>(2);
+  const [language, setLanguage] = useState<string | number | null>(null);
   const [data, setData] = useState<ResponseTaleData>();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const ReadTale = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const tale = await getTale(Number(language) || 2, response);
+      const tale = await getTale(Number(language) || 2, response.taleId);
       setData(tale);
     };
     fetchData();
@@ -61,11 +61,13 @@ const ReadTale = () => {
           <>
             <S.ReadTaleHead>
               <S.TitleWrapper>
-                <S.Complete>동화가 완성되었어요!</S.Complete>
+                <S.Complete>
+                  내가 동화를 만든 날 | {response.createdAt}
+                </S.Complete>
                 <S.Title>제목: {data.title}</S.Title>
               </S.TitleWrapper>
               <Dropdown
-                selectList={nationElements}
+                selectList={commonLanguageElements}
                 setter={setLanguage}
                 width="30%"
               />

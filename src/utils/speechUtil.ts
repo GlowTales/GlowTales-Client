@@ -17,17 +17,23 @@ export const speakText = (
   const detectedLang = franc(text);
   const langCode = getLangCode(detectedLang);
 
-  const utterance = new SpeechSynthesisUtterance(text.replace(/\n/g, " "));
+  const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = langCode;
   utterance.rate = 0.6;
 
+  // 현재 재생 중인 모든 음성 중지
+  window.speechSynthesis.cancel();
+
   if (onEnd) {
-    utterance.onend = () => onEnd();
+    utterance.onend = () => {
+      onEnd();
+    };
   }
   if (onPause) {
     utterance.onpause = () => onPause();
   }
 
+  // 새로운 음성 재생
   window.speechSynthesis.speak(utterance);
 };
 
@@ -40,13 +46,14 @@ export const toggleSpeech = (
     window.speechSynthesis.pause();
     setIsSpeaking(false);
   } else {
-    new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.cancel();
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel(); // 현재 재생 중인 음성 취소
+    }
 
     speakText(
       text,
-      () => setIsSpeaking(false),
-      () => setIsSpeaking(false)
+      () => setIsSpeaking(false), // onEnd callback
+      () => setIsSpeaking(false) // onPause callback
     );
     setIsSpeaking(true);
   }

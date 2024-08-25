@@ -44,7 +44,7 @@ const ChoiceQuiz = ({ setter, currentStep }: ChoiceQuizProps) => {
                   ? "selected"
                   : "default",
           }))}
-          setter={handleOptionChange}
+          setter={currentStep === 1 ? handleOptionChange : () => {}}
         />
       </S.SubContainer>
     </S.Container>

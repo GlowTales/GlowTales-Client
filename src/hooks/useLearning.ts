@@ -22,9 +22,12 @@ const useLearning = () => {
   const checkStepCompletion = () => {
     const stepsCompletion = [...isStepCompleted];
     stepsCompletion[0] = true;
-    if (choice) stepsCompletion[1] = true;
-    if (essay) stepsCompletion[3] = true;
-    if (sentence !== null) stepsCompletion[5] = true;
+    stepsCompletion[0] = true;
+    stepsCompletion[1] = !!choice;
+    stepsCompletion[3] = !!essay;
+    stepsCompletion[5] = sentence !== null;
+
+    setIsStepCompleted(stepsCompletion);
 
     setIsStepCompleted(stepsCompletion);
   };

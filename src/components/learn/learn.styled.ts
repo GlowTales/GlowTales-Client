@@ -23,8 +23,7 @@ export const SubContainer = styled.div`
 
 export const SubTitle = styled.div`
   font-size: 2rem;
-  font-weight: 700;
-  color: #b1b1b1;
+  font-weight: 400;
 `;
 
 export const Wrapper = styled.div`
@@ -41,15 +40,65 @@ export const Input = styled.input<{ $isInputValid: string | null }>`
   justify-content: space-between;
   align-items: center;
   padding: 0 1.5rem;
-  box-sizing: border-box;
   width: 100%;
   height: 5rem;
-  font-size: 2rem;
-  font-weight: 700;
   border: 1px solid
     ${({ $isInputValid }) =>
       $isInputValid ? colorSets["yellow"].border : colorSets["gray"].border};
   background-color: ${({ $isInputValid }) =>
     $isInputValid ? colorSets["yellow"].background : "none"};
   border-radius: 6px;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "NanumSquareRound";
+  box-sizing: border-box;
+`;
+
+export const WordButtonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+export const WordButton = styled.button<{ $isSelected: boolean }>`
+  border: 1px solid
+    ${({ $isSelected }) =>
+      $isSelected ? colorSets["yellow"].border : colorSets["gray"].border};
+  background-color: ${({ $isSelected }) =>
+    $isSelected ? colorSets["yellow"].background : "white"};
+  border-radius: 4px;
+  height: 5rem;
+  padding: 0 3rem;
+  font-size: 2rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+`;
+
+export const ResultSentence = styled.div<{ $isCorrect: boolean }>`
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-top: 1rem;
+  color: ${({ $isCorrect }) => ($isCorrect ? "green" : "red")};
+`;
+
+export const SelectedSentence = styled.div<{
+  $isPlaceholder: boolean;
+  $state: string;
+}>`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  width: 90%;
+  min-height: 3rem;
+  height: fit-content;
+  line-height: 3rem;
+  border: 1px solid ${({ $state }) => colorSets[$state].border};
+  border-radius: 8px;
+  background-color: ${({ $state }) => colorSets[$state].background};
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: ${({ $isPlaceholder }) => ($isPlaceholder ? "#b1b1b1" : "black")};
 `;

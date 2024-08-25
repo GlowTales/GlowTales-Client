@@ -22,18 +22,14 @@ const TaleLearn = () => {
   } = useLearning();
 
   const progressPercentage =
-    currentStep < 2
-      ? (currentStep + 1) * 20
-      : currentStep < 4
-        ? 40
-        : currentStep < 6
-          ? 60
-          : 80;
+    currentStep ===0
+      ? 5
+      : (currentStep)*16.7
 
   return (
-    <Wrapper>
+    <>
       {currentStep < 7 ? (
-        <>
+        <Wrapper>
           <ProgressBar percentage={progressPercentage} />
           {currentStep === 0 && <LearnTaleKeys />}
           {(currentStep === 1 || currentStep === 2) && (
@@ -47,14 +43,26 @@ const TaleLearn = () => {
             />
           )}
           {(currentStep === 5 || currentStep === 6) && choice && essay && (
-            <SentenceQuiz setter={setSentence} />
+            <SentenceQuiz
+              setter={setSentence}
+              currentStep={currentStep}
+              quizData={{
+                question: "그들은 함께 왕국의 귀환을 축하했다.",
+                sequenceList: [
+                  { word: "Together,", order: 1 },
+                  { word: "they celebrated", order: 2 },
+                  { word: "the return", order: 3 },
+                  { word: "of their kingdom.", order: 4 },
+                ],
+              }}
+            />
           )}
           <NextBtn
             isActive={isNextBtnActive}
             text={isLastStep ? "완료" : "다음"}
             handleBtn={handleNextStep}
           />
-        </>
+        </Wrapper>
       ) : (
         <FinishScreen
           imgURL="/learningFinish.png"
@@ -63,7 +71,7 @@ const TaleLearn = () => {
           sub="모든 과정을 마무리했어요"
         />
       )}
-    </Wrapper>
+    </>
   );
 };
 

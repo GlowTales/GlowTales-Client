@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@components/common/header/Header";
 import * as S from "./ReadTale.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";

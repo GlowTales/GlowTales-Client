@@ -1,7 +1,7 @@
 import Header from "@components/common/header/Header";
 import * as S from "./TaleDetail.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import NextBtn from "@components/common/NextBtn";
 import {
   charElements,
@@ -9,6 +9,7 @@ import {
   moodElements,
 } from "@utils/defaultData";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getRandomElement } from "./getRandomElement";
 
 const TaleDetail = () => {
   const location = useLocation();
@@ -19,24 +20,14 @@ const TaleDetail = () => {
   const [mood, setMood] = useState<string | number | null>(null);
   const [characters, setCharacters] = useState<string | number | null>(null);
   const [contents, setContents] = useState<string | number | null>(null);
-  const [isActive, setIsActive] = useState(false);
-  const [btnText, setBtnText] = useState<string>("항목을 선택해주세요");
   const [selectedCharText, setSelectedCharText] = useState<string[]>([]);
   const [selectedCharValue, setSelectedCharValue] = useState<string[]>([]);
 
-  const result: (string | number | null)[] = [mood, contents];
-
-  useEffect(() => {
-    const isFormValid = () =>
-      result.every((value) => value !== null) && selectedCharValue.length > 0;
-    if (isFormValid()) {
-      setIsActive(true);
-      setBtnText("동화 생성하기");
-    } else {
-      setIsActive(false);
-      setBtnText("항목을 선택해주세요");
-    }
-  }, [mood, contents, selectedCharValue]);
+  const availableCharacters = useMemo(() => {
+    return charElements.filter(
+      (element) => !selectedCharValue.includes(element.value as string)
+    );
+  }, [selectedCharValue]);
 
   useEffect(() => {
     if (characters !== null) {
@@ -46,17 +37,26 @@ const TaleDetail = () => {
       const charValue = charElements.find(
         (element) => element.value === characters
       )?.value;
-      setSelectedCharText((prevSelectedCharacters) => {
-        if (prevSelectedCharacters.length >= 3) {
-          alert("등장인물은 3개까지입니다!");
-          return prevSelectedCharacters;
-        } else {
-          return [...prevSelectedCharacters, String(charText)];
-        }
-      });
-      setSelectedCharValue((prevSelectedCharacters) => {
-        return [...prevSelectedCharacters, String(charValue)];
-      });
+
+      // 3개 이상 선택할 수 없도록 제한
+      if (selectedCharText.length >= 3) {
+        alert("등장인물은 3개까지입니다!");
+        setCharacters(null);
+        return;
+      }
+
+      // 캐릭터를 선택 목록에 추가
+      setSelectedCharText((prevSelectedCharacters) => [
+        ...prevSelectedCharacters,
+        String(charText),
+      ]);
+
+      setSelectedCharValue((prevSelectedCharacters) => [
+        ...prevSelectedCharacters,
+        String(charValue),
+      ]);
+
+      setCharacters(null); // 선택 초기화
     }
   }, [characters]);
 
@@ -65,9 +65,12 @@ const TaleDetail = () => {
       ...(Array.isArray(selectKeywords) && selectKeywords.length > 0
         ? { keywords: selectKeywords }
         : { keywords: [] }),
-      mood,
-      characters: selectedCharValue,
-      contents,
+      mood: mood || getRandomElement(moodElements).value,
+      characters:
+        selectedCharValue.length > 0
+          ? selectedCharValue
+          : [getRandomElement(charElements).value],
+      contents: contents || getRandomElement(contentElements).value,
     };
     navigate("/create", { state: { requestData } });
   };
@@ -85,7 +88,7 @@ const TaleDetail = () => {
           <S.Title>등장인물</S.Title>
           <S.SemiTitle>동화의 등장인물을 설정해주세요</S.SemiTitle>
           <Dropdown
-            selectList={charElements}
+            selectList={availableCharacters}
             setter={setCharacters}
             width="100%"
           />
@@ -107,8 +110,8 @@ const TaleDetail = () => {
         </S.SectionWrapper>
         <NextBtn
           width="90%"
-          isActive={isActive}
-          text={btnText}
+          isActive={true}
+          text="동화 만들기"
           handleBtn={handleBtn}
         />
       </S.Wrapper>

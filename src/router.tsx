@@ -11,6 +11,7 @@ import ReadTalePage from "@pages/ReadTalePage";
 import CreateMainPage from "@pages/CreateMainPage";
 import CreateTalePage from "@pages/CreateTalePage";
 import TaleLearnPage from "@pages/TaleLearnPage";
+import PreLearningQuestionPage from "@pages/PreLearningQuestionPage";
 
 const router = createBrowserRouter([
   {
@@ -58,8 +59,8 @@ const router = createBrowserRouter([
     element: <ReadTalePage />,
   },
   {
-    path: "/learnTale/:id",
-    element: <TaleLearnPage />,
+    path: "/learnTale",
+    element: <PreLearningQuestionPage />,
   },
   {
     path: "/learnTale/:id",

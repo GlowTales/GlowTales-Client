@@ -130,6 +130,7 @@ const LogoContainer = styled.div`
 const LogoImage = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: contain;
   animation: ${fillLogo} 3s ease-in-out infinite forwards;
 `;
 

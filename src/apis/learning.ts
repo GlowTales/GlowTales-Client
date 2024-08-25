@@ -25,3 +25,16 @@ export const getQuizAndAnswer = async (languageTaleId: number) => {
     throw error;
   }
 };
+
+export const getLearningLevel = async (languageId: number) => {
+  try {
+    const access = LocalStorage.getItem("access");
+    const authAxios = getAuthAxios(access);
+    const response = await authAxios.get(
+      `${baseURL}/members/learningLevel?languageId=${languageId}`
+    );
+    return response.data.data;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -20,20 +20,18 @@ const ReadTale = () => {
 
   const selectSentence = (index: number) => {
     if (selectedIndex === index) {
-      // 선택된 문장을 다시 클릭하면 하이라이트 해제 및 음성 중단
       setSelectedIndex(null);
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
     } else {
-      // 새로운 문장 선택 시 이전 음성 취소, 새로운 문장 하이라이트 및 읽기
       setSelectedIndex(index);
 
       if (data) {
         const textToSpeak = data.story.split("\n")[index];
         speakText(
           textToSpeak,
-          () => setIsSpeaking(false), // onEnd callback
-          () => setIsSpeaking(false) // onPause callback
+          () => setIsSpeaking(false),
+          () => setIsSpeaking(false)
         );
         setIsSpeaking(true);
       }

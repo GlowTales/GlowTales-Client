@@ -21,7 +21,6 @@ export const speakText = (
   utterance.lang = langCode;
   utterance.rate = 0.6;
 
-  // 현재 재생 중인 모든 음성 중지
   window.speechSynthesis.cancel();
 
   if (onEnd) {
@@ -47,13 +46,13 @@ export const toggleSpeech = (
     setIsSpeaking(false);
   } else {
     if (window.speechSynthesis.speaking) {
-      window.speechSynthesis.cancel(); // 현재 재생 중인 음성 취소
+      window.speechSynthesis.cancel();
     }
 
     speakText(
       text,
-      () => setIsSpeaking(false), // onEnd callback
-      () => setIsSpeaking(false) // onPause callback
+      () => setIsSpeaking(false),
+      () => setIsSpeaking(false)
     );
     setIsSpeaking(true);
   }

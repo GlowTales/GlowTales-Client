@@ -19,7 +19,7 @@ export const speakText = (
 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = langCode;
-  utterance.rate = 0.6;
+  utterance.rate = 0.9;
 
   window.speechSynthesis.cancel();
 

@@ -125,9 +125,19 @@ export const colorSets: { [key: string]: ColorSet } = {
     border: "#FFC300",
     color: "black",
   },
+  lemonYellow: {
+    background: "#fff7cc",
+    border: "#f7a300",
+    color: "black",
+  },
   gray: {
     background: "none",
     border: "#D8D8D8",
     color: "#909090",
+  },
+  darkGray: {
+    background: "#f7f7f7",
+    border: "#d8d8d8",
+    color: "#777777",
   },
 };

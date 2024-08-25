@@ -1,3 +1,4 @@
+import { ColorSet } from "@type/selectList";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -32,13 +33,14 @@ export const SemiTitle = styled.div`
 export const CharacterWrapper = styled.div`
   width: 100%;
   display: flex;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   gap: 1rem;
 `;
 
-export const Characters = styled.div`
-  border: 1px solid #d8d8d8;
-  border-radius: 3px;
-  background-color: #f7f7f7;
+export const Characters = styled.div<{ $colorSet: ColorSet }>`
+  background-color: ${({ $colorSet }) => $colorSet.background};
+  color: ${({ $colorSet }) => $colorSet.color};
+  border: 1px solid ${({ $colorSet }) => $colorSet.border};
+  border-radius: 5px;
   padding: 1rem;
 `;

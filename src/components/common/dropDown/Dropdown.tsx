@@ -44,7 +44,7 @@ const Dropdown = ({ selectList, setter, width }: DropdownProps) => {
           onClick={toggleDropdown}
         />
       </S.DropdownButton>
-      <S.DropdownMenu isOpen={isOpen}>
+      <S.DropdownMenu $isOpen={isOpen}>
         {selectList.map((element, index) => (
           <S.DropdownItem key={index} onClick={() => handleSelect(element)}>
             {element.imgURL && (

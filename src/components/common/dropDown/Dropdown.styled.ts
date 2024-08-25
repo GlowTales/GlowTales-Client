@@ -33,7 +33,7 @@ export const DropdownButton = styled.button`
   }
 `;
 
-export const DropdownMenu = styled.div<{ isOpen: boolean }>`
+export const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   position: absolute;
   width: 100%;
   background-color: #f7f7f7;
@@ -44,7 +44,7 @@ export const DropdownMenu = styled.div<{ isOpen: boolean }>`
   z-index: 1000;
   font-size: 2rem;
   font-weight: 700;
-  display: ${({ isOpen }) => (isOpen ? "block" : "none")};
+  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
   box-sizing: border-box;
 `;
 

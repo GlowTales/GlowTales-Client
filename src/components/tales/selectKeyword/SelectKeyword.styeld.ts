@@ -32,7 +32,7 @@ export const KeywordWrapper = styled.div`
   gap: 1rem;
 `;
 
-export const Keyword = styled.div<{ isSelected: boolean }>`
+export const Keyword = styled.div<{ $isSelected: boolean }>`
   width: 190px;
   height: 55px;
   display: flex;
@@ -42,7 +42,7 @@ export const Keyword = styled.div<{ isSelected: boolean }>`
   font-weight: 700;
   padding: 1rem;
   border-radius: 10px;
-  background-color: ${({ isSelected }) => (isSelected ? "#fff7cc" : "#f4f4f4")};
-  border: 1px solid ${({ isSelected }) => (isSelected ? "#ffc300" : "#dcdcdc")};
+  background-color: ${({ $isSelected }) => ($isSelected ? "#fff7cc" : "#f4f4f4")};
+  border: 1px solid ${({ $isSelected }) => ($isSelected ? "#ffc300" : "#dcdcdc")};
   cursor: pointer;
 `;

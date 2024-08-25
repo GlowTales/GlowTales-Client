@@ -2,59 +2,120 @@ import FinishScreen from "@components/common/FinishScreen";
 import NextBtn from "@components/common/NextBtn";
 import ProgressBar from "@components/common/progressBar/ProgressBar";
 import useLearning from "@hooks/useLearning";
-import LearnTaleKeys from "./LearnTaleKeys";
 import ChoiceQuiz from "./ChoiceQuiz";
 import EssayQuiz from "./EssayQuiz";
 import SentenceQuiz from "./SentenceQuiz";
 import { Wrapper } from "./learn.styled";
+import {
+  EssayQuestions,
+  MultipleChoices,
+  QuizData,
+  SentenceArrangements,
+} from "@type/learning";
+import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
 
-const TaleLearn = () => {
+interface TaleLearnProps {
+  quizData?: QuizData;
+}
+
+const TaleLearn = ({ quizData }: TaleLearnProps) => {
+  if (!quizData) {
+    return;
+  }
+
+  const totalSteps = quizData.totalSteps;
+
   const {
     setChoice,
-    choice,
     setSentence,
-    essay,
     setEssay,
     currentStep,
     isLastStep,
     isNextBtnActive,
     handleNextStep,
-  } = useLearning();
+    getCurrentQuizType,
+    isQuizGraded,
+  } = useLearning(quizData);
 
-  const progressPercentage =
-    currentStep < 2
-      ? (currentStep + 1) * 20
-      : currentStep < 4
-        ? 40
-        : currentStep < 6
-          ? 60
-          : 80;
+  const progressPercentage = (currentStep / (totalSteps - 1)) * 100;
+
+  const getCurrentQuiz = () => {
+    if (
+      currentStep <
+      QUIZ_STAGES[QuizType.MultipleChoice].end(quizData.multipleChoices.length)
+    ) {
+      return quizData.multipleChoices[currentStep];
+    } else if (
+      currentStep <
+      QUIZ_STAGES[QuizType.Essay].end(
+        quizData.multipleChoices.length,
+        quizData.essayQuestions.length
+      )
+    ) {
+      return quizData.essayQuestions[
+        currentStep - quizData.multipleChoices.length
+      ];
+    } else {
+      return quizData.sentenceArrangements[
+        currentStep -
+          QUIZ_STAGES[QuizType.Essay].end(
+            quizData.multipleChoices.length,
+            quizData.essayQuestions.length
+          )
+      ];
+    }
+  };
+
+  const isMultipleChoice = (quiz: any): quiz is MultipleChoices =>
+    "choiceList" in quiz;
+  const isEssayQuestion = (quiz: any): quiz is EssayQuestions =>
+    "answer" in quiz;
+  const isSentenceArrangement = (quiz: any): quiz is SentenceArrangements =>
+    "sequenceList" in quiz;
+
+  const currentQuiz = getCurrentQuiz();
+  const currentQuizType = getCurrentQuizType(currentStep);
 
   return (
-    <Wrapper>
-      {currentStep < 7 ? (
-        <>
+    <>
+      {currentStep < totalSteps ? (
+        <Wrapper>
           <ProgressBar percentage={progressPercentage} />
-          {currentStep === 0 && <LearnTaleKeys />}
-          {(currentStep === 1 || currentStep === 2) && (
-            <ChoiceQuiz setter={setChoice} currentStep={currentStep} />
-          )}
-          {(currentStep === 3 || currentStep === 4) && choice && (
-            <EssayQuiz
-              setter={setEssay}
-              currentStep={currentStep}
-              answer="사랑"
-            />
-          )}
-          {(currentStep === 5 || currentStep === 6) && choice && essay && (
-            <SentenceQuiz setter={setSentence} />
+          {/* {currentStep === 0 && <LearnTaleKeys />} */}
+          {currentQuiz && currentQuiz.question && (
+            <>
+              {currentQuizType === QuizType.MultipleChoice &&
+                isMultipleChoice(currentQuiz) && (
+                  <ChoiceQuiz
+                    setter={setChoice}
+                    data={currentQuiz}
+                    isQuizGraded={isQuizGraded}
+                  />
+                )}
+              {currentQuizType === QuizType.Essay &&
+                isEssayQuestion(currentQuiz) && (
+                  <EssayQuiz
+                    setter={setEssay}
+                    data={currentQuiz}
+                    isQuizGraded={isQuizGraded}
+                  />
+                )}
+              {currentQuizType === QuizType.SentenceArrangement &&
+                isSentenceArrangement(currentQuiz) && (
+                  <SentenceQuiz
+                    setter={setSentence}
+                    data={currentQuiz}
+                    isQuizGraded={isQuizGraded}
+                  />
+                )}
+            </>
           )}
           <NextBtn
             isActive={isNextBtnActive}
             text={isLastStep ? "완료" : "다음"}
             handleBtn={handleNextStep}
           />
-        </>
+        </Wrapper>
       ) : (
         <FinishScreen
           imgURL="/learningFinish.png"
@@ -63,7 +124,7 @@ const TaleLearn = () => {
           sub="모든 과정을 마무리했어요"
         />
       )}
-    </Wrapper>
+    </>
   );
 };
 

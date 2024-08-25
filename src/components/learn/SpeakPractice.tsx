@@ -1,12 +1,7 @@
+import { SpeakPracticeProps } from "@type/learning";
 import { franc } from "franc";
 import { iso6393 } from "iso-639-3";
 import styled from "styled-components";
-
-interface SpeakPracticeProps {
-  title: string;
-  text1: string;
-  text2: string;
-}
 
 const getLangCode = (isoCode: string): string => {
   const lang = iso6393.find((lang) => lang.iso6393 === isoCode);

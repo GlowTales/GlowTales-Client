@@ -57,7 +57,7 @@ const SelectKeyword = () => {
             keywords.map((item: string, idx: number) => (
               <S.Keyword
                 key={idx}
-                isSelected={selectedKeywordIndices.includes(idx)}
+                $isSelected={selectedKeywordIndices.includes(idx)}
                 onClick={() => handleComponents(idx)}
               >
                 {item}

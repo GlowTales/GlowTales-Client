@@ -13,6 +13,7 @@ export const checkAndRefreshToken = async () => {
   const refreshToken = LocalStorage.getItem("refresh");
 
   if (!accessToken || !refreshToken) {
+    alert("로그인 후 이용이 가능합니다!");
     return null;
   }
 

@@ -44,8 +44,8 @@ export const TabBackground = styled.div`
   background-color: white;
 `;
 
-export const TabCircle = styled.div<{ isSelected: boolean }>`
-  display: ${({ isSelected }) => (isSelected ? "flex" : "none")};
+export const TabCircle = styled.div<{ $isSelected: boolean }>`
+  display: ${({ $isSelected }) => ($isSelected ? "flex" : "none")};
   height: 100%;
   aspect-ratio: 1.3 / 1;
   background-color: white;
@@ -56,7 +56,7 @@ export const TabCircle = styled.div<{ isSelected: boolean }>`
   margin-bottom: 2rem;
 `;
 
-export const TabContents = styled.div<{ isSelected: boolean }>`
+export const TabContents = styled.div<{ $isSelected: boolean }>`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +64,7 @@ export const TabContents = styled.div<{ isSelected: boolean }>`
   height: 90%;
   padding: 5px;
   position: absolute;
-  top: ${({ isSelected }) => (isSelected ? "35%" : "48%")};
+  top: ${({ $isSelected }) => ($isSelected ? "35%" : "48%")};
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;

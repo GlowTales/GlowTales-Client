@@ -27,11 +27,11 @@ const TabBar = () => {
           <S.TabWrapper key={tab.id}>
             <S.TabCircle
               key={tab.id}
-              isSelected={selectedTab === tab.id}
+              $isSelected={selectedTab === tab.id}
             ></S.TabCircle>
             <S.TabBackground />
             <S.TabContents
-              isSelected={selectedTab === tab.id}
+              $isSelected={selectedTab === tab.id}
               onClick={() => navigate(tab.path)}
             >
               <img className="tab-icon" src={tab.icon} />

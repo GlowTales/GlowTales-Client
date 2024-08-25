@@ -1,7 +1,6 @@
 export interface LearningInfoData {
-  taleId: number;
-  languageId: number;
-  learningLevel: "1000" | "2000" | "3000" | "4000" | "5000";
+  languageTaleId: number;
+  learningLevel: string
 }
 
 export interface QuizData {

@@ -19,7 +19,6 @@ const useOnboarding = () => {
           age: Number(age),
         });
         if (!result) throw new Error("회원 등록 실패");
-        console.log("회원 등록 성공:", result);
       }
     } catch (error) {
       console.error("회원 등록 중 오류 발생:", error);

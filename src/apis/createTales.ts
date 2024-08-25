@@ -16,7 +16,7 @@ export const createKeyword = async (body: FormData): Promise<string[]> => {
     });
 
     // response에서 keyword만 추출하여 배열에 담아 return
-    const keywords: string[] = response.data.result.map(
+    const keywords: string[] = response.data.data.result.map(
       (item: { keyword: string }) => item.keyword
     );
 
@@ -47,7 +47,7 @@ export const getTale = async (lanId: number, taleId: number) => {
     const response = await authAxios.get(
       `${baseURL}/tales/detail/lan?languageId=${lanId}&taleId=${taleId}`
     );
-    return response.data;
+    return response.data.data;
   } catch (error) {
     throw error;
   }

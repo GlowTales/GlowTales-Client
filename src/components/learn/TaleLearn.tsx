@@ -34,8 +34,17 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     isNextBtnActive,
     handleNextStep,
     getCurrentQuizType,
+    setCorrectAnswers,
     isQuizGraded,
   } = useLearning(quizData);
+
+  const incrementCorrectAnswer = (index: number) => {
+    setCorrectAnswers((prevAnswers) => {
+      const newAnswers = [...prevAnswers];
+      newAnswers[index] = 1;
+      return newAnswers;
+    });
+  };
 
   const progressPercentage = (currentStep / (totalSteps - 1)) * 100;
 
@@ -90,6 +99,8 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
                     setter={setChoice}
                     data={currentQuiz}
                     isQuizGraded={isQuizGraded}
+                    index={currentStep}
+                    gradeHandler={incrementCorrectAnswer}
                   />
                 )}
               {currentQuizType === QuizType.Essay &&
@@ -98,6 +109,8 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
                     setter={setEssay}
                     data={currentQuiz}
                     isQuizGraded={isQuizGraded}
+                    index={currentStep}
+                    gradeHandler={incrementCorrectAnswer}
                   />
                 )}
               {currentQuizType === QuizType.SentenceArrangement &&
@@ -106,6 +119,8 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
                     setter={setSentence}
                     data={currentQuiz}
                     isQuizGraded={isQuizGraded}
+                    index={currentStep}
+                    gradeHandler={incrementCorrectAnswer}
                   />
                 )}
             </>

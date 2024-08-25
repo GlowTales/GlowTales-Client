@@ -1,6 +1,6 @@
 export interface LearningInfoData {
   languageTaleId: number;
-  learningLevel: string
+  learningLevel: string;
 }
 
 export interface QuizData {
@@ -26,6 +26,8 @@ interface BaseQuizProps<T> {
   setter: (value: string | number | null) => void;
   data: T;
   isQuizGraded: boolean;
+  index: number;
+  gradeHandler: (index: number) => void;
 }
 
 export type ChoiceQuizProps = BaseQuizProps<MultipleChoices>;

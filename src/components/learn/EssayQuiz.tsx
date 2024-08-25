@@ -7,6 +7,8 @@ const EssayQuiz = ({
   setter,
   data,
   isQuizGraded,
+  index,
+  gradeHandler,
 }: EssayQuizProps) => {
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -20,6 +22,14 @@ const EssayQuiz = ({
     setter(null);
     setInputValue("");
   }, [data]);
+
+  useEffect(() => {
+    if (isQuizGraded && inputValue) {
+      if (inputValue === data.answer) {
+        gradeHandler(index);
+      }
+    }
+  }, [isQuizGraded, index]);
 
   return (
     <S.Container>

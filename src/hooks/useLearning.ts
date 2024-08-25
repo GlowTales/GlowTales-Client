@@ -11,10 +11,21 @@ const useLearning = (quizData: QuizData) => {
     Array(quizData.totalSteps).fill(false)
   );
   const [isQuizGraded, setIsQuizGraded] = useState<boolean>(false);
+  const [correctAnswers, setCorrectAnswers] = useState<number[]>(
+    Array(quizData.totalSteps).fill(0)
+  );
 
   const handleNextStep = async () => {
     if (isQuizGraded) {
       setCurrentStep((prev) => prev + 1);
+
+      if (currentStep === quizData.totalSteps - 1) {
+        const count = correctAnswers.reduce(
+          (accumulator, currentValue) => accumulator + currentValue,
+          0
+        );
+        console.log(count);
+      }
       setIsQuizGraded(false);
     } else {
       setIsQuizGraded(true);
@@ -85,6 +96,7 @@ const useLearning = (quizData: QuizData) => {
     handleNextStep,
     getCurrentQuizType,
     isQuizGraded,
+    setCorrectAnswers,
   };
 };
 

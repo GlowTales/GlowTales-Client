@@ -7,6 +7,8 @@ const ChoiceQuiz = ({
   setter,
   data,
   isQuizGraded,
+  index,
+  gradeHandler,
 }: ChoiceQuizProps) => {
   const [select, setSelect] = useState<string | number | null>(null);
 
@@ -19,6 +21,15 @@ const ChoiceQuiz = ({
     setSelect(text as string);
     setter(text);
   };
+
+  useEffect(() => {
+    if (isQuizGraded && select !== null) {
+      const selectedChoice = data.choiceList.find((_, id) => id + 1 === select);
+      if (selectedChoice && selectedChoice.isCorrect === 0) {
+        gradeHandler(index);
+      }
+    }
+  }, [isQuizGraded, index]);
 
   return (
     <S.Container>
@@ -40,7 +51,7 @@ const ChoiceQuiz = ({
                 ? "selected"
                 : "default",
           }))}
-          setter={handleOptionChange}
+          setter={isQuizGraded ? () => {} : handleOptionChange}
         />
       </S.SubContainer>
     </S.Container>

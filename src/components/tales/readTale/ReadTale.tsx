@@ -4,7 +4,7 @@ import * as S from "./ReadTale.styled";
 import Dropdown from "@components/common/dropDown/Dropdown";
 import NextBtn from "@components/common/NextBtn";
 import { getTale } from "@apis/createTales";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { nationElements } from "@utils/defaultData";
 import { ResponseTaleData } from "@type/createTale";
 import { toggleSpeech } from "@utils/speechUtil";
@@ -12,6 +12,7 @@ import { toggleSpeech } from "@utils/speechUtil";
 const ReadTale = () => {
   const location = useLocation();
   const { response } = location.state || {};
+  const navigate = useNavigate();
 
   const [language, setLanguage] = useState<string | number | null>(2);
   const [data, setData] = useState<ResponseTaleData>();
@@ -81,7 +82,11 @@ const ReadTale = () => {
                 width="48%"
                 isActive={true}
                 text="학습하기"
-                handleBtn={() => {}}
+                handleBtn={() => {
+                  navigate(`/learnTale`, {
+                    state: { 1: 269, 2: 270, 3: 272, 4: 271 },
+                  });
+                }}
               />
             </S.BtnWrapper>
           </>

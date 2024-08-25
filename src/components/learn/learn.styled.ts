@@ -101,3 +101,23 @@ export const SelectedSentence = styled.div<{
   font-weight: 400;
   color: ${({ $isPlaceholder }) => ($isPlaceholder ? "#b1b1b1" : "black")};
 `;
+
+export const PreContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 70%;
+  gap: 1rem;
+`;
+
+export const PreTitle = styled.div`
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+`;
+
+export const PreSubTitle = styled.div`
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #f7a300;
+`;

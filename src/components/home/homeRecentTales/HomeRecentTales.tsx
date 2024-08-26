@@ -2,7 +2,6 @@ import {
   CommonTitle,
   CommonTitleWrapper,
   ItemWrapper,
-  MainWrapper,
 } from "@components/common/common.styled";
 import Card from "./Card";
 import * as S from "./HomeRecentTales.styled";
@@ -27,7 +26,6 @@ const HomeRecentTales = () => {
     };
     recentTales();
   }, []);
-  // const sliceTales = tales.slice(0, 9);
 
   const chunkedTales = [];
   const sliceTales = tales.slice(0, 9);

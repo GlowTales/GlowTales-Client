@@ -31,6 +31,7 @@ const ReadTale = () => {
         const textToSpeak = data.story.split("\n")[index];
         speakText(
           textToSpeak,
+          null,
           () => setIsSpeaking(false),
           () => setIsSpeaking(false)
         );

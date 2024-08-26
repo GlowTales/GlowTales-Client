@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 import * as S from "./learn.styled";
 import { SentenceQuizProps } from "@type/learning";
+import { shuffleArray } from "@utils/learnUtil";
 
-const shuffleArray = (array: Array<{ order: number; word: string }>) => {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
-
-const SentenceQuiz = ({ setter, data, isQuizGraded }: SentenceQuizProps) => {
+const SentenceQuiz = ({
+  setter,
+  data,
+  isQuizGraded,
+  index,
+  gradeHandler,
+}: SentenceQuizProps) => {
   const [selectedWords, setSelectedWords] = useState<
     Array<{ order: number; word: string }>
   >([]);
@@ -23,6 +21,14 @@ const SentenceQuiz = ({ setter, data, isQuizGraded }: SentenceQuizProps) => {
     setSelectedWords([]);
     setShuffledWords(shuffleArray(data.sequenceList));
   }, [data]);
+
+  useEffect(() => {
+    if (isQuizGraded) {
+      if (isCorrectOrder()) {
+        gradeHandler(index);
+      }
+    }
+  }, [isQuizGraded, index]);
 
   const handleWordClick = (wordObj: { order: number; word: string }) => {
     setSelectedWords((prev) => {
@@ -37,9 +43,10 @@ const SentenceQuiz = ({ setter, data, isQuizGraded }: SentenceQuizProps) => {
 
   const isCorrectOrder = () => {
     if (selectedWords.length !== data.sequenceList.length) return false;
-    return selectedWords.every(
+    const result = selectedWords.every(
       (wordObj, index) => wordObj.order === data.sequenceList[index].order
     );
+    return result;
   };
 
   const renderWordButtons = () => {
@@ -100,12 +107,7 @@ const SentenceQuiz = ({ setter, data, isQuizGraded }: SentenceQuizProps) => {
             $isPlaceholder={selectedWords.length === 0}
             $state={"green"}
           >
-            {isQuizGraded && (
-              <S.SelectIcon
-                src={isCorrectOrder() ? "/correct.png" : "/wrong.png"}
-                alt="선택지"
-              />
-            )}
+            {isQuizGraded && <S.SelectIcon src={"/correct.png"} alt="선택지" />}
             {data.sequenceList.map((wordObj) => wordObj.word).join(" ")}
           </S.SelectedSentence>
         )}

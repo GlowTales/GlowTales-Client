@@ -7,6 +7,8 @@ const EssayQuiz = ({
   setter,
   data,
   isQuizGraded,
+  index,
+  gradeHandler,
 }: EssayQuizProps) => {
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -20,6 +22,14 @@ const EssayQuiz = ({
     setter(null);
     setInputValue("");
   }, [data]);
+
+  useEffect(() => {
+    if (isQuizGraded && inputValue) {
+      if (inputValue === data.answer) {
+        gradeHandler(index);
+      }
+    }
+  }, [isQuizGraded, index]);
 
   return (
     <S.Container>
@@ -37,13 +47,15 @@ const EssayQuiz = ({
           <>
             <SelectBtn
               text={inputValue}
-              colorName={inputValue === "답" ? "green" : "red"}
-              imgURL={inputValue === "답" ? "/correct.png" : "/wrong.png"}
+              colorName={inputValue === data.answer ? "green" : "red"}
+              imgURL={
+                inputValue === data.answer ? "/correct.png" : "/wrong.png"
+              }
               onClick={() => {}}
             />
-            {inputValue !== "답" && (
+            {inputValue !== data.answer && (
               <SelectBtn
-                text={"답"}
+                text={data.answer}
                 colorName="green"
                 imgURL="/correct.png"
                 onClick={() => {}}

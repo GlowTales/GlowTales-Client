@@ -7,10 +7,14 @@ const useLearning = (quizData: QuizData) => {
   const [essay, setEssay] = useState<null | string | number>(null);
   const [sentence, setSentence] = useState<null | string | number>(null);
   const [currentStep, setCurrentStep] = useState(0);
-  const [isStepCompleted, setIsStepCompleted] = useState<boolean[]>(
-    Array(quizData.totalSteps).fill(false)
-  );
+  const [isStepCompleted, setIsStepCompleted] = useState<boolean[]>([
+    true,
+    ...Array(quizData.totalSteps - 1).fill(false),
+  ]);
   const [isQuizGraded, setIsQuizGraded] = useState<boolean>(false);
+  const [correctAnswers, setCorrectAnswers] = useState<number[]>(
+    Array(quizData.totalSteps).fill(0)
+  );
 
   const handleNextStep = async () => {
     if (isQuizGraded) {
@@ -46,18 +50,22 @@ const useLearning = (quizData: QuizData) => {
 
     const currentQuizType = getCurrentQuizType(currentStep);
 
-    switch (currentQuizType) {
-      case QuizType.MultipleChoice:
-        stepsCompletion[currentStep] = !!choice;
-        break;
-      case QuizType.Essay:
-        stepsCompletion[currentStep] = !!essay;
-        break;
-      case QuizType.SentenceArrangement:
-        stepsCompletion[currentStep] = sentence !== null;
-        break;
-      default:
-        break;
+    if (currentStep !== 0) {
+      switch (currentQuizType) {
+        case QuizType.MultipleChoice:
+          stepsCompletion[currentStep] = !!choice;
+          break;
+        case QuizType.Essay:
+          stepsCompletion[currentStep] = !!essay;
+          break;
+        case QuizType.SentenceArrangement:
+          stepsCompletion[currentStep] = sentence !== null;
+          break;
+        default:
+          break;
+      }
+    } else {
+      setIsQuizGraded(true);
     }
 
     setIsStepCompleted(stepsCompletion);
@@ -85,6 +93,8 @@ const useLearning = (quizData: QuizData) => {
     handleNextStep,
     getCurrentQuizType,
     isQuizGraded,
+    setCorrectAnswers,
+    correctAnswers
   };
 };
 

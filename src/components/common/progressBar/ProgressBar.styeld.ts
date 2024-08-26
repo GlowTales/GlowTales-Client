@@ -7,8 +7,9 @@ export const ProgressBarWrapper = styled.div`
   height: 14px;
   border-radius: 20px;
   background: #ededed;
-  margin-top: 2rem;
+  margin-top: 3rem;
   position: relative;
+  margin-bottom: 2rem;
 `;
 
 export const Progress = styled.div<{ $percentage: number }>`

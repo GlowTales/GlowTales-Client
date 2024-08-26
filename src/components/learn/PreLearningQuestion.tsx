@@ -6,8 +6,8 @@ import NextBtn from "@components/common/NextBtn";
 import Dropdown from "@components/common/dropDown/Dropdown";
 import { nationElements } from "@utils/defaultData";
 import { useResult } from "@hooks/useResult";
-import { getLearningLevel } from "@apis/learning";
-import { useState } from "react";
+import { getLearnedHistory, getLearningLevel } from "@apis/learning";
+import { useEffect, useState } from "react";
 import CreateQuiz from "./CreateQuiz";
 import useSelectLevel from "@hooks/useSelectLevel";
 import SelectOptionList from "@common/selectOption/SelectOptionList";
@@ -15,21 +15,58 @@ import SelectOptionList from "@common/selectOption/SelectOptionList";
 const PreLearningQuestion = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const languageTaleIds = location.state || {};
+  const { taleId } = location.state || {};
+
   const [selectLanguage, setSelectLanguage] = useResult();
   const { selectedLevel, setSelectedLevel, levelOptions } = useSelectLevel();
   const [step, setStep] = useState(0);
 
+  const [userLearnedInfo, setUserLearnedInfo] = useState<any[]>();
+
   const language = nationElements.find((e) => e.value === selectLanguage);
+  const [currLanguageTaleId, setCurrLanguageTaleId] = useState<number>();
 
-  const handleNextStep = async () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const learnedHistory = await getLearnedHistory(taleId);
+
+        const updatedLearnedInfo = await Promise.all(
+          learnedHistory.map(
+            async (info: {
+              languageId: number;
+              languageTaleId: number;
+              isLearned: "NO" | "YES";
+            }) => {
+              const level = await getLearningLevel(info.languageId);
+              return {
+                ...info,
+                learningLevel: level,
+              };
+            }
+          )
+        );
+
+        setUserLearnedInfo(updatedLearnedInfo);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, [taleId]);
+
+  const handleNextStep = () => {
+    const userInfo = userLearnedInfo?.find(
+      (info) => info.languageId === selectLanguage
+    );
+    setCurrLanguageTaleId(userInfo.languageTaleId);
+
     if (step === 0 && selectLanguage) {
-      const response = await getLearningLevel(selectLanguage as number);
-
-      if (response.isLearned === "YES") {
-        setSelectedLevel(response.learningLevel);
-        if (response.isCreated === "YES") {
-          navigate(`/learnTale/${languageTaleIds[language?.value as number]}`);
+      if (userInfo?.learningLevel !== null) {
+        setSelectedLevel(userInfo.learningLevel);
+        if (userInfo.isLearned === "YES") {
+          navigate(`/learnTale/${userInfo.languageTaleId}`);
         } else {
           setStep(2);
         }
@@ -71,14 +108,18 @@ const PreLearningQuestion = () => {
 
         {step === 2 && (
           <CreateQuiz
-            languageTaleId={languageTaleIds[language?.value as number]}
+            languageTaleId={currLanguageTaleId as number}
             learningLevel={selectedLevel as string}
           />
         )}
 
         {step !== 2 && (
           <NextBtn
-            isActive={selectLanguage ? true : false}
+            isActive={
+              (step === 0 && selectLanguage) || (step === 1 && selectedLevel)
+                ? true
+                : false
+            }
             text={step === 0 ? "다음" : "학습 시작"}
             handleBtn={handleNextStep}
           />

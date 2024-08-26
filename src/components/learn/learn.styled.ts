@@ -32,7 +32,10 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  min-height: 88%;
+  min-height: 88vh;
+  overflow: scroll;
+  height: fit-content;
+  padding-bottom: 2rem;
 `;
 
 export const Input = styled.input<{ $isInputValid: string | null }>`
@@ -52,6 +55,9 @@ export const Input = styled.input<{ $isInputValid: string | null }>`
   font-weight: 700;
   font-family: "NanumSquareRound";
   box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const WordButtonContainer = styled.div`

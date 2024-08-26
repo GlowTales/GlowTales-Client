@@ -13,6 +13,10 @@ import {
   SentenceArrangements,
 } from "@type/learning";
 import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
+import SpeakPractice from "./SpeakPractice";
+import { useEffect } from "react";
+import { postAnswerCount } from "@apis/learning";
+import Header from "@components/common/header/Header";
 
 interface TaleLearnProps {
   quizData?: QuizData;
@@ -22,7 +26,6 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
   if (!quizData) {
     return;
   }
-
   const totalSteps = quizData.totalSteps;
 
   const {
@@ -34,17 +37,48 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     isNextBtnActive,
     handleNextStep,
     getCurrentQuizType,
+    setCorrectAnswers,
     isQuizGraded,
+    correctAnswers,
   } = useLearning(quizData);
 
-  const progressPercentage = (currentStep / (totalSteps - 1)) * 100;
+  useEffect(() => {
+    const postResult = async (languageTaleId: number, answerCounts: number) => {
+      try {
+        const response = await postAnswerCount(languageTaleId, answerCounts);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (currentStep === totalSteps - 1) {
+      const count = correctAnswers.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+      postResult(quizData.languageTaleId, count);
+    }
+  }, [currentStep]);
+
+  const incrementCorrectAnswer = (index: number) => {
+    setCorrectAnswers((prevAnswers) => {
+      const newAnswers = [...prevAnswers];
+      newAnswers[index] = 1;
+      return newAnswers;
+    });
+  };
+
+  const progressPercentage = ((currentStep + 0.3) / (totalSteps - 1)) * 100;
 
   const getCurrentQuiz = () => {
-    if (
+    if (currentStep === 0) {
+      return null;
+    } else if (
       currentStep <
       QUIZ_STAGES[QuizType.MultipleChoice].end(quizData.multipleChoices.length)
     ) {
-      return quizData.multipleChoices[currentStep];
+      return quizData.multipleChoices[currentStep - 1];
     } else if (
       currentStep <
       QUIZ_STAGES[QuizType.Essay].end(
@@ -78,10 +112,13 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 
   return (
     <>
-      {currentStep < totalSteps ? (
+      {currentStep < totalSteps - 1 && <Header text="학습하기" />}
+      {currentStep < totalSteps - 1 ? (
         <Wrapper>
           <ProgressBar percentage={progressPercentage} />
-          {/* {currentStep === 0 && <LearnTaleKeys />} */}
+          {currentStep === 0 && (
+            <SpeakPractice data={quizData.keyWordsAndSentences} />
+          )}
           {currentQuiz && currentQuiz.question && (
             <>
               {currentQuizType === QuizType.MultipleChoice &&
@@ -90,6 +127,8 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
                     setter={setChoice}
                     data={currentQuiz}
                     isQuizGraded={isQuizGraded}
+                    index={currentStep}
+                    gradeHandler={incrementCorrectAnswer}
                   />
                 )}
               {currentQuizType === QuizType.Essay &&
@@ -98,6 +137,8 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
                     setter={setEssay}
                     data={currentQuiz}
                     isQuizGraded={isQuizGraded}
+                    index={currentStep}
+                    gradeHandler={incrementCorrectAnswer}
                   />
                 )}
               {currentQuizType === QuizType.SentenceArrangement &&
@@ -106,6 +147,8 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
                     setter={setSentence}
                     data={currentQuiz}
                     isQuizGraded={isQuizGraded}
+                    index={currentStep}
+                    gradeHandler={incrementCorrectAnswer}
                   />
                 )}
             </>

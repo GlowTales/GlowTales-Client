@@ -39,7 +39,7 @@ const HomeRecentTales = () => {
   };
 
   const handleMoreClick = () => {
-    navigate("/more", { state: { allTales: tales } });
+    navigate("/home/moreRecentTales", { state: { allTales: tales } });
   };
 
   return (

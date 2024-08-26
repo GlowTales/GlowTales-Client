@@ -12,7 +12,6 @@ const HomeStatus = () => {
     };
     fetchStatus();
   }, []);
-  let n = 1;
   return (
     <S.Wrapper>
       <S.StatusWrapper>

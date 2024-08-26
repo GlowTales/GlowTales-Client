@@ -30,15 +30,24 @@ export const CardWrapper = styled.div`
   justify-content: center;
   align-items: flex-end;
   @media (max-width: 710px) {
-    flex-direction: column;
-    align-items: center;
+    margin-top: 2rem;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1rem;
   }
+`;
+
+export const ShelfWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 `;
 
 export const Shelf = styled.img`
   @media (max-width: 710px) {
+    width: 550px;
+  }
+  @media (max-width: 450px) {
     display: none;
   }
 `;

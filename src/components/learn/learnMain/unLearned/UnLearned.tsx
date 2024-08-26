@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const UnLearned = () => {
   const navigate = useNavigate();
   const handleMoreClick = () => {
-    navigate("/learning/moreUnLearned", { state: { unLearned } });
+    navigate("/learnTale/moreUnLearned", { state: { unLearned } });
   };
   const [unLearned, setUnLearned] = useState<UnLearnedProps[]>([]);
   const sliceUnLearned = unLearned.slice(0, 3);

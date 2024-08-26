@@ -7,6 +7,7 @@ export interface QuizData {
   essayQuestions: EssayQuestions[];
   multipleChoices: MultipleChoices[];
   sentenceArrangements: SentenceArrangements[];
+  keyWordsAndSentences: SpeakPracticeProps;
   totalSteps: number;
 }
 export interface EssayQuestions {
@@ -34,8 +35,17 @@ export type ChoiceQuizProps = BaseQuizProps<MultipleChoices>;
 export type EssayQuizProps = BaseQuizProps<EssayQuestions>;
 export type SentenceQuizProps = BaseQuizProps<SentenceArrangements>;
 
+export interface KeyWord {
+  word: string;
+  mean: string;
+}
+export interface KeySentence {
+  sentence: string;
+  mean: string;
+}
+
 export interface SpeakPracticeProps {
-  title: string;
-  text1: string;
-  text2: string;
+  words: KeyWord[];
+  sentences: KeySentence[];
+  languageId: number;
 }

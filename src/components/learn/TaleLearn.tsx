@@ -13,6 +13,7 @@ import {
   SentenceArrangements,
 } from "@type/learning";
 import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
+import SpeakPractice from "./SpeakPractice";
 
 interface TaleLearnProps {
   quizData?: QuizData;
@@ -46,14 +47,16 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     });
   };
 
-  const progressPercentage = (currentStep / (totalSteps - 1)) * 100;
+  const progressPercentage = ((currentStep+0.3) / (totalSteps - 1)) * 100;
 
   const getCurrentQuiz = () => {
-    if (
+    if (currentStep === 0) {
+      return null;
+    } else if (
       currentStep <
       QUIZ_STAGES[QuizType.MultipleChoice].end(quizData.multipleChoices.length)
     ) {
-      return quizData.multipleChoices[currentStep];
+      return quizData.multipleChoices[currentStep - 1];
     } else if (
       currentStep <
       QUIZ_STAGES[QuizType.Essay].end(
@@ -87,10 +90,12 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 
   return (
     <>
-      {currentStep < totalSteps ? (
+      {currentStep < totalSteps-1 ? (
         <Wrapper>
           <ProgressBar percentage={progressPercentage} />
-          {/* {currentStep === 0 && <LearnTaleKeys />} */}
+          {currentStep === 0 && (
+            <SpeakPractice data={quizData.keyWordsAndSentences} />
+          )}
           {currentQuiz && currentQuiz.question && (
             <>
               {currentQuizType === QuizType.MultipleChoice &&

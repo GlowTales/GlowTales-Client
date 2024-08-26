@@ -1,36 +1,32 @@
 import { SpeakPracticeProps } from "@type/learning";
-import { franc } from "franc";
-import { iso6393 } from "iso-639-3";
+import { speakText } from "@utils/speechUtil";
 import styled from "styled-components";
 
-const getLangCode = (isoCode: string): string => {
-  const lang = iso6393.find((lang) => lang.iso6393 === isoCode);
-  if (lang && lang.iso6393 === "cmn") {
-    return "zh";
-  }
-  return lang ? lang.iso6391 || "en" : "en";
-};
-
-const SpeakPractice = (props: SpeakPracticeProps) => {
-  const handleBtn = () => {
-    const detectedLang = franc(props.text1);
-    const langCode = getLangCode(detectedLang);
-
-    const utterance = new SpeechSynthesisUtterance(props.text1);
-    utterance.lang = langCode;
-    utterance.rate = 0.6;
-
-    window.speechSynthesis.speak(utterance);
-  };
-
+const SpeakPractice = ({ data }: { data: SpeakPracticeProps }) => {
   return (
     <Wrapper>
-      <Title>{props.title}</Title>
-      <SpeakBox>
-        <SpeakBtn src="/speaker.png" onClick={handleBtn} />
-        <WordBox>{props.text1}</WordBox>
-      </SpeakBox>
-      <SubText> {props.text2}</SubText>
+      <Title>동화의 핵심 단어에요</Title>
+      {data.words.map((w, idx) => (
+        <SpeakBox key={idx}>
+          <SpeakBtn
+            src="/speaker.png"
+            onClick={() => speakText(w.word, data.languageId)}
+          />
+          <WordBox>{w.word}</WordBox>
+          <SubText> {w.mean}</SubText>
+        </SpeakBox>
+      ))}
+      <Title>동화의 핵심 문장이에요</Title>
+      {data.sentences.map((s, idx) => (
+        <SpeakBox key={idx}>
+          <SpeakBtn
+            src="/speaker.png"
+            onClick={() => speakText(s.sentence, data.languageId)}
+          />
+          <WordBox>{s.sentence}</WordBox>
+          <SubText> {s.mean}</SubText>
+        </SpeakBox>
+      ))}
     </Wrapper>
   );
 };
@@ -43,6 +39,7 @@ const Wrapper = styled.div`
   justify-content: center;
   gap: 2rem;
   width: 100%;
+  margin-bottom: 2rem;
 `;
 
 const Title = styled.div`

@@ -11,11 +11,34 @@ export const getLangCode = (isoCode: string): string => {
 
 export const speakText = (
   text: string,
+  languageId?: number | null,
   onEnd?: () => void,
   onPause?: () => void
 ) => {
-  const detectedLang = franc(text);
-  const langCode = getLangCode(detectedLang);
+  let langCode: string;
+
+  if (languageId) {
+    switch (languageId) {
+      case 1:
+        langCode = "en";
+        break;
+      case 2:
+        langCode = "ko";
+        break;
+      case 3:
+        langCode = "ja";
+        break;
+      case 4:
+        langCode = "zh";
+        break;
+      default:
+        langCode = "en";
+        break;
+    }
+  } else {
+    const detectedLang = franc(text);
+    langCode = getLangCode(detectedLang);
+  }
 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = langCode;
@@ -51,6 +74,7 @@ export const toggleSpeech = (
 
     speakText(
       text,
+      null,
       () => setIsSpeaking(false),
       () => setIsSpeaking(false)
     );

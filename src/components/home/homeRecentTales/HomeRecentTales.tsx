@@ -21,12 +21,14 @@ const HomeRecentTales = () => {
       </S.TitleWrapper>
       <S.CardWrapper>
         <Card />
+        <Card />
+        <Card />
       </S.CardWrapper>
-      <img src="shelf.png" />
+      <S.Shelf src="shelf.png" />
       <S.CardWrapper>
         <Card />
       </S.CardWrapper>
-      <img src="shelf.png" />
+      <S.Shelf src="shelf.png" />
     </S.Wrapper>
   );
 };

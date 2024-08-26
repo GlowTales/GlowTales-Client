@@ -9,10 +9,4 @@ export const Wrapper = styled.div`
   align-items: flex-start;
   gap: 3rem;
   padding: 3rem;
-  @media (min-width: 850px) {
-    margin-bottom: 160px;
-  }
-  @media (min-height: 900px) {
-    margin-bottom: 0;
-  }
 `;

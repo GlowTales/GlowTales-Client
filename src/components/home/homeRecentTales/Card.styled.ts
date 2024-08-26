@@ -17,7 +17,7 @@ export const CardContainer = styled.div<CardContainerProps>`
 
 export const CardWrapper = styled.div`
   width: 75%;
-  height: 90%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

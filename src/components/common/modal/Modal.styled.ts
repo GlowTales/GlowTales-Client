@@ -1,51 +1,65 @@
 import styled from "styled-components";
 
 export const ModalSection = styled.div<{ height: number }>`
+  width: 768px;
+  height: ${(props) => props.height};
   position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 768px;
   top: 0;
   right: 50%;
   bottom: 0;
   left: 50%;
   transform: translate(-50%, 0%);
-  height: ${(props) => props.height};
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 3;
+  z-index: 1;
   @media (max-width: 899px) {
     width: 100%;
   }
 `;
 
-export const ModalStyle = styled.div`
+export const ModalWrapper = styled.div`
+  width: 50%;
+  height: 25%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30rem;
-  height: fit-content;
   font-size: 1.5rem;
   font-weight: bold;
   background-color: #ffffff;
-  border-radius: 5px;
-  z-index: 3;
-  @media (min-width: 576px) {
-    width: 60%;
-  }
+  border-radius: 14px;
+  z-index: 2;
+`;
+
+export const TextWrapper = styled.div`
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  text-align: center;
+  padding-top: 3.5rem;
+`;
+
+export const ModalTitle = styled.div`
+  font-size: 2.4rem;
+  font-weight: 800;
+`;
+
+export const ModalExplain = styled.div`
+  font-size: 2rem;
+  font-weight: 700;
+  color: #777777;
 `;
 
 export const ButtonWrapper = styled.div`
-  display: flex;
   width: 100%;
-  border-top: 1px solid #f3f3f3;
-`;
-
-export const Content = styled.div`
-  margin: 4rem 0 4rem 0;
-  text-align: center;
+  height: 60px;
+  display: flex;
+  border-top: 2.5px solid #d0d0d0;
 `;
 
 export const ButtonStyle = styled.div<{ isRightButton: boolean }>`
@@ -54,8 +68,9 @@ export const ButtonStyle = styled.div<{ isRightButton: boolean }>`
   justify-content: center;
   width: 49%;
   color: ${(props) => (props.isRightButton ? "#FF5757" : "black")};
-  font-size: 1.5rem;
-  margin: 2rem 0 2rem 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+  padding: 2rem;
   border-left: ${(props) =>
-    props.isRightButton ? "1px solid #f3f3f3" : "none"};
+    props.isRightButton ? "2.5px solid #d0d0d0" : "none"};
 `;

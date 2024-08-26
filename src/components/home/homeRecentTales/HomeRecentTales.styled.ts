@@ -47,7 +47,7 @@ export const Shelf = styled.img`
   @media (max-width: 710px) {
     width: 550px;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 519px) {
     display: none;
   }
 `;

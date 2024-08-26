@@ -14,7 +14,7 @@ const InputImg = ({ setIsLoading }: InputImgProps) => {
       formData.append("file", file);
       if (setIsLoading) setIsLoading(true);
       const keywords: string[] = await createKeyword(formData);
-      navigate("/selectKeyword", { state: { keywords } });
+      navigate("/createTale/keyword", { state: { keywords } });
     }
   };
   return (

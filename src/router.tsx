@@ -24,6 +24,10 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
+    path: "/kakao",
+    element: <KakaoRedirect />,
+  },
+  {
     path: "/onboarding",
     element: <OnboardingPage />,
   },
@@ -36,27 +40,23 @@ const router = createBrowserRouter([
     element: <MoreRecentTales />,
   },
   {
+    path: "/learnTale",
+    element: <LearningPage />,
+  },
+  {
     path: "/createTale",
     element: <CreateMainPage />,
   },
   {
-    path: "/kakao",
-    element: <KakaoRedirect />,
-  },
-  {
-    path: "/learning",
-    element: <LearningPage />,
-  },
-  {
-    path: "/selectKeyword",
+    path: "/createTale/keyword",
     element: <SelectKeywordPage />,
   },
   {
-    path: "/taleDetail",
+    path: "/createTale/details",
     element: <TaleDetailPage />,
   },
   {
-    path: "/create",
+    path: "/createTale/generate",
     element: <CreateTalePage />,
   },
   {
@@ -64,11 +64,11 @@ const router = createBrowserRouter([
     element: <ReadTalePage />,
   },
   {
-    path: "/learnTale",
+    path: "/learnTale/pre",
     element: <PreLearningQuestionPage />,
   },
   {
-    path: "/learnTale/:id",
+    path: "/learnTale/quiz",
     element: <TaleLearnPage />,
   },
 ]);

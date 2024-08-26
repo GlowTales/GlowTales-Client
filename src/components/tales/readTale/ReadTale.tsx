@@ -102,7 +102,7 @@ const ReadTale = () => {
                 isActive={true}
                 text="학습하기"
                 handleBtn={() => {
-                  navigate(`/learnTale`, {
+                  navigate(`/learnTale/pre`, {
                     state: { taleId: response.taleId },
                   });
                 }}

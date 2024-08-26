@@ -73,7 +73,7 @@ const TaleDetail = () => {
           : [getRandomElement(charElements).value],
       contents: contents || getRandomElement(contentElements).value,
     };
-    navigate("/create", { state: { requestData } });
+    navigate("/createTale/generate", { state: { requestData } });
   };
 
   return (

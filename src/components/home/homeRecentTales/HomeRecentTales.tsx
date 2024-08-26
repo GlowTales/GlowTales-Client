@@ -10,13 +10,11 @@ import { getRecentTale } from "@apis/createTales";
 import { useEffect, useState } from "react";
 import { CardProps } from "@type/card";
 import { useNavigate } from "react-router-dom";
-import { getToken } from "@apis/login";
 import { useMediaQuery } from "react-responsive";
 
 const HomeRecentTales = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });
 
-  getToken();
   const [tales, setTales] = useState<CardProps[]>([]);
   const navigate = useNavigate();
 

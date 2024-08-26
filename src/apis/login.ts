@@ -4,14 +4,6 @@ import { getAuthAxios } from "./authAxois";
 
 const baseURL = import.meta.env.VITE_PUBLIC_SERVER_URL;
 
-export const getToken = async () => {
-  const response = await axios.get(`${baseURL}/members/token/es`);
-  const accessToken = response.data.data;
-  // const refreshToken = response.data.data.token.refreshToken;
-
-  LocalStorage.setItem("access", accessToken);
-};
-
 export const postCode = async (code: string) => {
   try {
     const response = await axios.get(

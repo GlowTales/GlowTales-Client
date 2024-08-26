@@ -1,8 +1,7 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const UnLearnedMore = () => {
-  const location = useLocation();
+  //   const location = useLocation();
 
   return <div>UnLearnedMore</div>;
 };

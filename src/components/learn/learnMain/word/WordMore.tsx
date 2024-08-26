@@ -1,7 +1,7 @@
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
 const WordMore = () => {
-  const location = useLocation();
+  //   const location = useLocation();
 
   return <div>WordMore</div>;
 };

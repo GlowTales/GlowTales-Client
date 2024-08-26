@@ -1,10 +1,9 @@
-import TabBar from "@components/common/tabBar/TabBar";
+import Learn from "@components/learn/learnMain/Learn";
 
 const LearningPage = () => {
   return (
     <>
-      <div>LearningPage</div>
-      <TabBar />
+      <Learn />
     </>
   );
 };

@@ -1,4 +1,9 @@
-import { CommonTitle } from "@components/common/common.styled";
+import {
+  CommonTitle,
+  CommonTitleWrapper,
+  ItemWrapper,
+  MainWrapper,
+} from "@components/common/common.styled";
 import Card from "./Card";
 import * as S from "./HomeRecentTales.styled";
 import { getRecentTale } from "@apis/createTales";
@@ -40,14 +45,14 @@ const HomeRecentTales = () => {
 
   return (
     <S.Wrapper>
-      <S.TitleWrapper>
+      <CommonTitleWrapper>
         <CommonTitle>최근 생성한 동화</CommonTitle>
         <div className="more" onClick={handleMoreClick}>
           {"더보기 >"}
         </div>
-      </S.TitleWrapper>
+      </CommonTitleWrapper>
       {mediaQuery ? (
-        <S.CardWrapper>
+        <ItemWrapper>
           {sliceTales.map((tale, index) => (
             <>
               <Card
@@ -61,11 +66,11 @@ const HomeRecentTales = () => {
               )}
             </>
           ))}
-        </S.CardWrapper>
+        </ItemWrapper>
       ) : (
         chunkedTales.map((taleGroup) => (
           <>
-            <S.CardWrapper>
+            <ItemWrapper>
               {taleGroup.map((tale) => (
                 <Card
                   key={tale.taleId}
@@ -75,7 +80,7 @@ const HomeRecentTales = () => {
                   readFunction={() => goRead(tale)}
                 />
               ))}
-            </S.CardWrapper>
+            </ItemWrapper>
             <S.Shelf src="shelf.png" />
           </>
         ))

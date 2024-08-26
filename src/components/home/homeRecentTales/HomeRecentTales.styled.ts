@@ -8,46 +8,22 @@ export const Wrapper = styled.div`
   padding-bottom: 80px;
 `;
 
-export const TitleWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: 5px;
-  .more {
-    margin-right: 1rem;
-    font-size: 1.8rem;
-    text-align: center;
-    font-weight: 700;
-    color: #bdbdbd;
-    cursor: pointer;
-  }
-`;
-
-export const CardWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  @media (max-width: 710px) {
-    margin-top: 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-`;
-
-export const ShelfWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-`;
-
 export const Shelf = styled.img`
+  width: 100%;
   @media (max-width: 710px) {
-    width: 550px;
+    width: 520px;
   }
-  @media (max-width: 450px) {
+  @media (max-width: 519px) {
     display: none;
   }
+`;
+
+export const MoreWrapper = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  gap: 2rem;
 `;

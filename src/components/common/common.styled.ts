@@ -39,3 +39,39 @@ export const CommonTitle = styled.div`
   font-weight: 800;
   text-align: center;
 `;
+
+export const CommonTitleWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 5px;
+  .more {
+    margin-right: 1rem;
+    font-size: 1.8rem;
+    text-align: center;
+    font-weight: 700;
+    color: #bdbdbd;
+    cursor: pointer;
+  }
+`;
+
+export const ItemWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+export const MainWrapper = styled.div`
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 3rem;
+  padding-top: 3rem;
+`;

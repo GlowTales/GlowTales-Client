@@ -3,8 +3,12 @@ import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./HomeRecentTales.styled";
 import Card from "./Card";
 import { CardProps } from "@type/card";
+import { useMediaQuery } from "react-responsive";
+import { ItemWrapper } from "@components/common/common.styled";
 
 const MoreRecentTales = () => {
+  const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });
+
   const location = useLocation();
   const { allTales } = location.state || { allTales: [] };
   const navigate = useNavigate();
@@ -20,26 +24,44 @@ const MoreRecentTales = () => {
   return (
     <>
       <Header text="최근 생성한 동화" />
-      <S.Wrapper>
-        {chunkedTales.map((taleGroup, index) => (
-          <>
-            <div key={index}>
-              <S.CardWrapper>
-                {taleGroup.map((tale) => (
+      <>
+        <S.MoreWrapper>
+          {mediaQuery ? (
+            <ItemWrapper>
+              {allTales.map((tale: CardProps, index: number) => (
+                <>
                   <Card
-                    key={tale.taleId}
                     taleId={tale.taleId}
                     title={tale.title}
                     createdAt={tale.createdAt}
                     readFunction={() => goRead(tale)}
                   />
-                ))}
-              </S.CardWrapper>
-            </div>
-            <S.Shelf src="shelf.png" />
-          </>
-        ))}
-      </S.Wrapper>
+                  {(index + 1) % 2 === 0 && index !== allTales.length - 1 && (
+                    <S.Shelf src="shelf.png" key={`shelf-${index}`} />
+                  )}
+                </>
+              ))}
+            </ItemWrapper>
+          ) : (
+            chunkedTales.map((taleGroup) => (
+              <>
+                <ItemWrapper>
+                  {taleGroup.map((tale) => (
+                    <Card
+                      key={tale.taleId}
+                      taleId={tale.taleId}
+                      title={tale.title}
+                      createdAt={tale.createdAt}
+                      readFunction={() => goRead(tale)}
+                    />
+                  ))}
+                </ItemWrapper>
+                <S.Shelf src="shelf.png" />
+              </>
+            ))
+          )}
+        </S.MoreWrapper>
+      </>
     </>
   );
 };

@@ -12,6 +12,7 @@ import CreateMainPage from "@pages/CreateMainPage";
 import CreateTalePage from "@pages/CreateTalePage";
 import TaleLearnPage from "@pages/TaleLearnPage";
 import PreLearningQuestionPage from "@pages/PreLearningQuestionPage";
+import MoreRecentTales from "@components/home/homeRecentTales/MoreRecentTales";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/home",
     element: <HomePage />,
+  },
+  {
+    path: "/more",
+    element: <MoreRecentTales />,
   },
   {
     path: "/createTale",

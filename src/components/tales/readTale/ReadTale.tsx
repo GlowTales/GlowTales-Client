@@ -103,7 +103,7 @@ const ReadTale = () => {
                 text="학습하기"
                 handleBtn={() => {
                   navigate(`/learnTale`, {
-                    state: { taleId : response.taleId },
+                    state: { taleId: response.taleId },
                   });
                 }}
               />

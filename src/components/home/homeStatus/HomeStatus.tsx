@@ -7,8 +7,8 @@ const HomeStatus = () => {
       <S.StatusWrapper>
         <S.Status>
           <S.TitleWrapper>
-            <S.StatusTitle>글로우테일과 함께하는</S.StatusTitle>
-            <S.StatusTitle>다문화 동화</S.StatusTitle>
+            <S.StatusTitle>글로우테일과 함께</S.StatusTitle>
+            <S.StatusTitle>이야기 속으로 떠나볼까요?</S.StatusTitle>
           </S.TitleWrapper>
           <S.StateWrapper>
             <S.State>생성한 동화 | {n}개</S.State>

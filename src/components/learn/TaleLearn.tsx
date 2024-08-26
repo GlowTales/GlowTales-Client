@@ -5,7 +5,6 @@ import useLearning from "@hooks/useLearning";
 import ChoiceQuiz from "./ChoiceQuiz";
 import EssayQuiz from "./EssayQuiz";
 import SentenceQuiz from "./SentenceQuiz";
-import { Wrapper } from "./learn.styled";
 import {
   EssayQuestions,
   MultipleChoices,
@@ -17,6 +16,7 @@ import SpeakPractice from "./SpeakPractice";
 import { useEffect } from "react";
 import { postAnswerCount } from "@apis/learning";
 import Header from "@components/common/header/Header";
+import styled from "styled-components";
 
 interface TaleLearnProps {
   quizData?: QuizData;
@@ -116,43 +116,46 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
       {currentStep < totalSteps - 1 ? (
         <Wrapper>
           <ProgressBar percentage={progressPercentage} />
-          {currentStep === 0 && (
-            <SpeakPractice data={quizData.keyWordsAndSentences} />
-          )}
-          {currentQuiz && currentQuiz.question && (
-            <>
-              {currentQuizType === QuizType.MultipleChoice &&
-                isMultipleChoice(currentQuiz) && (
-                  <ChoiceQuiz
-                    setter={setChoice}
-                    data={currentQuiz}
-                    isQuizGraded={isQuizGraded}
-                    index={currentStep}
-                    gradeHandler={incrementCorrectAnswer}
-                  />
-                )}
-              {currentQuizType === QuizType.Essay &&
-                isEssayQuestion(currentQuiz) && (
-                  <EssayQuiz
-                    setter={setEssay}
-                    data={currentQuiz}
-                    isQuizGraded={isQuizGraded}
-                    index={currentStep}
-                    gradeHandler={incrementCorrectAnswer}
-                  />
-                )}
-              {currentQuizType === QuizType.SentenceArrangement &&
-                isSentenceArrangement(currentQuiz) && (
-                  <SentenceQuiz
-                    setter={setSentence}
-                    data={currentQuiz}
-                    isQuizGraded={isQuizGraded}
-                    index={currentStep}
-                    gradeHandler={incrementCorrectAnswer}
-                  />
-                )}
-            </>
-          )}
+          <QuizSection>
+            {currentStep === 0 && (
+              <SpeakPractice data={quizData.keyWordsAndSentences} />
+            )}
+            {currentQuiz && currentQuiz.question && (
+              <>
+                {currentQuizType === QuizType.MultipleChoice &&
+                  isMultipleChoice(currentQuiz) && (
+                    <ChoiceQuiz
+                      setter={setChoice}
+                      data={currentQuiz}
+                      isQuizGraded={isQuizGraded}
+                      index={currentStep}
+                      gradeHandler={incrementCorrectAnswer}
+                    />
+                  )}
+                {currentQuizType === QuizType.Essay &&
+                  isEssayQuestion(currentQuiz) && (
+                    <EssayQuiz
+                      setter={setEssay}
+                      data={currentQuiz}
+                      isQuizGraded={isQuizGraded}
+                      index={currentStep}
+                      gradeHandler={incrementCorrectAnswer}
+                    />
+                  )}
+                {currentQuizType === QuizType.SentenceArrangement &&
+                  isSentenceArrangement(currentQuiz) && (
+                    <SentenceQuiz
+                      setter={setSentence}
+                      data={currentQuiz}
+                      isQuizGraded={isQuizGraded}
+                      index={currentStep}
+                      gradeHandler={incrementCorrectAnswer}
+                    />
+                  )}
+              </>
+            )}
+          </QuizSection>
+
           <NextBtn
             isActive={isNextBtnActive}
             text={isLastStep ? "완료" : "다음"}
@@ -172,3 +175,21 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 };
 
 export default TaleLearn;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  min-height:88vh;
+  overflow: scroll;
+  height: fit-content;
+  padding-bottom: 2rem;
+`;
+
+const QuizSection = styled.div`
+  overflow: auto;
+  width: 100%;
+  height: 70vh;
+`;

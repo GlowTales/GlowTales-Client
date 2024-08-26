@@ -4,15 +4,21 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 2rem;
+  gap: 3.5rem;
   width: 100%;
-  margin-bottom: 4rem;
+  padding-bottom: 3rem;
 `;
 
 export const Title = styled.div`
   font-size: 2.5rem;
   font-weight: 800;
-  margin-top: 3rem;
+`;
+
+export const SpeakSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: fit-content;
 `;
 
 export const SpeakRowBox = styled.div`
@@ -26,6 +32,7 @@ export const SpeakColumnBox = styled.div`
   display: flex;
   flex-direction: column;
   height: fit-content;
+  gap: 1rem;
 `;
 
 export const SpeakBtn = styled.img`
@@ -52,6 +59,6 @@ export const MeanText2 = styled.div`
   font-size: 2rem;
   font-weight: 400;
   color: #808080;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
   margin-left: 4rem;
 `;

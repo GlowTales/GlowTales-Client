@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: hidden; // 스크롤 생기는거 괜찮은지 물어보기
   gap: 2.5rem;
   #topGraphic {
     width: 100%;

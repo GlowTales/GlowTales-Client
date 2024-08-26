@@ -74,4 +74,5 @@ export const MainWrapper = styled.div`
   align-items: flex-start;
   gap: 3rem;
   padding-top: 3rem;
+  padding-bottom: 140px;
 `;

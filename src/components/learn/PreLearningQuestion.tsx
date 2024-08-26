@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import CreateQuiz from "./CreateQuiz";
 import useSelectLevel from "@hooks/useSelectLevel";
 import SelectOptionList from "@common/selectOption/SelectOptionList";
+import styled from "styled-components";
 
 const PreLearningQuestion = () => {
   const location = useLocation();
@@ -81,7 +82,7 @@ const PreLearningQuestion = () => {
   return (
     <>
       <Header text="학습하기" />
-      <S.Wrapper>
+      <Wrapper>
         {step < 2 && <ProgressBar percentage={step === 0 ? 40 : 80} />}
         {step === 0 && (
           <S.PreContainer>
@@ -124,9 +125,21 @@ const PreLearningQuestion = () => {
             handleBtn={handleNextStep}
           />
         )}
-      </S.Wrapper>
+      </Wrapper>
     </>
   );
 };
 
 export default PreLearningQuestion;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  min-height: 88vh;
+  overflow: scroll;
+  height: fit-content;
+  padding-bottom: 2rem;
+`;

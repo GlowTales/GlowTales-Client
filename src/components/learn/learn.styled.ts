@@ -29,10 +29,9 @@ export const SubTitle = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   width: 90%;
-  min-height: 88vh;
+  min-height: 100vh;
   overflow: scroll;
   height: fit-content;
   padding-bottom: 2rem;
@@ -112,7 +111,7 @@ export const PreContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 70%;
+  min-height: 70vh;
   gap: 1rem;
 `;
 

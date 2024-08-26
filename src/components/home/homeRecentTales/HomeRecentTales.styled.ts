@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-bottom: 80px;
 `;
 
 export const TitleWrapper = styled.div`
@@ -26,6 +27,18 @@ export const TitleWrapper = styled.div`
 export const CardWrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
+  @media (max-width: 710px) {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+`;
+
+export const Shelf = styled.img`
+  @media (max-width: 710px) {
+    display: none;
+  }
 `;

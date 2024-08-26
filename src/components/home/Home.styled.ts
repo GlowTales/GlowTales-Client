@@ -8,11 +8,5 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 3rem;
-  padding: 3rem;
-  @media (min-width: 850px) {
-    margin-bottom: 160px;
-  }
-  @media (min-height: 900px) {
-    margin-bottom: 0;
-  }
+  padding-top: 3rem;
 `;

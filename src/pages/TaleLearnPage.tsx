@@ -18,6 +18,7 @@ const TaleLearnPage = () => {
           response.multipleChoices.length +
           response.essayQuestions.length +
           response.sentenceArrangements.length;
+        response.languageTaleId = taleId;
         setQuizData(response);
       }
     };

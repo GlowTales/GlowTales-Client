@@ -1,12 +1,7 @@
 import { DropdownElement } from "@type/dropdown";
 import { ColorSet } from "@type/selectList";
 
-export const commonLanguageElements: DropdownElement[] = [
-  {
-    imgURL: `/korea.png`,
-    text: "한국어",
-    value: 2,
-  },
+export const baseLanguageElements: DropdownElement[] = [
   {
     imgURL: `/america.png`,
     text: "영어",
@@ -24,12 +19,21 @@ export const commonLanguageElements: DropdownElement[] = [
   },
 ];
 
+export const commonLanguageElements: DropdownElement[] = [
+  {
+    imgURL: `/korea.png`,
+    text: "한국어",
+    value: 2,
+  },
+  ...baseLanguageElements,
+];
+
 export const nationElements: DropdownElement[] = [
   {
     text: "선택해주세요",
     value: null,
   },
-  ...commonLanguageElements,
+  ...baseLanguageElements,
 ];
 
 export const moodElements: DropdownElement[] = [

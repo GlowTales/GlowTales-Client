@@ -27,7 +27,7 @@ const ChoiceQuiz = ({
 
   useEffect(() => {
     if (isQuizGraded && select !== null) {
-      const selectedChoice = data.choiceList.find((_, id) => id + 1 === select);
+      const selectedChoice = shuffledChoices.find((_, id) => id + 1 === select);
       if (selectedChoice && selectedChoice.isCorrect === 0) {
         gradeHandler(index);
       }

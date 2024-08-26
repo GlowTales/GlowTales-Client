@@ -51,3 +51,20 @@ export const getLearnedHistory = async (taleId: number) => {
     throw error;
   }
 };
+
+export const postAnswerCount = async (
+  languageTaleId: number,
+  answerCounts: number
+) => {
+  try {
+    const access = LocalStorage.getItem("access");
+    const authAxios = getAuthAxios(access);
+    const response = await authAxios.put(`${baseURL}/tales/`, {
+      languageTaleId,
+      answerCounts,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

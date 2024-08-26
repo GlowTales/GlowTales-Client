@@ -14,6 +14,8 @@ import {
 } from "@type/learning";
 import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
 import SpeakPractice from "./SpeakPractice";
+import { useEffect } from "react";
+import { postAnswerCount } from "@apis/learning";
 
 interface TaleLearnProps {
   quizData?: QuizData;
@@ -23,7 +25,6 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
   if (!quizData) {
     return;
   }
-
   const totalSteps = quizData.totalSteps;
 
   const {
@@ -37,7 +38,27 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     getCurrentQuizType,
     setCorrectAnswers,
     isQuizGraded,
+    correctAnswers,
   } = useLearning(quizData);
+
+  useEffect(() => {
+    const postResult = async (languageTaleId: number, answerCounts: number) => {
+      try {
+        const response = await postAnswerCount(languageTaleId, answerCounts);
+        console.log(response);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    if (currentStep === totalSteps - 1) {
+      const count = correctAnswers.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+      postResult(quizData.languageTaleId, count);
+    }
+  }, [currentStep]);
 
   const incrementCorrectAnswer = (index: number) => {
     setCorrectAnswers((prevAnswers) => {
@@ -47,7 +68,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     });
   };
 
-  const progressPercentage = ((currentStep+0.3) / (totalSteps - 1)) * 100;
+  const progressPercentage = ((currentStep + 0.3) / (totalSteps - 1)) * 100;
 
   const getCurrentQuiz = () => {
     if (currentStep === 0) {
@@ -90,7 +111,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 
   return (
     <>
-      {currentStep < totalSteps-1 ? (
+      {currentStep < totalSteps - 1 ? (
         <Wrapper>
           <ProgressBar percentage={progressPercentage} />
           {currentStep === 0 && (

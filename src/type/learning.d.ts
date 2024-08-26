@@ -9,6 +9,7 @@ export interface QuizData {
   sentenceArrangements: SentenceArrangements[];
   keyWordsAndSentences: SpeakPracticeProps;
   totalSteps: number;
+  languageTaleId: number;
 }
 export interface EssayQuestions {
   question: string;

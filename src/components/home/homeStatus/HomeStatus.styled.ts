@@ -11,15 +11,15 @@ export const StatusWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem;
+  padding: 1.8rem;
 `;
 
 export const Status = styled.div`
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 3rem;
+  gap: 1rem;
   padding: 1rem;
 `;
 
@@ -36,6 +36,7 @@ export const StatusTitle = styled.div`
 
 export const Img = styled.img`
   width: 50%;
+  object-fit: contain;
 `;
 
 export const StateWrapper = styled.div`

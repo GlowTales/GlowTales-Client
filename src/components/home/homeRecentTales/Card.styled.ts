@@ -2,8 +2,8 @@ import { CardContainerProps } from "@type/card";
 import styled from "styled-components";
 
 export const CardContainer = styled.div<CardContainerProps>`
-  min-width: 220px;
-  width: 33%;
+  min-width: 196px;
+  width: 30%;
   height: ${({ height }) => height};
   background: linear-gradient(
     to right,

@@ -13,7 +13,7 @@ export const getWord = async (count?: number) => {
     const response = await authAxios.get(
       `${baseURL}/tales/word${count ? `?count=${count}` : ""}`
     );
-    return response.data;
+    return response.data.data;
   } catch (error) {
     throw error;
   }
@@ -32,7 +32,7 @@ export const getUnlearnedTales = async (
     const response = await authAxios.get(
       `${baseURL}/tales/unlearned?koreanVersion=${koreanVersion}${count ? `&count=${count}` : ""}`
     );
-    return response.data;
+    return response.data.data;
   } catch (error) {
     throw error;
   }
@@ -41,7 +41,7 @@ export const getUnlearnedTales = async (
 /**
  * 최근 학습한 동화 전체 조회
  */
-export const getStudiedTales = async (
+export const getLearnedTales = async (
   koreanVersion: boolean,
   count?: number
 ) => {
@@ -51,7 +51,7 @@ export const getStudiedTales = async (
     const response = await authAxios.get(
       `${baseURL}/tales/studied?koreanVersion=${koreanVersion}${count ? `&count=${count}` : ""}`
     );
-    return response.data;
+    return response.data.data;
   } catch (error) {
     throw error;
   }

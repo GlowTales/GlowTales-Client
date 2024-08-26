@@ -48,7 +48,6 @@ const MoreRecentTales = () => {
                 <ItemWrapper>
                   {taleGroup.map((tale) => (
                     <Card
-                      key={tale.taleId}
                       taleId={tale.taleId}
                       title={tale.title}
                       createdAt={tale.createdAt}

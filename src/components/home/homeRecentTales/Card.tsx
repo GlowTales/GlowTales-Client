@@ -31,7 +31,14 @@ const Card = (props: CardProps) => {
             <S.CardCreatedAt>{props.createdAt}</S.CardCreatedAt>
           </S.TitleWrapper>
           {props.btnText ? (
-            <button onClick={props.learnFunction}>{props.btnText}</button>
+            props.point ? (
+              <S.BtnWrapper>
+                <div>{props.point}</div>
+                <button onClick={props.learnFunction}>{props.btnText}</button>
+              </S.BtnWrapper>
+            ) : (
+              <button onClick={props.unLearnedFunction}>{props.btnText}</button>
+            )
           ) : (
             <S.CardImg src={imgSrc} />
           )}

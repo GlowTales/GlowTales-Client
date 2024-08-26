@@ -53,11 +53,13 @@ export const getTale = async (lanId: number, taleId: number) => {
   }
 };
 
-export const getRecentTale = async () => {
+export const getRecentTale = async (count?: number) => {
   try {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
-    const response = await authAxios.get(`${baseURL}/tales/recently`);
+    const response = await authAxios.get(
+      `${baseURL}/tales/recently${count ? `&count=${count}` : ""}`
+    );
     console.log(response.data.data.tales);
     return response.data.data.tales;
   } catch (error) {

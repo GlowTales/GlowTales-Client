@@ -47,6 +47,6 @@ export const StateWrapper = styled.div`
 export const State = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
-  margin-top: 1rem;
+  line-height: 3.5rem;
   color: #a3a3a3;
 `;

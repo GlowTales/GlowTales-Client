@@ -61,7 +61,6 @@ export const getRecentTale = async (count?: number) => {
     const response = await authAxios.get(
       `${baseURL}/tales/recently${count ? `&count=${count}` : ""}`
     );
-    console.log(response.data.data.tales);
     return response.data.data.tales;
   } catch (error) {
     throw error;

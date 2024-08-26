@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Margin = styled.div`
+  width: 100%;
+  min-height: 80px;
+`;
+
 export const CommonWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -74,5 +79,14 @@ export const MainWrapper = styled.div`
   align-items: flex-start;
   gap: 3rem;
   padding-top: 3rem;
-  padding-bottom: 140px;
+`;
+
+export const Shelf = styled.img`
+  width: 100%;
+  @media (max-width: 710px) {
+    width: 520px;
+  }
+  @media (max-width: 519px) {
+    display: none;
+  }
 `;

@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./TabBar.styled";
+import { Margin } from "../common.styled";
 
 const TabBar = () => {
   const location = useLocation();
@@ -21,7 +22,7 @@ const TabBar = () => {
 
   return (
     <>
-      <S.Margin />
+      <Margin />
       <S.TabBarContainer>
         {tabs.map((tab) => (
           <S.TabWrapper key={tab.id}>

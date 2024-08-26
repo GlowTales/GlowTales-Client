@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const Learned = () => {
   const navigate = useNavigate();
   const handleMoreClick = () => {
-    navigate("/more", { state: { learned } });
+    navigate("/learning/moreLearned", { state: { learned } });
   };
 
   const [learned, setLearned] = useState<LearnedProps[]>([]);

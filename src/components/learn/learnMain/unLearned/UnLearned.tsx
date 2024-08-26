@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const UnLearned = () => {
   const navigate = useNavigate();
   const handleMoreClick = () => {
-    navigate("/more", { state: { unLearned } });
+    navigate("/learning/moreUnLearned", { state: { unLearned } });
   };
   const [unLearned, setUnLearned] = useState<UnLearnedProps[]>([]);
   const sliceUnLearned = unLearned.slice(0, 3);
@@ -26,6 +26,7 @@ const UnLearned = () => {
 
     fetchUnLearnTales();
   }, []);
+
   return (
     <>
       <CommonTitleWrapper>
@@ -41,7 +42,7 @@ const UnLearned = () => {
             title={unLearned.languageTale.title}
             createdAt={unLearned.createdAt}
             btnText="학습하기✏️"
-            readFunction={() => handleMoreClick()}
+            // readFunction={}
           />
         ))}
       </ItemWrapper>

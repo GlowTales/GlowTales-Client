@@ -14,42 +14,28 @@ const getRandomColorPair = () => {
 };
 
 const Card = (props: CardProps) => {
-  const cards = Array.from({ length: 3 }, (_, index) => {
-    const [backgroundColor1, backgroundColor2, height, imgSrc] =
-      getRandomColorPair();
-    return {
-      key: index,
-      backgroundColor1,
-      backgroundColor2,
-      height,
-      imgSrc,
-    };
-  });
+  const [backgroundColor1, backgroundColor2, height, imgSrc] =
+    getRandomColorPair();
 
   return (
     <>
-      {cards.map(
-        ({ key, backgroundColor1, backgroundColor2, height, imgSrc }) => (
-          <S.CardContainer
-            key={key}
-            height={height}
-            backgroundColor1={backgroundColor1}
-            backgroundColor2={backgroundColor2}
-          >
-            <S.CardWrapper>
-              <S.TitleWrapper>
-                <S.CardTitle>사과나무 위에 사과가 있다</S.CardTitle>
-                <S.CardCreatedAt>2024/08/26</S.CardCreatedAt>
-              </S.TitleWrapper>
-              {props.btnText ? (
-                <button onClick={props.onClick}>{props.btnText}</button>
-              ) : (
-                <S.CardImg src={imgSrc} />
-              )}
-            </S.CardWrapper>
-          </S.CardContainer>
-        )
-      )}
+      <S.CardContainer
+        height={height}
+        backgroundColor1={backgroundColor1}
+        backgroundColor2={backgroundColor2}
+      >
+        <S.CardWrapper>
+          <S.TitleWrapper>
+            <S.CardTitle>사과나무 위에 사과가 있다</S.CardTitle>
+            <S.CardCreatedAt>2024/08/26</S.CardCreatedAt>
+          </S.TitleWrapper>
+          {props.btnText ? (
+            <button onClick={props.onClick}>{props.btnText}</button>
+          ) : (
+            <S.CardImg src={imgSrc} />
+          )}
+        </S.CardWrapper>
+      </S.CardContainer>
     </>
   );
 };

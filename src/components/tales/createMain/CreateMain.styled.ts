@@ -48,6 +48,8 @@ export const OptionContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   @media (max-width: 600px) {
+    width: 100%;
+    flex-direction: column;
     flex-wrap: wrap;
     gap: 1.5rem;
   }

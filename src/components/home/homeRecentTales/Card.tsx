@@ -20,17 +20,18 @@ const Card = (props: CardProps) => {
   return (
     <>
       <S.CardContainer
+        onClick={props.readFunction}
         height={height}
         backgroundColor1={backgroundColor1}
         backgroundColor2={backgroundColor2}
       >
         <S.CardWrapper>
           <S.TitleWrapper>
-            <S.CardTitle>사과나무 위에 사과가 있다</S.CardTitle>
-            <S.CardCreatedAt>2024/08/26</S.CardCreatedAt>
+            <S.CardTitle>{props.title}</S.CardTitle>
+            <S.CardCreatedAt>{props.createdAt}</S.CardCreatedAt>
           </S.TitleWrapper>
           {props.btnText ? (
-            <button onClick={props.onClick}>{props.btnText}</button>
+            <button onClick={props.learnFunction}>{props.btnText}</button>
           ) : (
             <S.CardImg src={imgSrc} />
           )}

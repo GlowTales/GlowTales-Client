@@ -58,6 +58,7 @@ export const getRecentTale = async () => {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
     const response = await authAxios.get(`${baseURL}/tales/recently`);
+    console.log(response.data.data.tales);
     return response.data.data.tales;
   } catch (error) {
     throw error;

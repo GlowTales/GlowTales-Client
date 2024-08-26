@@ -5,6 +5,10 @@ export interface CardContainerProps {
 }
 
 export interface CardProps {
+  taleId: string;
+  title: string;
+  createdAt: string;
   btnText?: string;
-  onClick?: () => void;
+  readFunction?: () => void;
+  learnFunction?: () => void;
 }

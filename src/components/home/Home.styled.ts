@@ -8,5 +8,5 @@ export const Wrapper = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 3rem;
-  padding: 3rem;
+  padding-top: 3rem;
 `;

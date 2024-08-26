@@ -59,7 +59,7 @@ export const postAnswerCount = async (
   try {
     const access = LocalStorage.getItem("access");
     const authAxios = getAuthAxios(access);
-    const response = await authAxios.put(`${baseURL}/tales/`, {
+    const response = await authAxios.put(`${baseURL}/quiz/`, {
       languageTaleId,
       answerCounts,
     });

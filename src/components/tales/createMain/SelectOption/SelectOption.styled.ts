@@ -2,7 +2,7 @@ import { ColorSet } from "@type/selectList";
 import styled from "styled-components";
 
 export const Wrapper = styled.div<{ $colorSet: ColorSet }>`
-  width: 220px;
+  width: 22rem;
   height: 100%;
   max-height: 250px;
   display: flex;
@@ -36,5 +36,5 @@ export const ImgInput = styled.input`
 
 export const ImgLabel = styled.label`
   height: 250px;
-  width: 220px;
+  width: 22rem;
 `;

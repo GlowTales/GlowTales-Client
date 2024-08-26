@@ -33,7 +33,9 @@ export const Wrapper = styled.div`
   align-items: center;
   width: 90%;
   min-height: 88vh;
+  overflow: scroll;
   height: fit-content;
+  padding-bottom: 2rem;
 `;
 
 export const Input = styled.input<{ $isInputValid: string | null }>`

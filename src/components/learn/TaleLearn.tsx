@@ -16,6 +16,7 @@ import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
 import SpeakPractice from "./SpeakPractice";
 import { useEffect } from "react";
 import { postAnswerCount } from "@apis/learning";
+import Header from "@components/common/header/Header";
 
 interface TaleLearnProps {
   quizData?: QuizData;
@@ -111,6 +112,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 
   return (
     <>
+      {currentStep < totalSteps - 1 && <Header text="학습하기" />}
       {currentStep < totalSteps - 1 ? (
         <Wrapper>
           <ProgressBar percentage={progressPercentage} />

@@ -1,11 +1,9 @@
 import { CommonTitle } from "@components/common/common.styled";
 import Card from "./Card";
 import * as S from "./HomeRecentTales.styled";
-import { getToken } from "@apis/login";
 import { getRecentTale } from "@apis/createTales";
 
 const HomeRecentTales = () => {
-  getToken();
   const response = getRecentTale();
   console.log(response);
   const onClick = () => {

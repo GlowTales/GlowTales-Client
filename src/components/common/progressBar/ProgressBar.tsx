@@ -1,6 +1,6 @@
 import * as S from "./ProgressBar.styeld";
 
-interface ProgressBarProps {
+export interface ProgressBarProps {
   percentage: number;
 }
 

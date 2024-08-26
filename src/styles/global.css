@@ -3,7 +3,7 @@
 html {
   -webkit-text-size-adjust​: none;
   width: 100%;
-  height: fit-content;
+  height: 100%;
   margin: 0;
   font-size: 62.5%;
   overflow: scroll;

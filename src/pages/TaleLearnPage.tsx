@@ -12,11 +12,6 @@ const TaleLearnPage = () => {
     const getQuiz = async (taleId: number) => {
       const response = await getQuizAndAnswer(taleId);
       if (response) {
-        // 테스트용
-        response.multipleChoices = []
-        response.essayQuestions = response.essayQuestions.slice(0, 4);
-        response.sentenceArrangements = []
-
         response.totalSteps =
           response.multipleChoices.length +
           response.essayQuestions.length +

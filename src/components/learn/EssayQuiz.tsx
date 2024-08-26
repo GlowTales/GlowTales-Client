@@ -47,13 +47,15 @@ const EssayQuiz = ({
           <>
             <SelectBtn
               text={inputValue}
-              colorName={inputValue === "답" ? "green" : "red"}
-              imgURL={inputValue === "답" ? "/correct.png" : "/wrong.png"}
+              colorName={inputValue === data.answer ? "green" : "red"}
+              imgURL={
+                inputValue === data.answer ? "/correct.png" : "/wrong.png"
+              }
               onClick={() => {}}
             />
-            {inputValue !== "답" && (
+            {inputValue !== data.answer && (
               <SelectBtn
-                text={"답"}
+                text={data.answer}
                 colorName="green"
                 imgURL="/correct.png"
                 onClick={() => {}}

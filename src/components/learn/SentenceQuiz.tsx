@@ -1,15 +1,7 @@
 import { useEffect, useState } from "react";
 import * as S from "./learn.styled";
 import { SentenceQuizProps } from "@type/learning";
-
-const shuffleArray = (array: Array<{ order: number; word: string }>) => {
-  const shuffled = [...array];
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-};
+import { shuffleArray } from "@utils/learnUtil";
 
 const SentenceQuiz = ({
   setter,

@@ -2,6 +2,7 @@ import SelectOptionList from "@components/common/selectOption/SelectOptionList";
 import * as S from "./learn.styled";
 import { useEffect, useState } from "react";
 import { ChoiceQuizProps } from "@type/learning";
+import { shuffleArray } from "@utils/learnUtil";
 
 const ChoiceQuiz = ({
   setter,
@@ -11,10 +12,12 @@ const ChoiceQuiz = ({
   gradeHandler,
 }: ChoiceQuizProps) => {
   const [select, setSelect] = useState<string | number | null>(null);
+  const [shuffledChoices, setShuffledChoices] = useState(data.choiceList);
 
   useEffect(() => {
     setter(null);
     setSelect(null);
+    setShuffledChoices(shuffleArray(data.choiceList));
   }, [data]);
 
   const handleOptionChange = (text: string | number | null) => {
@@ -36,7 +39,7 @@ const ChoiceQuiz = ({
       <S.Title>{data.question}</S.Title>
       <S.SubContainer>
         <SelectOptionList
-          selectList={data.choiceList.map((option, id) => ({
+          selectList={shuffledChoices.map((option, id) => ({
             text: option.sunji,
             value: id + 1,
             state: isQuizGraded

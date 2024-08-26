@@ -55,6 +55,9 @@ export const Input = styled.input<{ $isInputValid: string | null }>`
   font-weight: 700;
   font-family: "NanumSquareRound";
   box-sizing: border-box;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const WordButtonContainer = styled.div`

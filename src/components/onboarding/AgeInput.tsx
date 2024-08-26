@@ -85,4 +85,7 @@ const Input = styled.input`
   left: 0;
   height: 100%;
   background-color: transparent;
+  &:focus {
+    outline: none;
+  }
 `;

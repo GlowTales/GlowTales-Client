@@ -1,76 +1,36 @@
 import { SpeakPracticeProps } from "@type/learning";
 import { speakText } from "@utils/speechUtil";
-import styled from "styled-components";
+import * as S from "./speakPractice.styled";
 
 const SpeakPractice = ({ data }: { data: SpeakPracticeProps }) => {
   return (
-    <Wrapper>
-      <Title>동화의 핵심 단어에요</Title>
+    <S.Wrapper>
+      <S.Title>동화의 핵심 단어에요</S.Title>
       {data.words.map((w, idx) => (
-        <SpeakBox key={idx}>
-          <SpeakBtn
+        <S.SpeakRowBox key={idx}>
+          <S.SpeakBtn
             src="/speaker.png"
             onClick={() => speakText(w.word, data.languageId)}
           />
-          <WordBox>{w.word}</WordBox>
-          <SubText> {w.mean}</SubText>
-        </SpeakBox>
+          <S.WordBox>{w.word}</S.WordBox>
+          <S.MeanText1> {w.mean}</S.MeanText1>
+        </S.SpeakRowBox>
       ))}
-      <Title>동화의 핵심 문장이에요</Title>
+      <S.Title>동화의 핵심 문장이에요</S.Title>
       {data.sentences.map((s, idx) => (
-        <SpeakBox key={idx}>
-          <SpeakBtn
-            src="/speaker.png"
-            onClick={() => speakText(s.sentence, data.languageId)}
-          />
-          <WordBox>{s.sentence}</WordBox>
-          <SubText> {s.mean}</SubText>
-        </SpeakBox>
+        <S.SpeakColumnBox>
+          <S.SpeakRowBox key={idx}>
+            <S.SpeakBtn
+              src="/speaker.png"
+              onClick={() => speakText(s.sentence, data.languageId)}
+            />
+            <S.WordBox>{s.sentence}</S.WordBox>
+          </S.SpeakRowBox>
+          <S.MeanText2> {s.mean}</S.MeanText2>
+        </S.SpeakColumnBox>
       ))}
-    </Wrapper>
+    </S.Wrapper>
   );
 };
 
 export default SpeakPractice;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 2rem;
-  width: 100%;
-  margin-bottom: 2rem;
-`;
-
-const Title = styled.div`
-  font-size: 2.5rem;
-  font-weight: 700;
-`;
-
-const SpeakBox = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.3rem;
-  height: fit-content;
-`;
-
-const SpeakBtn = styled.img`
-  cursor: pointer;
-  width: 2.2rem;
-`;
-
-const WordBox = styled.div`
-  font-size: 2.2rem;
-  font-weight: 700;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  line-height: 3rem;
-`;
-
-const SubText = styled.div`
-  font-size: 2rem;
-  font-weight: 400;
-  color: #808080;
-  margin-left: 4rem;
-`;

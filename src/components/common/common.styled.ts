@@ -5,7 +5,8 @@ export const CommonWrapper = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100%;
+  height: fit-content;
   width: 90%;
 `;
 

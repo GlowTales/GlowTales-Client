@@ -42,7 +42,7 @@ const SelectKeyword = () => {
     const selectKeywords = selectedKeywordIndices.map(
       (index) => keywords[index]
     );
-    navigate("/taleDetail", { state: { selectKeywords } });
+    navigate("/createTale/details", { state: { selectKeywords } });
   };
   return (
     <>

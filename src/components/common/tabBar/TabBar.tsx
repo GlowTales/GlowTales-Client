@@ -13,7 +13,7 @@ const TabBar = () => {
       label: "동화만들기",
       path: "/createTale",
     },
-    { id: 3, icon: "/learnIcon.png", label: "학습하기", path: "/learning" },
+    { id: 3, icon: "/learnIcon.png", label: "학습하기", path: "/learnTale" },
   ];
 
   const selectedTab =

@@ -13,6 +13,7 @@ import CreateTalePage from "@pages/CreateTalePage";
 import TaleLearnPage from "@pages/TaleLearnPage";
 import PreLearningQuestionPage from "@pages/PreLearningQuestionPage";
 import MoreRecentTales from "@components/home/homeRecentTales/MoreRecentTales";
+import PrivateRoute from "@utils/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -24,52 +25,52 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    path: "/onboarding",
-    element: <OnboardingPage />,
-  },
-  {
-    path: "/home",
-    element: <HomePage />,
-  },
-  {
-    path: "/more",
-    element: <MoreRecentTales />,
-  },
-  {
-    path: "/createTale",
-    element: <CreateMainPage />,
-  },
-  {
     path: "/kakao",
     element: <KakaoRedirect />,
   },
   {
-    path: "/learning",
-    element: <LearningPage />,
+    path: "/onboarding",
+    element: <PrivateRoute element={<OnboardingPage />} />,
   },
   {
-    path: "/selectKeyword",
-    element: <SelectKeywordPage />,
+    path: "/home",
+    element: <PrivateRoute element={<HomePage />} />,
   },
   {
-    path: "/taleDetail",
-    element: <TaleDetailPage />,
-  },
-  {
-    path: "/create",
-    element: <CreateTalePage />,
-  },
-  {
-    path: "/readTale",
-    element: <ReadTalePage />,
+    path: "/more",
+    element: <PrivateRoute element={<MoreRecentTales />} />,
   },
   {
     path: "/learnTale",
-    element: <PreLearningQuestionPage />,
+    element: <PrivateRoute element={<LearningPage />} />,
   },
   {
-    path: "/learnTale/:id",
-    element: <TaleLearnPage />,
+    path: "/createTale",
+    element: <PrivateRoute element={<CreateMainPage />} />,
+  },
+  {
+    path: "/createTale/keyword",
+    element: <PrivateRoute element={<SelectKeywordPage />} />,
+  },
+  {
+    path: "/createTale/details",
+    element: <PrivateRoute element={<TaleDetailPage />} />,
+  },
+  {
+    path: "/createTale/generate",
+    element: <PrivateRoute element={<CreateTalePage />} />,
+  },
+  {
+    path: "/readTale",
+    element: <PrivateRoute element={<ReadTalePage />} />,
+  },
+  {
+    path: "/learnTale/pre",
+    element: <PrivateRoute element={<PreLearningQuestionPage />} />,
+  },
+  {
+    path: "/learnTale/quiz",
+    element: <PrivateRoute element={<TaleLearnPage />} />,
   },
 ]);
 

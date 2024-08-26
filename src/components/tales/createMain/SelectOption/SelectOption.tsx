@@ -24,7 +24,7 @@ const SelectOption = ({ text, imgURL, setIsLoading }: SelectOptionProps) => {
       <S.Wrapper
         $colorSet={colorSets.lemonYellow}
         onClick={() => {
-          navigate("/taleDetail");
+          navigate("/createTale/details");
         }}
       >
         <S.ImgBox>

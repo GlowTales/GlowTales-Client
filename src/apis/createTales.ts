@@ -25,6 +25,7 @@ export const createKeyword = async (body: FormData): Promise<string[]> => {
     alert(
       "이미지 화질이 안좋거나, 추출된 키워드가 없습니다. 다시 이미지를 업로드하세요!"
     );
+    window.location.href = "/createTale";
     throw error;
   }
 };

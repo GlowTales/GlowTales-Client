@@ -67,7 +67,7 @@ const PreLearningQuestion = () => {
       if (userInfo?.learningLevel !== null) {
         setSelectedLevel(userInfo.learningLevel);
         if (userInfo.isLearned === "YES") {
-          navigate(`/learnTale/${userInfo.languageTaleId}`);
+          navigate(`/learnTale/quiz`, { state: userInfo.languageTaleId });
         } else {
           setStep(2);
         }
@@ -111,6 +111,7 @@ const PreLearningQuestion = () => {
           <CreateQuiz
             languageTaleId={currLanguageTaleId as number}
             learningLevel={selectedLevel as string}
+            taleId={taleId}
           />
         )}
 

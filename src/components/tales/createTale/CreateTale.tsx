@@ -11,8 +11,13 @@ const CreateTale = () => {
 
   useEffect(() => {
     const createData = async () => {
-      const response = await createTale(requestData);
-      navigate(`/readTale`, { state: { response } });
+      try {
+        const response = await createTale(requestData);
+        navigate(`/readTale`, { state: { response } });
+      } catch (error) {
+        alert("동화 생성 중 에러가 발생했습니다. 다시 시도해주세요.");
+        navigate(`/createTale`);
+      }
     };
     createData();
   }, [requestData]);

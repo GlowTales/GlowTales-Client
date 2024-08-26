@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { getQuizAndAnswer } from "@apis/learning";
 import TaleLearn from "@components/learn/TaleLearn";
 import styled from "styled-components";
 
 const TaleLearnPage = () => {
   const [quizData, setQuizData] = useState();
-  const { id } = useParams();
+  const location = useLocation();
+  const id = location.state || {};
 
   useEffect(() => {
     const getQuiz = async (taleId: number) => {
@@ -22,7 +23,7 @@ const TaleLearnPage = () => {
       }
     };
 
-    if (id) getQuiz(Number(id));
+    if (id) getQuiz(id);
   }, [id]);
 
   return (

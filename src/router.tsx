@@ -13,6 +13,7 @@ import CreateTalePage from "@pages/CreateTalePage";
 import TaleLearnPage from "@pages/TaleLearnPage";
 import PreLearningQuestionPage from "@pages/PreLearningQuestionPage";
 import MoreRecentTales from "@components/home/homeRecentTales/MoreRecentTales";
+import PrivateRoute from "@utils/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -29,47 +30,47 @@ const router = createBrowserRouter([
   },
   {
     path: "/onboarding",
-    element: <OnboardingPage />,
+    element: <PrivateRoute element={<OnboardingPage />} />,
   },
   {
     path: "/home",
-    element: <HomePage />,
+    element: <PrivateRoute element={<HomePage />} />,
   },
   {
     path: "/more",
-    element: <MoreRecentTales />,
+    element: <PrivateRoute element={<MoreRecentTales />} />,
   },
   {
     path: "/learnTale",
-    element: <LearningPage />,
+    element: <PrivateRoute element={<LearningPage />} />,
   },
   {
     path: "/createTale",
-    element: <CreateMainPage />,
+    element: <PrivateRoute element={<CreateMainPage />} />,
   },
   {
     path: "/createTale/keyword",
-    element: <SelectKeywordPage />,
+    element: <PrivateRoute element={<SelectKeywordPage />} />,
   },
   {
     path: "/createTale/details",
-    element: <TaleDetailPage />,
+    element: <PrivateRoute element={<TaleDetailPage />} />,
   },
   {
     path: "/createTale/generate",
-    element: <CreateTalePage />,
+    element: <PrivateRoute element={<CreateTalePage />} />,
   },
   {
     path: "/readTale",
-    element: <ReadTalePage />,
+    element: <PrivateRoute element={<ReadTalePage />} />,
   },
   {
     path: "/learnTale/pre",
-    element: <PreLearningQuestionPage />,
+    element: <PrivateRoute element={<PreLearningQuestionPage />} />,
   },
   {
     path: "/learnTale/quiz",
-    element: <TaleLearnPage />,
+    element: <PrivateRoute element={<TaleLearnPage />} />,
   },
 ]);
 

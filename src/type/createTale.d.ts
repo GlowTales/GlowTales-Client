@@ -11,9 +11,3 @@ export interface ResponseTaleData {
   title: string;
   story: string;
 }
-
-export interface CardProps {
-  height: string;
-  backgroundColor1: string;
-  backgroundColor2: string;
-}

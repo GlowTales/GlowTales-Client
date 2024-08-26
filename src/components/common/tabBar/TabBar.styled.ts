@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Margin = styled.div`
   width: 100%;
-  min-height: 80px;
+  min-height: 120px;
 `;
 
 export const TabBarContainer = styled.div`

@@ -8,16 +8,6 @@ export const Wrapper = styled.div`
   padding-bottom: 80px;
 `;
 
-export const Shelf = styled.img`
-  width: 100%;
-  @media (max-width: 710px) {
-    width: 520px;
-  }
-  @media (max-width: 519px) {
-    display: none;
-  }
-`;
-
 export const MoreWrapper = styled.div`
   width: 90%;
   display: flex;

@@ -76,3 +76,13 @@ export const MainWrapper = styled.div`
   padding-top: 3rem;
   padding-bottom: 140px;
 `;
+
+export const Shelf = styled.img`
+  width: 100%;
+  @media (max-width: 710px) {
+    width: 520px;
+  }
+  @media (max-width: 519px) {
+    display: none;
+  }
+`;

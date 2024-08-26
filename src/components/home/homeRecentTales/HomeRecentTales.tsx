@@ -2,6 +2,7 @@ import {
   CommonTitle,
   CommonTitleWrapper,
   ItemWrapper,
+  Shelf,
 } from "@components/common/common.styled";
 import Card from "./Card";
 import * as S from "./HomeRecentTales.styled";
@@ -60,7 +61,7 @@ const HomeRecentTales = () => {
                 readFunction={() => goRead(tale)}
               />
               {(index + 1) % 2 === 0 && index !== sliceTales.length - 1 && (
-                <S.Shelf src="shelf.png" key={`shelf-${index}`} />
+                <Shelf src="shelf.png" key={`shelf-${index}`} />
               )}
             </>
           ))}
@@ -78,7 +79,7 @@ const HomeRecentTales = () => {
                 />
               ))}
             </ItemWrapper>
-            <S.Shelf src="shelf.png" />
+            <Shelf src="shelf.png" />
           </>
         ))
       )}

@@ -4,7 +4,7 @@ import * as S from "./HomeRecentTales.styled";
 import Card from "./Card";
 import { CardProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
-import { ItemWrapper } from "@components/common/common.styled";
+import { ItemWrapper, Shelf } from "@components/common/common.styled";
 
 const MoreRecentTales = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });
@@ -21,6 +21,7 @@ const MoreRecentTales = () => {
   const goRead = (response: CardProps) => {
     navigate(`/readTale`, { state: { response } });
   };
+
   return (
     <>
       <Header text="최근 생성한 동화" />
@@ -37,7 +38,7 @@ const MoreRecentTales = () => {
                     readFunction={() => goRead(tale)}
                   />
                   {(index + 1) % 2 === 0 && index !== allTales.length - 1 && (
-                    <S.Shelf src="shelf.png" key={`shelf-${index}`} />
+                    <Shelf src="shelf.png" key={`shelf-${index}`} />
                   )}
                 </>
               ))}
@@ -55,7 +56,7 @@ const MoreRecentTales = () => {
                     />
                   ))}
                 </ItemWrapper>
-                <S.Shelf src="shelf.png" />
+                <Shelf src="shelf.png" />
               </>
             ))
           )}

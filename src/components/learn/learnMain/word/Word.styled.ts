@@ -15,19 +15,18 @@ export const GridWrapper = styled.div`
   }
 `;
 
-export const WordCard = styled.div`
-  min-width: 220px;
-  width: 100%;
-  height: 56px;
-
+export const WordCard = styled.div<{ $isSelected: boolean }>`
+  height: 55px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
-
-  border-radius: 8px;
-  border: 1px solid #dcdcdc;
-  background-color: #f4f4f4;
+  padding: 1rem;
+  border-radius: 10px;
+  background-color: ${({ $isSelected }) =>
+    $isSelected ? "#fff7cc" : "#f4f4f4"};
+  border: 1px solid
+    ${({ $isSelected }) => ($isSelected ? "#ffc300" : "#dcdcdc")};
+  cursor: pointer;
 `;

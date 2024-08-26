@@ -13,6 +13,9 @@ import CreateTalePage from "@pages/CreateTalePage";
 import TaleLearnPage from "@pages/TaleLearnPage";
 import PreLearningQuestionPage from "@pages/PreLearningQuestionPage";
 import MoreRecentTales from "@components/home/homeRecentTales/MoreRecentTales";
+import LearnedMore from "@components/learn/learnMain/learned/LearnedMore";
+import UnLearnedMore from "@components/learn/learnMain/unLearned/UnLearnedMore";
+import WordMore from "@components/learn/learnMain/word/WordMore";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +49,18 @@ const router = createBrowserRouter([
   {
     path: "/learning",
     element: <LearningPage />,
+  },
+  {
+    path: "/learning/moreWord",
+    element: <WordMore />,
+  },
+  {
+    path: "/learning/moreUnLearned",
+    element: <UnLearnedMore />,
+  },
+  {
+    path: "/learning/moreLearned",
+    element: <LearnedMore />,
   },
   {
     path: "/selectKeyword",

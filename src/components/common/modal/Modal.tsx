@@ -9,7 +9,7 @@ const Modal = ({ message, onConfirm, onCancel }: ModalProps) => {
       <S.ModalWrapper>
         <S.TextWrapper>
           <S.ModalTitle>{message}</S.ModalTitle>
-          <S.ModalExplain>나중에 다시 만들 수 있어요</S.ModalExplain>
+          <S.ModalExplain>나중에 다시 할 수 있어요.</S.ModalExplain>
         </S.TextWrapper>
         <S.ButtonWrapper>
           <S.ButtonStyle onClick={onCancel} isRightButton={false}>

@@ -11,9 +11,6 @@ export interface CardProps {
   createdAt: string;
   btnText?: string;
   firstQuizCount?: number;
-  readFunction?: () => void;
-  unLearnedFunction?: () => void;
-  learnFunction?: () => void;
 }
 
 export interface WordProps {

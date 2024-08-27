@@ -59,7 +59,6 @@ GlowTales-Client
  ┣ public
  ┣ src
  ┃ ┣ apis
- ┃ ┣ assets
  ┃ ┣ components
  ┃ ┃ ┣ common
  ┃ ┃ ┣ learn

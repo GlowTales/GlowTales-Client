@@ -60,7 +60,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     const postResult = async (languageTaleId: number, answerCounts: number) => {
       try {
         const response = await postAnswerCount(languageTaleId, answerCounts);
-        console.log(response);
+        return response.data
       } catch (error) {
         console.error("Error fetching data:", error);
       }

@@ -12,6 +12,8 @@ import useSelectLevel from "@hooks/useSelectLevel";
 import SelectOptionList from "@common/selectOption/SelectOptionList";
 import styled from "styled-components";
 import CreateQuiz from "./CreateQuiz";
+import useNavigationWarning from "@hooks/useNavigationWarning";
+import Modal from "@components/common/modal/Modal";
 
 const PreLearningQuestion = () => {
   const location = useLocation();
@@ -26,6 +28,9 @@ const PreLearningQuestion = () => {
 
   const language = nationElements.find((e) => e.value === selectLanguage);
   const [currLanguageTaleId, setCurrLanguageTaleId] = useState<number>();
+
+  const { showModal, confirmNavigation, cancelNavigation } =
+    useNavigationWarning(() => navigate("/learnTale"));
 
   useEffect(() => {
     const fetchData = async () => {
@@ -127,6 +132,13 @@ const PreLearningQuestion = () => {
           />
         )}
       </Wrapper>
+      {showModal && (
+        <Modal
+          message="학습을 종료하시겠어요?"
+          onConfirm={confirmNavigation}
+          onCancel={cancelNavigation}
+        />
+      )}
     </>
   );
 };

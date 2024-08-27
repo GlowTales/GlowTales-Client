@@ -124,7 +124,7 @@ const LogoContainer = styled.div`
   width: 5%;
   height: 5%;
   overflow: hidden;
-  z-index: 5;
+  z-index: 3;
 `;
 
 const LogoImage = styled.img`

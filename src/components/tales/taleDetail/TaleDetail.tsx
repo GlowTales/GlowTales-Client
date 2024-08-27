@@ -92,7 +92,9 @@ const TaleDetail = () => {
         </S.SectionWrapper>
         <S.SectionWrapper>
           <S.Title>등장인물</S.Title>
-          <S.SemiTitle>동화의 등장인물을 설정해주세요</S.SemiTitle>
+          <S.SemiTitle>
+            동화의 등장인물을 설정해주세요 {"(최대 3개)"}
+          </S.SemiTitle>
           <Dropdown
             selectList={availableCharacters}
             setter={setCharacters}

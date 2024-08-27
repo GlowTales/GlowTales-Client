@@ -32,8 +32,8 @@ const UnLearnedMore = () => {
                     taleId={unLearned.tale_id}
                     title={unLearned.languageTale.title}
                     createdAt={unLearned.createdAt}
+                    languageTaleId={unLearned.languageTale.id}
                     btnText="학습하기✏️"
-                    // readFunction={() => goRead(tale)}
                   />
                   {(index + 1) % 2 === 0 &&
                     index !== unLearnedSlice.length - 1 && (
@@ -43,16 +43,16 @@ const UnLearnedMore = () => {
               ))}
             </ItemWrapper>
           ) : (
-            chunkedTales.map((learnedGroup) => (
+            chunkedTales.map((unLearnedGroup) => (
               <>
                 <ItemWrapper>
-                  {learnedGroup.map((learned: UnLearnedProps) => (
+                  {unLearnedGroup.map((unLearned: UnLearnedProps) => (
                     <Card
-                      taleId={learned.tale_id}
-                      title={learned.languageTale.title}
-                      createdAt={learned.createdAt}
+                      taleId={unLearned.tale_id}
+                      title={unLearned.languageTale.title}
+                      createdAt={unLearned.createdAt}
+                      languageTaleId={unLearned.languageTale.id}
                       btnText="학습하기✏️"
-                      //   readFunction={}
                     />
                   ))}
                 </ItemWrapper>

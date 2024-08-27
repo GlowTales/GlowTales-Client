@@ -56,6 +56,7 @@ const HomeRecentTales = () => {
                 taleId={tale.taleId}
                 title={tale.title}
                 createdAt={tale.createdAt}
+                languageTaleId={tale.taleId}
                 readFunction={() => goRead(tale)}
               />
               {(index + 1) % 2 === 0 && index !== sliceTales.length - 1 && (
@@ -73,7 +74,7 @@ const HomeRecentTales = () => {
                   taleId={tale.taleId}
                   title={tale.title}
                   createdAt={tale.createdAt}
-                  readFunction={() => goRead(tale)}
+                  languageTaleId={tale.taleId}
                 />
               ))}
             </ItemWrapper>

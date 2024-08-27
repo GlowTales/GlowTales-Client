@@ -41,9 +41,9 @@ const Learned = () => {
             taleId={learned.tale_id}
             title={learned.languageTale.title}
             createdAt={learned.createdAt}
+            languageTaleId={learned.languageTale.id}
             point={"4/10"}
             btnText="복습하기"
-            // readFunction={() => handleMoreClick()}
           />
         ))}
       </ItemWrapper>

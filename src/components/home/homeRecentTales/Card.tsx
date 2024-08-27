@@ -1,5 +1,6 @@
 import { CardProps } from "@type/card";
 import * as S from "./Card.styled";
+import { useNavigate } from "react-router-dom";
 
 const pairs = [
   ["#FFC300", "#FFE249", "250px", "/taleGraphic1.png"],
@@ -17,10 +18,29 @@ const Card = (props: CardProps) => {
   const [backgroundColor1, backgroundColor2, height, imgSrc] =
     getRandomColorPair();
 
+  const navigate = useNavigate();
+
+  const goTaleRead = (taleId: number) => {
+    navigate(`/readTale`, { state: { response: { taleId: taleId } } });
+  };
+
+  const goTaleLearn = (taleId: number) => {
+    console.log("이동");
+    navigate(`/learnTale/pre`, { state: { taleId } });
+  };
+
+  const goTaleQuiz = (languageTaleId: number) => {
+    console.log("이동");
+    console.log(languageTaleId);
+    navigate(`/learnTale/quiz`, { state: languageTaleId });
+  };
+
   return (
     <>
       <S.CardContainer
-        onClick={props.readFunction}
+        onClick={() => {
+          goTaleRead(props.taleId);
+        }}
         height={height}
         backgroundColor1={backgroundColor1}
         backgroundColor2={backgroundColor2}
@@ -34,10 +54,24 @@ const Card = (props: CardProps) => {
             props.point ? (
               <S.BtnWrapper>
                 <div>{props.point}</div>
-                <button onClick={props.learnFunction}>{props.btnText}</button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goTaleQuiz(props.languageTaleId);
+                  }}
+                >
+                  {props.btnText}
+                </button>
               </S.BtnWrapper>
             ) : (
-              <button onClick={props.unLearnedFunction}>{props.btnText}</button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goTaleLearn(props.languageTaleId);
+                }}
+              >
+                {props.btnText}
+              </button>
             )
           ) : (
             <S.CardImg src={imgSrc} />

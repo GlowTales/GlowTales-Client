@@ -10,10 +10,10 @@ import { ResponseTaleData } from "@type/createTale";
 import { speakText, toggleSpeech } from "@utils/speechUtil";
 
 const ReadTale = () => {
+
   const location = useLocation();
   const { response } = location.state || {};
   const navigate = useNavigate();
-
   const [language, setLanguage] = useState<string | number | null>(null);
   const [data, setData] = useState<ResponseTaleData>();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);

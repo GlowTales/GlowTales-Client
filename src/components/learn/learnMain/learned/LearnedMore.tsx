@@ -30,11 +30,11 @@ const LearnedMore = () => {
                 <>
                   <Card
                     taleId={learned.tale_id}
+                    languageTaleId={learned.languageTale.id}
                     title={learned.languageTale.title}
                     createdAt={learned.createdAt}
                     point={"4/10"}
                     btnText="복습하기"
-                    // readFunction={() => goRead(tale)}
                   />
                   {(index + 1) % 2 === 0 &&
                     index !== learnedSlice.length - 1 && (
@@ -50,11 +50,11 @@ const LearnedMore = () => {
                   {learnedGroup.map((learned: LearnedProps) => (
                     <Card
                       taleId={learned.tale_id}
+                      languageTaleId={learned.languageTale.id}
                       title={learned.languageTale.title}
                       createdAt={learned.createdAt}
                       point={"4/10"}
                       btnText="복습하기"
-                      //   readFunction={() => goRead(learned)}
                     />
                   ))}
                 </ItemWrapper>

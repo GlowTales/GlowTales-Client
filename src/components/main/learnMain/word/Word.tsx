@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Word = () => {
   const navigate = useNavigate();
   const handleMoreClick = () => {
-    navigate("/learning/moreWord", { state: { word } });
+    navigate("/learnTale/moreWord", { state: { word } });
   };
   const [word, setWord] = useState<WordProps[]>([]);
   const sliceWord = word.slice(0, 6);

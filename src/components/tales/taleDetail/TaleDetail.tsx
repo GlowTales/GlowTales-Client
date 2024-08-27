@@ -10,9 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 const TaleDetail = () => {
   const {
-    mood,
-    characters,
-    contents,
     selectedCharText,
     availableCharacters,
     setMood,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { charElements } from "@utils/defaultData";
+import { charElements, charNextElements } from "@utils/defaultData";
 
 type Character = string | number | null;
 
@@ -7,6 +7,7 @@ const useCharacters = () => {
   const [characters, setCharacters] = useState<Character>(null);
   const [selectedCharText, setSelectedCharText] = useState<string[]>([]);
   const [selectedCharValue, setSelectedCharValue] = useState<string[]>([]);
+  const [useNextElements, setUseNextElements] = useState<boolean>(false); // 상태 변수 추가
 
   useEffect(() => {
     if (characters !== null) {
@@ -34,15 +35,16 @@ const useCharacters = () => {
       ]);
 
       setCharacters(null);
+
+      if (!useNextElements) {
+        setUseNextElements(true);
+      }
     }
   }, [characters]);
 
-  const availableCharacters = charElements.filter((element) => {
-    // "자동" 옵션을 나타내는 값이 있는 경우, 선택된 캐릭터가 하나도 없을 때만 표시
-    const isAutoOption = element.value === null; // 예를 들어 "auto"가 자동을 나타낸다고 가정
-    const isSelected = selectedCharValue.includes(element.value as string);
-    return (!isAutoOption || selectedCharText.length === 0) && !isSelected;
-  });
+  const availableCharacters = (
+    useNextElements ? charNextElements : charElements
+  ).filter((element) => !selectedCharValue.includes(element.value as string));
 
   return {
     characters,

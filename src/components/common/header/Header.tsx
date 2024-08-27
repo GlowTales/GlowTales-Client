@@ -1,10 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import * as S from "./Header.styled";
 import { HeaderProps } from "@type/header";
 
 const Header = ({ text, backBtn }: HeaderProps) => {
-  const navigate = useNavigate();
-
   return (
     <S.Wrapper>
       <S.Container>

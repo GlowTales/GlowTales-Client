@@ -4,15 +4,22 @@ import NextBtn from "@components/common/NextBtn";
 import { useEffect, useState } from "react";
 import { CommonTitle } from "@components/common/common.styled";
 import { useLocation, useNavigate } from "react-router-dom";
-import useNavigationWarning from "@hooks/useNavigationWarning";
 import Modal from "@components/common/modal/Modal";
 
 const SelectKeyword = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const { showModal, confirmNavigation, cancelNavigation } =
-    useNavigationWarning(() => navigate("/createTale"));
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmNavigation = () => {
+    setShowModal(false);
+    navigate("/createTale");
+  };
+
+  const cancelNavigation = () => {
+    setShowModal(false);
+  };
 
   const { keywords } = location.state || {};
 
@@ -49,9 +56,10 @@ const SelectKeyword = () => {
     );
     navigate("/createTale/details", { state: { selectKeywords } });
   };
+
   return (
     <>
-      <Header text="동화 만들기" />
+      <Header text="동화 만들기" backBtn={() => setShowModal(true)} />
       <S.Wrapper>
         <S.TitleWrapper>
           <CommonTitle>사진에서 단어를 추출했어요</CommonTitle>

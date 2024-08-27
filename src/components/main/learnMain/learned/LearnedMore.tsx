@@ -7,13 +7,16 @@ import {
 import Header from "@components/common/header/Header";
 import { LearnedProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const LearnedMore = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });
 
   const location = useLocation();
   const { learned } = location.state || null;
+
+  const navigate = useNavigate();
+
   const chunkedTales: LearnedProps[][] = [];
   const learnedSlice = learned.slice(0, 9);
   for (let i = 0; i < learnedSlice.length; i += 3) {
@@ -21,7 +24,7 @@ const LearnedMore = () => {
   }
   return (
     <>
-      <Header text="최근 학습한 동화" />
+      <Header text="최근 학습한 동화" backBtn={() => navigate(-1)} />
       <MainWrapper>
         <ItemWrapper>
           {mediaQuery ? (

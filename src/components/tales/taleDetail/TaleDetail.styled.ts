@@ -1,4 +1,3 @@
-import { ColorSet } from "@type/selectList";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -37,10 +36,11 @@ export const CharacterWrapper = styled.div`
   gap: 1rem;
 `;
 
-export const Characters = styled.div<{ $colorSet: ColorSet }>`
-  background-color: ${({ $colorSet }) => $colorSet.background};
-  color: ${({ $colorSet }) => $colorSet.color};
-  border: 1px solid ${({ $colorSet }) => $colorSet.border};
-  border-radius: 5px;
-  padding: 1rem;
+export const Characters = styled.div`
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #f7f7f7;
+  border: 1px solid #d8d8d8;
+  color: #777777;
+  font-weight: 700;
 `;

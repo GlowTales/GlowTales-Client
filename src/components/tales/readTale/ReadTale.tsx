@@ -8,7 +8,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { commonLanguageElements } from "@utils/defaultData";
 import { ResponseTaleData } from "@type/createTale";
 import { speakText, toggleSpeech } from "@utils/speechUtil";
-import useNavigationWarning from "@hooks/useNavigationWarning";
 import Modal from "@components/common/modal/Modal";
 
 const ReadTale = () => {
@@ -20,8 +19,16 @@ const ReadTale = () => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
 
-  const { showModal, confirmNavigation, cancelNavigation } =
-    useNavigationWarning(() => navigate("/home"));
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmNavigation = () => {
+    setShowModal(false);
+    navigate("/home");
+  };
+
+  const cancelNavigation = () => {
+    setShowModal(false);
+  };
 
   const selectSentence = (index: number) => {
     if (selectedIndex === index) {
@@ -61,7 +68,7 @@ const ReadTale = () => {
 
   return (
     <>
-      <Header text="동화 읽기" />
+      <Header text="동화 읽기" backBtn={() => setShowModal(true)} />
       <S.Wrapper>
         {data && (
           <>

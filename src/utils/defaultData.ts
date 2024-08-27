@@ -89,6 +89,33 @@ export const charElements: DropdownElement[] = [
   },
 ];
 
+export const charNextElements: DropdownElement[] = [
+  {
+    text: " ",
+    value: null,
+  },
+  {
+    text: "로봇",
+    value: "robot",
+  },
+  {
+    text: "인형",
+    value: "doll",
+  },
+  {
+    text: "영웅",
+    value: "hero",
+  },
+  {
+    text: "악마",
+    value: "devil",
+  },
+  {
+    text: "마법사",
+    value: "wizard",
+  },
+];
+
 export const contentElements: DropdownElement[] = [
   {
     text: "자동",

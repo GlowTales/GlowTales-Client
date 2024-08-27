@@ -12,12 +12,11 @@ import {
 } from "@type/learning";
 import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
 import SpeakPractice from "./quiz/SpeakPractice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { postAnswerCount } from "@apis/learning";
 import Header from "@components/common/header/Header";
 import styled from "styled-components";
 import EssayQuiz from "./quiz/EssayQuiz";
-import useNavigationWarning from "@hooks/useNavigationWarning";
 import { useNavigate } from "react-router-dom";
 import Modal from "@components/common/modal/Modal";
 
@@ -46,8 +45,16 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
   } = useLearning(quizData);
   const navigate = useNavigate();
 
-  const { showModal, confirmNavigation, cancelNavigation } =
-    useNavigationWarning(() => navigate("/learnTale"));
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmNavigation = () => {
+    setShowModal(false);
+    navigate("/learnTale");
+  };
+
+  const cancelNavigation = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const postResult = async (languageTaleId: number, answerCounts: number) => {
@@ -119,7 +126,9 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 
   return (
     <>
-      {currentStep < totalSteps - 1 && <Header text="학습하기" />}
+      {currentStep < totalSteps - 1 && (
+        <Header text="학습하기" backBtn={() => setShowModal(true)} />
+      )}
       {currentStep < totalSteps - 1 ? (
         <>
           <Wrapper>
@@ -181,8 +190,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
       ) : (
         <FinishScreen
           imgURL="/learningFinish.png"
-          title="학습이 완료되었습니다
-          잘했어요!"
+          title="학습이 완료되었습니다. 잘했어요!"
           sub="모든 과정을 마무리했어요"
         />
       )}
@@ -199,7 +207,6 @@ const Wrapper = styled.div`
   align-items: center;
   width: 90%;
   min-height: 88vh;
-  overflow: scroll;
   height: fit-content;
   padding-bottom: 2rem;
 `;

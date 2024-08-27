@@ -12,7 +12,6 @@ import useSelectLevel from "@hooks/useSelectLevel";
 import SelectOptionList from "@common/selectOption/SelectOptionList";
 import styled from "styled-components";
 import CreateQuiz from "./CreateQuiz";
-import useNavigationWarning from "@hooks/useNavigationWarning";
 import Modal from "@components/common/modal/Modal";
 
 const PreLearningQuestion = () => {
@@ -25,12 +24,11 @@ const PreLearningQuestion = () => {
   const [step, setStep] = useState(0);
 
   const [userLearnedInfo, setUserLearnedInfo] = useState<any[]>();
-
-  const language = nationElements.find((e) => e.value === selectLanguage);
   const [currLanguageTaleId, setCurrLanguageTaleId] = useState<number>();
 
-  const { showModal, confirmNavigation, cancelNavigation } =
-    useNavigationWarning(() => navigate("/learnTale"));
+  const [showModal, setShowModal] = useState(false);
+
+  const language = nationElements.find((e) => e.value === selectLanguage);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -84,9 +82,18 @@ const PreLearningQuestion = () => {
     }
   };
 
+  const confirmNavigation = () => {
+    setShowModal(false);
+    navigate("/learnTale");
+  };
+
+  const cancelNavigation = () => {
+    setShowModal(false);
+  };
+
   return (
     <>
-      <Header text="학습하기" />
+      <Header text="학습하기" backBtn={() => setShowModal(true)} />
       <Wrapper>
         {step < 2 && <ProgressBar percentage={step === 0 ? 40 : 80} />}
         {step === 0 && (
@@ -152,7 +159,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   width: 90%;
   min-height: 88vh;
-  overflow: scroll;
   height: fit-content;
   padding-bottom: 2rem;
 `;

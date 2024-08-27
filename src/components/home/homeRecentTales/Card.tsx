@@ -20,26 +20,23 @@ const Card = (props: CardProps) => {
 
   const navigate = useNavigate();
 
-  const goTaleRead = (taleId: number) => {
-    navigate(`/readTale`, { state: { response: { taleId: taleId } } });
+  const goTaleRead = () => {
+    navigate(`/readTale`, { state: { response: { taleId: props.taleId } } });
   };
 
-  const goTaleLearn = (taleId: number) => {
-    console.log("이동");
-    navigate(`/learnTale/pre`, { state: { taleId } });
+  const goTaleLearn = () => {
+    navigate(`/learnTale/pre`, { state: { taleId: props.taleId } });
   };
 
-  const goTaleQuiz = (languageTaleId: number) => {
-    console.log("이동");
-    console.log(languageTaleId);
-    navigate(`/learnTale/quiz`, { state: languageTaleId });
+  const goTaleQuiz = () => {
+    navigate(`/learnTale/quiz`, { state: props.languageTaleId });
   };
 
   return (
     <>
       <S.CardContainer
         onClick={() => {
-          goTaleRead(props.taleId);
+          goTaleRead();
         }}
         height={height}
         backgroundColor1={backgroundColor1}
@@ -57,7 +54,7 @@ const Card = (props: CardProps) => {
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
-                    goTaleQuiz(props.languageTaleId);
+                    goTaleQuiz();
                   }}
                 >
                   {props.btnText}
@@ -67,7 +64,7 @@ const Card = (props: CardProps) => {
               <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  goTaleLearn(props.languageTaleId);
+                  goTaleLearn();
                 }}
               >
                 {props.btnText}

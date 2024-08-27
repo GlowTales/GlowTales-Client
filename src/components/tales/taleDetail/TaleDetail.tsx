@@ -11,6 +11,8 @@ import {
 } from "@utils/defaultData";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getRandomElement } from "./getRandomElement";
+import useNavigationWarning from "@hooks/useNavigationWarning";
+import Modal from "@components/common/modal/Modal";
 
 const TaleDetail = () => {
   const location = useLocation();
@@ -23,6 +25,9 @@ const TaleDetail = () => {
   const [contents, setContents] = useState<string | number | null>(null);
   const [selectedCharText, setSelectedCharText] = useState<string[]>([]);
   const [selectedCharValue, setSelectedCharValue] = useState<string[]>([]);
+
+  const { showModal, confirmNavigation, cancelNavigation } =
+    useNavigationWarning(() => navigate("/createTale"));
 
   const availableCharacters = useMemo(() => {
     return charElements.filter(
@@ -118,6 +123,13 @@ const TaleDetail = () => {
           handleBtn={handleBtn}
         />
       </S.Wrapper>
+      {showModal && (
+        <Modal
+          message="동화만들기를 종료하시겠어요?"
+          onConfirm={confirmNavigation}
+          onCancel={cancelNavigation}
+        />
+      )}
     </>
   );
 };

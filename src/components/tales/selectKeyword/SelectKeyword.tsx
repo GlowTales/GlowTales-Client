@@ -4,10 +4,15 @@ import NextBtn from "@components/common/NextBtn";
 import { useEffect, useState } from "react";
 import { CommonTitle } from "@components/common/common.styled";
 import { useLocation, useNavigate } from "react-router-dom";
+import useNavigationWarning from "@hooks/useNavigationWarning";
+import Modal from "@components/common/modal/Modal";
 
 const SelectKeyword = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const { showModal, confirmNavigation, cancelNavigation } =
+    useNavigationWarning(() => navigate("/createTale"));
 
   const { keywords } = location.state || {};
 
@@ -71,6 +76,13 @@ const SelectKeyword = () => {
           handleBtn={handleNextBtn}
         />
       </S.Wrapper>
+      {showModal && (
+        <Modal
+          message="동화만들기를 종료하시겠어요?"
+          onConfirm={confirmNavigation}
+          onCancel={cancelNavigation}
+        />
+      )}
     </>
   );
 };

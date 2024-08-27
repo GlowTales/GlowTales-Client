@@ -10,7 +10,7 @@ export interface CardProps {
   languageTaleId: number;
   createdAt: string;
   btnText?: string;
-  point?: string;
+  firstQuizCount?: number;
   readFunction?: () => void;
   unLearnedFunction?: () => void;
   learnFunction?: () => void;
@@ -34,10 +34,11 @@ export interface UnLearnedProps {
 export interface LearnedProps {
   tale_id: number;
   createdAt: string;
-  point?: string;
   languageTale: {
     title: string;
     id: number;
   };
+  languageId: number;
+  koreanTitle: string;
   firstQuizCount: number;
 }

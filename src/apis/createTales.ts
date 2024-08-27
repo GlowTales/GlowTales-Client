@@ -1,7 +1,6 @@
 import LocalStorage from "@utils/localStorage";
 import { getAuthAxios } from "./authAxois";
 import { CreateTaleData } from "@type/createTale";
-// import { Server } from "./settings";
 
 const baseURL = import.meta.env.VITE_PUBLIC_SERVER_URL;
 

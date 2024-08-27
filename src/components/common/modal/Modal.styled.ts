@@ -14,7 +14,7 @@ export const ModalSection = styled.div<{ height: number }>`
   left: 50%;
   transform: translate(-50%, 0%);
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
+  z-index: 5;
   @media (max-width: 899px) {
     width: 100%;
   }
@@ -31,7 +31,7 @@ export const ModalWrapper = styled.div`
   font-weight: bold;
   background-color: #ffffff;
   border-radius: 14px;
-  z-index: 2;
+  z-index: 6;
 `;
 
 export const TextWrapper = styled.div`

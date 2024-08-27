@@ -6,6 +6,13 @@ import { fn } from "@storybook/test";
 const meta: Meta<SelectListProps> = {
   title: "Components/SelectOptionList",
   component: SelectOptionList,
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%',display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: "fullscreen",
     docs: {

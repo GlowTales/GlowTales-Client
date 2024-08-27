@@ -6,6 +6,13 @@ import { Meta, StoryObj } from "@storybook/react";
 const meta: Meta<ProgressBarProps> = {
   title: "Components/ProgressBar",
   component: ProgressBar,
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%',display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: "fullscreen",
     docs: {

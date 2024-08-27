@@ -7,6 +7,13 @@ import { nationElements } from "@utils/defaultData";
 const meta: Meta<DropdownProps> = {
   title: "Components/Dropdown",
   component: Dropdown,
+  decorators: [
+    (Story) => (
+      <div style={{ width: '100%',display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Story />
+      </div>
+    ),
+  ],
   parameters: {
     layout: "fullscreen",
     docs: {
@@ -58,7 +65,7 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const SelecOption: Story = {
+export const SelectOption: Story = {
   args: {
     selectList: [
       { text: "옵션1", value: 1 },
@@ -66,7 +73,7 @@ export const SelecOption: Story = {
     ],
   },
 };
-export const SelecOptionWithImg: Story = {
+export const SelectOptionWithImg: Story = {
   args: {
     selectList: nationElements,
   },

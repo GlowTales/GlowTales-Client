@@ -2,19 +2,19 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 95%;
-  /* height: fit-content; */
+  height: 98%;
   overflow-y: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  padding-bottom: 1rem;
+  justify-content: space-around;
+  padding-top: 0.5%;
 `;
 
 export const ReadTaleHead = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 2.8rem 0;
+  /* padding: 2.8rem 0; */
 `;
 
 export const TitleWrapper = styled.div`
@@ -37,7 +37,7 @@ export const Complete = styled.div`
 export const TaleWrapper = styled.div`
   width: 100%;
   height: 75vh;
-  max-height: 85%;
+  max-height: 75%;
   overflow-y: scroll;
   font-size: 1.9rem;
   margin-bottom: 1rem;

@@ -9,8 +9,6 @@ const TaleLearnPage = () => {
   const location = useLocation();
   const id = location.state || {};
 
-  console.log(id);
-
   useEffect(() => {
     const getQuiz = async (taleId: number) => {
       const response = await getQuizAndAnswer(taleId);

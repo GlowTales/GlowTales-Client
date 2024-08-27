@@ -8,9 +8,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { commonLanguageElements } from "@utils/defaultData";
 import { ResponseTaleData } from "@type/createTale";
 import { speakText, toggleSpeech } from "@utils/speechUtil";
+import Modal from "@components/common/modal/Modal";
 
 const ReadTale = () => {
-
   const location = useLocation();
   const { response } = location.state || {};
   const navigate = useNavigate();
@@ -18,6 +18,17 @@ const ReadTale = () => {
   const [data, setData] = useState<ResponseTaleData>();
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [isSpeaking, setIsSpeaking] = useState<boolean>(false);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmNavigation = () => {
+    setShowModal(false);
+    navigate("/home");
+  };
+
+  const cancelNavigation = () => {
+    setShowModal(false);
+  };
 
   const selectSentence = (index: number) => {
     if (selectedIndex === index) {
@@ -57,15 +68,13 @@ const ReadTale = () => {
 
   return (
     <>
-      <Header text="동화 읽기" />
+      <Header text="동화 읽기" backBtn={() => setShowModal(true)} />
       <S.Wrapper>
         {data && (
           <>
             <S.ReadTaleHead>
               <S.TitleWrapper>
-                <S.Complete>
-                  내가 동화를 만든 날 | {data.createdAt}
-                </S.Complete>
+                <S.Complete>내가 동화를 만든 날 | {data.createdAt}</S.Complete>
                 <S.Title>제목: {data.title}</S.Title>
               </S.TitleWrapper>
               <Dropdown
@@ -111,6 +120,13 @@ const ReadTale = () => {
           </>
         )}
       </S.Wrapper>
+      {showModal && (
+        <Modal
+          message="동화읽기를 종료하시겠어요?"
+          onConfirm={confirmNavigation}
+          onCancel={cancelNavigation}
+        />
+      )}
     </>
   );
 };

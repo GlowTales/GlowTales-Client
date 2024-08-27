@@ -55,11 +55,6 @@ export const getAuthAxios = (token: string | null) => {
     },
     async (error) => {
       throw error;
-      // alert("토큰이 만료되었습니다. 재로그인 후 시도해주세요!");
-      // LocalStorage.removeItem("access");
-      // LocalStorage.removeItem("refresh");
-      // window.location.href = "/login";
-      // return Promise.reject(error); // 에러 전달
     }
   );
 

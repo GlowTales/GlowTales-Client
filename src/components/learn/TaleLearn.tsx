@@ -12,11 +12,13 @@ import {
 } from "@type/learning";
 import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
 import SpeakPractice from "./quiz/SpeakPractice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { postAnswerCount } from "@apis/learning";
 import Header from "@components/common/header/Header";
 import styled from "styled-components";
 import EssayQuiz from "./quiz/EssayQuiz";
+import { useNavigate } from "react-router-dom";
+import Modal from "@components/common/modal/Modal";
 
 interface TaleLearnProps {
   quizData?: QuizData;
@@ -41,12 +43,24 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     isQuizGraded,
     correctAnswers,
   } = useLearning(quizData);
+  const navigate = useNavigate();
+
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmNavigation = () => {
+    setShowModal(false);
+    navigate("/learnTale");
+  };
+
+  const cancelNavigation = () => {
+    setShowModal(false);
+  };
 
   useEffect(() => {
     const postResult = async (languageTaleId: number, answerCounts: number) => {
       try {
         const response = await postAnswerCount(languageTaleId, answerCounts);
-        console.log(response);
+        return response.data
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -112,61 +126,71 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
 
   return (
     <>
-      {currentStep < totalSteps - 1 && <Header text="학습하기" />}
+      {currentStep < totalSteps - 1 && (
+        <Header text="학습하기" backBtn={() => setShowModal(true)} />
+      )}
       {currentStep < totalSteps - 1 ? (
-        <Wrapper>
-          <ProgressBar percentage={progressPercentage} />
-          <QuizSection>
-            {currentStep === 0 && (
-              <SpeakPractice data={quizData.keyWordsAndSentences} />
-            )}
-            {currentQuiz && currentQuiz.question && (
-              <>
-                {currentQuizType === QuizType.MultipleChoice &&
-                  isMultipleChoice(currentQuiz) && (
-                    <ChoiceQuiz
-                      setter={setChoice}
-                      data={currentQuiz}
-                      isQuizGraded={isQuizGraded}
-                      index={currentStep}
-                      gradeHandler={incrementCorrectAnswer}
-                    />
-                  )}
-                {currentQuizType === QuizType.Essay &&
-                  isEssayQuestion(currentQuiz) && (
-                    <EssayQuiz
-                      setter={setEssay}
-                      data={currentQuiz}
-                      isQuizGraded={isQuizGraded}
-                      index={currentStep}
-                      gradeHandler={incrementCorrectAnswer}
-                    />
-                  )}
-                {currentQuizType === QuizType.SentenceArrangement &&
-                  isSentenceArrangement(currentQuiz) && (
-                    <SentenceQuiz
-                      setter={setSentence}
-                      data={currentQuiz}
-                      isQuizGraded={isQuizGraded}
-                      index={currentStep}
-                      gradeHandler={incrementCorrectAnswer}
-                    />
-                  )}
-              </>
-            )}
-          </QuizSection>
+        <>
+          <Wrapper>
+            <ProgressBar percentage={progressPercentage} />
+            <QuizSection>
+              {currentStep === 0 && (
+                <SpeakPractice data={quizData.keyWordsAndSentences} />
+              )}
+              {currentQuiz && currentQuiz.question && (
+                <>
+                  {currentQuizType === QuizType.MultipleChoice &&
+                    isMultipleChoice(currentQuiz) && (
+                      <ChoiceQuiz
+                        setter={setChoice}
+                        data={currentQuiz}
+                        isQuizGraded={isQuizGraded}
+                        index={currentStep}
+                        gradeHandler={incrementCorrectAnswer}
+                      />
+                    )}
+                  {currentQuizType === QuizType.Essay &&
+                    isEssayQuestion(currentQuiz) && (
+                      <EssayQuiz
+                        setter={setEssay}
+                        data={currentQuiz}
+                        isQuizGraded={isQuizGraded}
+                        index={currentStep}
+                        gradeHandler={incrementCorrectAnswer}
+                      />
+                    )}
+                  {currentQuizType === QuizType.SentenceArrangement &&
+                    isSentenceArrangement(currentQuiz) && (
+                      <SentenceQuiz
+                        setter={setSentence}
+                        data={currentQuiz}
+                        isQuizGraded={isQuizGraded}
+                        index={currentStep}
+                        gradeHandler={incrementCorrectAnswer}
+                      />
+                    )}
+                </>
+              )}
+            </QuizSection>
 
-          <NextBtn
-            isActive={isNextBtnActive}
-            text={isLastStep ? "완료" : "다음"}
-            handleBtn={handleNextStep}
-          />
-        </Wrapper>
+            <NextBtn
+              isActive={isNextBtnActive}
+              text={isLastStep ? "완료" : "다음"}
+              handleBtn={handleNextStep}
+            />
+          </Wrapper>
+          {showModal && (
+            <Modal
+              message="학습을 종료하시겠어요?"
+              onConfirm={confirmNavigation}
+              onCancel={cancelNavigation}
+            />
+          )}
+        </>
       ) : (
         <FinishScreen
           imgURL="/learningFinish.png"
-          title="학습이 완료되었습니다
-          잘했어요!"
+          title="학습이 완료되었습니다. 잘했어요!"
           sub="모든 과정을 마무리했어요"
         />
       )}
@@ -182,8 +206,7 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  min-height:88vh;
-  overflow: scroll;
+  min-height: 88vh;
   height: fit-content;
   padding-bottom: 2rem;
 `;

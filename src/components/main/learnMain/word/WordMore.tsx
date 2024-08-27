@@ -1,5 +1,5 @@
 import Header from "@components/common/header/Header";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./Word.styled";
 import { WordProps } from "@type/card";
 import { MainWrapper } from "@components/common/common.styled";
@@ -8,8 +8,9 @@ import { useState } from "react";
 const WordMore = () => {
   const location = useLocation();
   const { word } = location.state || { word: [] };
-  console.log(word);
   const [selectedWords, setSelectedWords] = useState<WordProps[]>([]);
+
+  const navigate = useNavigate();
 
   const handleWordClick = (selectedWord: WordProps) => {
     if (selectedWords.some((w) => w.word === selectedWord.word)) {
@@ -23,7 +24,7 @@ const WordMore = () => {
 
   return (
     <>
-      <Header text="단어장" />
+      <Header text="단어장" backBtn={() => navigate(-1)} />
       <MainWrapper>
         <S.GridWrapper>
           {word.map((word: WordProps) => {

@@ -3,7 +3,8 @@
 html {
   -webkit-text-size-adjust​: none;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
+  height: fit-content;
   margin: 0;
   font-size: 62.5%;
   overflow: scroll;
@@ -15,32 +16,65 @@ html {
   justify-content: center;
   font-family: "NanumSquareRound", sans-serif;
 }
-
-html::-webkit-scrollbar {
-  display: none;
-}
-
 body {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  min-height: 100%; /* 화면 스크롤 방지를 위해 최소높이 지정 */
+  min-height: 99vh;
   margin: 0;
   padding: 0;
   background-color: white;
-  box-shadow: 10px -50px 50px 15px rgba(220, 220, 220, 0.22),
+  box-shadow:
+    10px -50px 50px 15px rgba(220, 220, 220, 0.22),
     -10px -50px 50px 15px rgba(197, 197, 197, 0.22);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  overflow-y: scroll; /* 세로 스크롤 활성화 */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #ffd600 #f0f0f0; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #ffd600;
+  border-radius: 10px;
+  border: 3px solid #f0f0f0;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #ffc107;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }
 
 /*모바일+아이패드 세로) 화면 너비: 0 ~ 800 */
 @media (min-width: 0px) {
   html {
     font-size: 8px;
+  }
+}
+
+@media (min-width: 600px) {
+  html {
+    font-size: 10px;
   }
 }
 

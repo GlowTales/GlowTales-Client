@@ -18,7 +18,7 @@ import Header from "@components/common/header/Header";
 import styled from "styled-components";
 import EssayQuiz from "./quiz/EssayQuiz";
 import useNavigationWarning from "@hooks/useNavigationWarning";
-import { useNavigate, useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Modal from "@components/common/modal/Modal";
 
 interface TaleLearnProps {

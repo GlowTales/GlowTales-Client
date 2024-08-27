@@ -33,7 +33,7 @@ const UnLearnedMore = () => {
                     title={unLearned.languageTale.title}
                     createdAt={unLearned.createdAt}
                     languageTaleId={unLearned.languageTale.id}
-                    btnText="학습하기✏️"
+                    btnText="학습하기 ✏️"
                   />
                   {(index + 1) % 2 === 0 &&
                     index !== unLearnedSlice.length - 1 && (
@@ -52,7 +52,7 @@ const UnLearnedMore = () => {
                       title={unLearned.languageTale.title}
                       createdAt={unLearned.createdAt}
                       languageTaleId={unLearned.languageTale.id}
-                      btnText="학습하기✏️"
+                      btnText="학습하기 ✏️"
                     />
                   ))}
                 </ItemWrapper>

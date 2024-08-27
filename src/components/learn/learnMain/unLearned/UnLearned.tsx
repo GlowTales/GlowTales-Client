@@ -42,7 +42,7 @@ const UnLearned = () => {
             title={unLearned.languageTale.title}
             createdAt={unLearned.createdAt}
             languageTaleId={unLearned.languageTale.id}
-            btnText="학습하기✏️"
+            btnText="학습하기 ✏️"
           />
         ))}
       </ItemWrapper>

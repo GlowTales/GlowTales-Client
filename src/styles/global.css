@@ -7,7 +7,6 @@ html {
   height: fit-content;
   margin: 0;
   font-size: 62.5%;
-  overflow: scroll;
   scroll-snap-type: y mandatory;
   scroll-padding-top: 65px;
   scrollbar-width: none;

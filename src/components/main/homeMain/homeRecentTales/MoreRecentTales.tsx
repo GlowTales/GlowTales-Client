@@ -1,5 +1,5 @@
 import Header from "@components/common/header/Header";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import * as S from "./HomeRecentTales.styled";
 import { CardProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
@@ -12,6 +12,8 @@ const MoreRecentTales = () => {
   const location = useLocation();
   const { allTales } = location.state || { allTales: [] };
 
+  const navigate = useNavigate();
+
   const chunkedTales: CardProps[][] = [];
   for (let i = 0; i < allTales.length; i += 3) {
     chunkedTales.push(allTales.slice(i, i + 3));
@@ -19,7 +21,7 @@ const MoreRecentTales = () => {
 
   return (
     <>
-      <Header text="최근 생성한 동화" />
+      <Header text="최근 생성한 동화" backBtn={() => navigate(-1)} />
       <>
         <S.MoreWrapper>
           {mediaQuery ? (

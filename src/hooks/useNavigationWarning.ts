@@ -15,7 +15,7 @@ const useNavigationWarning = (onConfirmNavigate?: () => void) => {
       }
     };
 
-    const handlePopState = (event: PopStateEvent) => {
+    const handlePopState = () => {
       if (!isNavigatingAway) {
         setShowModal(true);
         window.history.pushState(null, "", window.location.pathname);

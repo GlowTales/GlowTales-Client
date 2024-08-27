@@ -59,7 +59,7 @@ const HomeRecentTales = () => {
                 readFunction={() => goRead(tale)}
               />
               {(index + 1) % 2 === 0 && index !== sliceTales.length - 1 && (
-                <Shelf src="shelf.png" key={`shelf-${index}`} />
+                <Shelf src="/shelf.png" key={`shelf-${index}`} />
               )}
             </>
           ))}
@@ -77,7 +77,7 @@ const HomeRecentTales = () => {
                 />
               ))}
             </ItemWrapper>
-            <Shelf src="shelf.png" />
+            <Shelf src="/shelf.png" />
           </>
         ))
       )}

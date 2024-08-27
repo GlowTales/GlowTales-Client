@@ -2,10 +2,10 @@ import { CardProps } from "@type/card";
 import * as S from "./Card.styled";
 
 const pairs = [
-  ["#FFC300", "#FFE249", "250px", "taleGraphic1.png"],
-  ["#B590FF", "#CBB2FF", "220px", "taleGraphic2.png"],
-  ["#609EFF", "#A5C8FF", "240px", "taleGraphic3.png"],
-  ["#24E47F", "#93F2C0", "200px", "taleGraphic4.png"],
+  ["#FFC300", "#FFE249", "250px", "/taleGraphic1.png"],
+  ["#B590FF", "#CBB2FF", "220px", "/taleGraphic2.png"],
+  ["#609EFF", "#A5C8FF", "240px", "/taleGraphic3.png"],
+  ["#24E47F", "#93F2C0", "200px", "/taleGraphic4.png"],
 ];
 
 const getRandomColorPair = () => {

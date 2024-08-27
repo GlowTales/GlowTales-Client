@@ -38,7 +38,7 @@ const MoreRecentTales = () => {
                     readFunction={() => goRead(tale)}
                   />
                   {(index + 1) % 2 === 0 && index !== allTales.length - 1 && (
-                    <Shelf src="shelf.png" key={`shelf-${index}`} />
+                    <Shelf src="/shelf.png" key={`shelf-${index}`} />
                   )}
                 </>
               ))}
@@ -55,8 +55,8 @@ const MoreRecentTales = () => {
                       readFunction={() => goRead(tale)}
                     />
                   ))}
+                  <Shelf src="/shelf.png" />
                 </ItemWrapper>
-                <Shelf src="shelf.png" />
               </>
             ))
           )}

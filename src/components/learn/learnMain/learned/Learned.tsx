@@ -42,7 +42,7 @@ const Learned = () => {
             title={learned.languageTale.title}
             createdAt={learned.createdAt}
             languageTaleId={learned.languageTale.id}
-            point={"4/10"}
+            point={`${learned.firstQuizCount ? learned.firstQuizCount : 0}/10`}
             btnText="복습하기"
           />
         ))}

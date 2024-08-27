@@ -33,7 +33,7 @@ const LearnedMore = () => {
                     languageTaleId={learned.languageTale.id}
                     title={learned.languageTale.title}
                     createdAt={learned.createdAt}
-                    point={"4/10"}
+                    point={`${learned.firstQuizCount}/10`}
                     btnText="복습하기"
                   />
                   {(index + 1) % 2 === 0 &&
@@ -53,7 +53,7 @@ const LearnedMore = () => {
                       languageTaleId={learned.languageTale.id}
                       title={learned.languageTale.title}
                       createdAt={learned.createdAt}
-                      point={"4/10"}
+                      point={`${learned.firstQuizCount ? learned.firstQuizCount : 0}/10`}
                       btnText="복습하기"
                     />
                   ))}

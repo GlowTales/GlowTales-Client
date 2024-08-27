@@ -32,10 +32,6 @@ const HomeRecentTales = () => {
     chunkedTales.push(sliceTales.slice(i, i + 3));
   }
 
-  const goRead = (response: CardProps) => {
-    navigate(`/readTale`, { state: { response } });
-  };
-
   const handleMoreClick = () => {
     navigate("/home/moreRecentTales", { state: { allTales: tales } });
   };
@@ -57,7 +53,6 @@ const HomeRecentTales = () => {
                 title={tale.title}
                 createdAt={tale.createdAt}
                 languageTaleId={tale.taleId}
-                readFunction={() => goRead(tale)}
               />
               {(index + 1) % 2 === 0 && index !== sliceTales.length - 1 && (
                 <Shelf src="/shelf.png" key={`shelf-${index}`} />

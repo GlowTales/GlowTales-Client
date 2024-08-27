@@ -21,7 +21,7 @@ const Learned = () => {
 
   useEffect(() => {
     const fetchGetStudiedTales = async () => {
-      const response: LearnedProps[] = await getLearnedTales(true);
+      const response: LearnedProps[] = await getLearnedTales(false);
       setLearned(response);
     };
     fetchGetStudiedTales();

@@ -4,7 +4,7 @@ import {
   CommonTitleWrapper,
   ItemWrapper,
 } from "@components/common/common.styled";
-import Card from "@components/home/homeRecentTales/Card";
+import Card from "@components/main/homeMain/homeRecentTales/Card";
 import { LearnedProps } from "@type/card";
 
 import { useEffect, useState } from "react";

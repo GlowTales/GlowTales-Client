@@ -12,11 +12,11 @@ import CreateMainPage from "@pages/CreateMainPage";
 import CreateTalePage from "@pages/CreateTalePage";
 import TaleLearnPage from "@pages/TaleLearnPage";
 import PreLearningQuestionPage from "@pages/PreLearningQuestionPage";
-import MoreRecentTales from "@components/home/homeRecentTales/MoreRecentTales";
+import MoreRecentTales from "@components/main/homeMain/homeRecentTales/MoreRecentTales";
 import PrivateRoute from "@utils/PrivateRoute";
-import WordMore from "@components/learn/learnMain/word/WordMore";
-import UnLearnedMore from "@components/learn/learnMain/unLearned/UnLearnedMore";
-import LearnedMore from "@components/learn/learnMain/learned/LearnedMore";
+import WordMore from "@components/main/learnMain/word/WordMore";
+import UnLearnedMore from "@components/main/learnMain/unLearned/UnLearnedMore";
+import LearnedMore from "@components/main/learnMain/learned/LearnedMore";
 
 const router = createBrowserRouter([
   {

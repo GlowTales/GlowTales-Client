@@ -1,5 +1,5 @@
 import SelectOptionList from "@components/common/selectOption/SelectOptionList";
-import * as S from "./learn.styled";
+import * as S from "../learn.styled";
 import { useEffect, useState } from "react";
 import { ChoiceQuizProps } from "@type/learning";
 import { shuffleArray } from "@utils/learnUtil";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as S from "./learn.styled";
+import * as S from "../learn.styled";
 import SelectBtn from "@components/common/selectOption/SelectBtn";
 import { EssayQuizProps } from "@type/learning";
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as S from "./learn.styled";
+import * as S from "../learn.styled";
 import { SentenceQuizProps } from "@type/learning";
 import { shuffleArray } from "@utils/learnUtil";
 

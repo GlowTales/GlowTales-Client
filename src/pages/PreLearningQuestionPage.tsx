@@ -1,4 +1,4 @@
-import PreLearningQuestion from "@components/learn/PreLearningQuestion";
+import PreLearningQuestion from "@components/learn/pre/PreLearningQuestion";
 
 const PreLearningQuestionPage = () => {
   return <PreLearningQuestion />;

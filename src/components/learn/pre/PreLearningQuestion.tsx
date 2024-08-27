@@ -1,4 +1,4 @@
-import * as S from "./learn.styled";
+import * as S from "../learn.styled";
 import Header from "@common/header/Header";
 import { useLocation, useNavigate } from "react-router-dom";
 import ProgressBar from "@components/common/progressBar/ProgressBar";
@@ -8,10 +8,10 @@ import { nationElements } from "@utils/defaultData";
 import { useResult } from "@hooks/useResult";
 import { getLearnedHistory, getLearningLevel } from "@apis/learning";
 import { useEffect, useState } from "react";
-import CreateQuiz from "./CreateQuiz";
 import useSelectLevel from "@hooks/useSelectLevel";
 import SelectOptionList from "@common/selectOption/SelectOptionList";
 import styled from "styled-components";
+import CreateQuiz from "./CreateQuiz";
 
 const PreLearningQuestion = () => {
   const location = useLocation();

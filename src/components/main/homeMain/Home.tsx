@@ -1,8 +1,8 @@
 import TabBar from "@components/common/tabBar/TabBar";
-import HomeHeader from "./homeHeader/HomeHeader";
 import * as S from "./Home.styled";
-import HomeStatus from "./homeStatus/HomeStatus";
 import HomeRecentTales from "./homeRecentTales/HomeRecentTales";
+import HomeStatus from "./homeStatus/HomeStatus";
+import HomeHeader from "./homeHeader/HomeHeader";
 // import Modal from "@components/common/modal/Modal";
 
 const Home = () => {

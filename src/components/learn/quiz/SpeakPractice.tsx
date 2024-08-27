@@ -1,6 +1,6 @@
 import { SpeakPracticeProps } from "@type/learning";
 import { speakText } from "@utils/speechUtil";
-import * as S from "./speakPractice.styled";
+import * as S from "../speakPractice.styled";
 
 const SpeakPractice = ({ data }: { data: SpeakPracticeProps }) => {
   return (

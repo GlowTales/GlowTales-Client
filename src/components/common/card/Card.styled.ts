@@ -13,6 +13,11 @@ export const CardContainer = styled.div<CardContainerProps>`
   border-radius: 8px;
   margin: 5px;
   box-sizing: border-box;
+  @media (max-width: 466px) {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+  }
 `;
 
 export const CardWrapper = styled.div`
@@ -35,6 +40,9 @@ export const CardWrapper = styled.div`
     margin-bottom: 2rem;
     cursor: pointer;
   }
+  @media (max-width: 466px) {
+    margin-left: 10%;
+  }
 `;
 
 export const TitleWrapper = styled.div`
@@ -42,6 +50,9 @@ export const TitleWrapper = styled.div`
   flex-direction: column;
   margin-top: 0.5rem;
   gap: 1rem;
+  @media (max-width: 466px) {
+    margin-bottom: 1rem;
+  }
 `;
 
 export const CardTitle = styled.div`

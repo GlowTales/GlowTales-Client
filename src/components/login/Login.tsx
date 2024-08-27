@@ -10,8 +10,8 @@ const Login = () => {
   return (
     <CommonWrapper>
       <S.Title>
-        <div>메인 소개 멘트 어쩌구</div>
-        <div>글로우테일로 동화를 어쩌구</div>
+        <div>글로우테일에서 동화를 만들고,</div>
+        <div>퀴즈로 학습의 재미를 더해보세요!</div>
       </S.Title>
       <S.Image src="/loginGraphic.png" />
       <S.LoginBtn>

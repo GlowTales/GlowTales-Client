@@ -1,5 +1,6 @@
 import { CardProps } from "@type/card";
 import * as S from "./Card.styled";
+import { useNavigate } from "react-router-dom";
 
 const pairs = [
   ["#FFC300", "#FFE249", "250px", "/taleGraphic1.png"],
@@ -17,10 +18,26 @@ const Card = (props: CardProps) => {
   const [backgroundColor1, backgroundColor2, height, imgSrc] =
     getRandomColorPair();
 
+  const navigate = useNavigate();
+
+  const goTaleRead = () => {
+    navigate(`/readTale`, { state: { response: { taleId: props.taleId } } });
+  };
+
+  const goTaleLearn = () => {
+    navigate(`/learnTale/pre`, { state: { taleId: props.taleId } });
+  };
+
+  const goTaleQuiz = () => {
+    navigate(`/learnTale/quiz`, { state: props.languageTaleId });
+  };
+
   return (
     <>
       <S.CardContainer
-        onClick={props.readFunction}
+        onClick={() => {
+          goTaleRead();
+        }}
         height={height}
         backgroundColor1={backgroundColor1}
         backgroundColor2={backgroundColor2}
@@ -31,13 +48,27 @@ const Card = (props: CardProps) => {
             <S.CardCreatedAt>{props.createdAt}</S.CardCreatedAt>
           </S.TitleWrapper>
           {props.btnText ? (
-            props.point ? (
+            props.firstQuizCount !== undefined ? (
               <S.BtnWrapper>
-                <div>{props.point}</div>
-                <button onClick={props.learnFunction}>{props.btnText}</button>
+                <div>{props.firstQuizCount}/10</div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goTaleQuiz();
+                  }}
+                >
+                  {props.btnText}
+                </button>
               </S.BtnWrapper>
             ) : (
-              <button onClick={props.unLearnedFunction}>{props.btnText}</button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goTaleLearn();
+                }}
+              >
+                {props.btnText}
+              </button>
             )
           ) : (
             <S.CardImg src={imgSrc} />

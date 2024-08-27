@@ -1,22 +1,20 @@
 import { getUnlearnedTales } from "@apis/home";
+import Card from "@components/common/card/Card";
 import {
   CommonTitle,
   CommonTitleWrapper,
   ItemWrapper,
 } from "@components/common/common.styled";
-import Card from "@components/home/homeRecentTales/Card";
 import { UnLearnedProps } from "@type/card";
-
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
 const UnLearned = () => {
   const navigate = useNavigate();
-  const handleMoreClick = () => {
-    navigate("/learnTale/moreUnLearned", { state: { unLearned } });
-  };
+  const isMobile = useMediaQuery({ query: "(max-width: 710px)" });
   const [unLearned, setUnLearned] = useState<UnLearnedProps[]>([]);
-  const sliceUnLearned = unLearned.slice(0, 3);
+  const sliceUnLearned = unLearned.slice(0, isMobile ? 2 : 3);
 
   useEffect(() => {
     const fetchUnLearnTales = async () => {
@@ -26,6 +24,10 @@ const UnLearned = () => {
 
     fetchUnLearnTales();
   }, []);
+
+  const handleMoreClick = () => {
+    navigate("/learnTale/moreUnLearned", { state: { unLearned } });
+  };
 
   return (
     <>
@@ -41,8 +43,8 @@ const UnLearned = () => {
             taleId={unLearned.tale_id}
             title={unLearned.languageTale.title}
             createdAt={unLearned.createdAt}
-            btnText="학습하기✏️"
-            // readFunction={}
+            languageTaleId={unLearned.languageTale.id}
+            btnText="학습하기 ✏️"
           />
         ))}
       </ItemWrapper>

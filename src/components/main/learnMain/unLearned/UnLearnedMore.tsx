@@ -1,10 +1,10 @@
+import Card from "@components/common/card/Card";
 import {
   ItemWrapper,
   MainWrapper,
   Shelf,
 } from "@components/common/common.styled";
 import Header from "@components/common/header/Header";
-import Card from "@components/home/homeRecentTales/Card";
 import { UnLearnedProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
@@ -32,8 +32,8 @@ const UnLearnedMore = () => {
                     taleId={unLearned.tale_id}
                     title={unLearned.languageTale.title}
                     createdAt={unLearned.createdAt}
-                    btnText="학습하기✏️"
-                    // readFunction={() => goRead(tale)}
+                    languageTaleId={unLearned.languageTale.id}
+                    btnText="학습하기 ✏️"
                   />
                   {(index + 1) % 2 === 0 &&
                     index !== unLearnedSlice.length - 1 && (
@@ -43,16 +43,16 @@ const UnLearnedMore = () => {
               ))}
             </ItemWrapper>
           ) : (
-            chunkedTales.map((learnedGroup) => (
+            chunkedTales.map((unLearnedGroup) => (
               <>
                 <ItemWrapper>
-                  {learnedGroup.map((learned: UnLearnedProps) => (
+                  {unLearnedGroup.map((unLearned: UnLearnedProps) => (
                     <Card
-                      taleId={learned.tale_id}
-                      title={learned.languageTale.title}
-                      createdAt={learned.createdAt}
-                      btnText="학습하기✏️"
-                      //   readFunction={}
+                      taleId={unLearned.tale_id}
+                      title={unLearned.languageTale.title}
+                      createdAt={unLearned.createdAt}
+                      languageTaleId={unLearned.languageTale.id}
+                      btnText="학습하기 ✏️"
                     />
                   ))}
                 </ItemWrapper>

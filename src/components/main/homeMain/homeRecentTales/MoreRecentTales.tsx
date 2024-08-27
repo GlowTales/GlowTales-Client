@@ -1,26 +1,21 @@
 import Header from "@components/common/header/Header";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import * as S from "./HomeRecentTales.styled";
-import Card from "./Card";
 import { CardProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
 import { ItemWrapper, Shelf } from "@components/common/common.styled";
+import Card from "@components/common/card/Card";
 
 const MoreRecentTales = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });
 
   const location = useLocation();
   const { allTales } = location.state || { allTales: [] };
-  const navigate = useNavigate();
 
   const chunkedTales: CardProps[][] = [];
   for (let i = 0; i < allTales.length; i += 3) {
     chunkedTales.push(allTales.slice(i, i + 3));
   }
-
-  const goRead = (response: CardProps) => {
-    navigate(`/readTale`, { state: { response } });
-  };
 
   return (
     <>
@@ -35,7 +30,7 @@ const MoreRecentTales = () => {
                     taleId={tale.taleId}
                     title={tale.title}
                     createdAt={tale.createdAt}
-                    readFunction={() => goRead(tale)}
+                    languageTaleId={tale.languageTaleId}
                   />
                   {(index + 1) % 2 === 0 && index !== allTales.length - 1 && (
                     <Shelf src="/shelf.png" key={`shelf-${index}`} />
@@ -52,7 +47,7 @@ const MoreRecentTales = () => {
                       taleId={tale.taleId}
                       title={tale.title}
                       createdAt={tale.createdAt}
-                      readFunction={() => goRead(tale)}
+                      languageTaleId={tale.languageTaleId}
                     />
                   ))}
                   <Shelf src="/shelf.png" />

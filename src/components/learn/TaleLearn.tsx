@@ -2,9 +2,8 @@ import FinishScreen from "@components/common/FinishScreen";
 import NextBtn from "@components/common/NextBtn";
 import ProgressBar from "@components/common/progressBar/ProgressBar";
 import useLearning from "@hooks/useLearning";
-import ChoiceQuiz from "./ChoiceQuiz";
-import EssayQuiz from "./EssayQuiz";
-import SentenceQuiz from "./SentenceQuiz";
+import ChoiceQuiz from "./quiz/ChoiceQuiz";
+import SentenceQuiz from "./quiz/SentenceQuiz";
 import {
   EssayQuestions,
   MultipleChoices,
@@ -12,11 +11,12 @@ import {
   SentenceArrangements,
 } from "@type/learning";
 import { QUIZ_STAGES, QuizType } from "@utils/constants/QuizStage";
-import SpeakPractice from "./SpeakPractice";
+import SpeakPractice from "./quiz/SpeakPractice";
 import { useEffect } from "react";
 import { postAnswerCount } from "@apis/learning";
 import Header from "@components/common/header/Header";
 import styled from "styled-components";
+import EssayQuiz from "./quiz/EssayQuiz";
 
 interface TaleLearnProps {
   quizData?: QuizData;

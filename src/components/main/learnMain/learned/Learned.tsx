@@ -1,31 +1,33 @@
 import { getLearnedTales } from "@apis/home";
+import Card from "@components/common/card/Card";
 import {
   CommonTitle,
   CommonTitleWrapper,
   ItemWrapper,
 } from "@components/common/common.styled";
-import Card from "@components/home/homeRecentTales/Card";
 import { LearnedProps } from "@type/card";
 
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
 const Learned = () => {
   const navigate = useNavigate();
-  const handleMoreClick = () => {
-    navigate("/learnTale/moreLearned", { state: { learned } });
-  };
-
+  const isMobile = useMediaQuery({ query: "(max-width: 710px)" });
   const [learned, setLearned] = useState<LearnedProps[]>([]);
-  const sliceLearned = learned.slice(0, 3);
+  const sliceLearned = learned.slice(0, isMobile ? 2 : 3);
 
   useEffect(() => {
     const fetchGetStudiedTales = async () => {
-      const response: LearnedProps[] = await getLearnedTales(true);
+      const response: LearnedProps[] = await getLearnedTales(false);
       setLearned(response);
     };
     fetchGetStudiedTales();
   }, []);
+
+  const handleMoreClick = () => {
+    navigate("/learnTale/moreLearned", { state: { learned } });
+  };
 
   return (
     <>
@@ -39,11 +41,11 @@ const Learned = () => {
         {sliceLearned.map((learned: LearnedProps) => (
           <Card
             taleId={learned.tale_id}
-            title={learned.languageTale.title}
+            title={`${learned.koreanTitle} (${learned.languageId === 1 ? "영어" : learned.languageId === 2 ? "한국어" : learned.languageId === 3 ? "일본어" : "중국어"})`}
             createdAt={learned.createdAt}
-            point={"4/10"}
+            languageTaleId={learned.languageTale.id}
+            firstQuizCount={learned.firstQuizCount}
             btnText="복습하기"
-            // readFunction={() => handleMoreClick()}
           />
         ))}
       </ItemWrapper>

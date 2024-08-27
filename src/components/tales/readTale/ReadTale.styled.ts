@@ -2,11 +2,12 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 95%;
-  height: 90%;
+  /* height: fit-content; */
   overflow-y: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  padding-bottom: 1rem;
 `;
 
 export const ReadTaleHead = styled.div`
@@ -35,8 +36,8 @@ export const Complete = styled.div`
 
 export const TaleWrapper = styled.div`
   width: 100%;
-  height: 75%;
-  max-height: 75%;
+  height: 75vh;
+  max-height: 85%;
   overflow-y: scroll;
   font-size: 1.9rem;
   margin-bottom: 1rem;

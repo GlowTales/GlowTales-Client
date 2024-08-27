@@ -1,10 +1,10 @@
+import Card from "@components/common/card/Card";
 import {
   ItemWrapper,
   MainWrapper,
   Shelf,
 } from "@components/common/common.styled";
 import Header from "@components/common/header/Header";
-import Card from "@components/home/homeRecentTales/Card";
 import { LearnedProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
@@ -30,11 +30,11 @@ const LearnedMore = () => {
                 <>
                   <Card
                     taleId={learned.tale_id}
-                    title={learned.languageTale.title}
+                    languageTaleId={learned.languageTale.id}
+                    title={`${learned.koreanTitle} (${learned.languageId === 1 ? "영어" : learned.languageId === 2 ? "한국어" : learned.languageId === 3 ? "일본어" : "중국어"})`}
                     createdAt={learned.createdAt}
-                    point={"4/10"}
+                    firstQuizCount={learned.firstQuizCount}
                     btnText="복습하기"
-                    // readFunction={() => goRead(tale)}
                   />
                   {(index + 1) % 2 === 0 &&
                     index !== learnedSlice.length - 1 && (
@@ -50,11 +50,11 @@ const LearnedMore = () => {
                   {learnedGroup.map((learned: LearnedProps) => (
                     <Card
                       taleId={learned.tale_id}
-                      title={learned.languageTale.title}
+                      languageTaleId={learned.languageTale.id}
+                      title={`${learned.koreanTitle} (${learned.languageId === 1 ? "영어" : learned.languageId === 2 ? "한국어" : learned.languageId === 3 ? "일본어" : "중국어"})`}
                       createdAt={learned.createdAt}
-                      point={"4/10"}
+                      firstQuizCount={learned.firstQuizCount}
                       btnText="복습하기"
-                      //   readFunction={() => goRead(learned)}
                     />
                   ))}
                 </ItemWrapper>

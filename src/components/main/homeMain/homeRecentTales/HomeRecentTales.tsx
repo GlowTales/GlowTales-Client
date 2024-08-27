@@ -4,13 +4,13 @@ import {
   ItemWrapper,
   Shelf,
 } from "@components/common/common.styled";
-import Card from "./Card";
 import * as S from "./HomeRecentTales.styled";
 import { getRecentTale } from "@apis/createTales";
 import { useEffect, useState } from "react";
 import { CardProps } from "@type/card";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import Card from "@components/common/card/Card";
 
 const HomeRecentTales = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });

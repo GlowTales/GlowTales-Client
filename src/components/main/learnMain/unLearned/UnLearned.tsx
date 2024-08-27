@@ -1,12 +1,11 @@
 import { getUnlearnedTales } from "@apis/home";
+import Card from "@components/common/card/Card";
 import {
   CommonTitle,
   CommonTitleWrapper,
   ItemWrapper,
 } from "@components/common/common.styled";
-import Card from "@components/main/homeMain/homeRecentTales/Card";
 import { UnLearnedProps } from "@type/card";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 

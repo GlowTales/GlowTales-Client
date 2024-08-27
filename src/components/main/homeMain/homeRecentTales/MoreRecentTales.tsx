@@ -1,10 +1,10 @@
 import Header from "@components/common/header/Header";
 import { useLocation } from "react-router-dom";
 import * as S from "./HomeRecentTales.styled";
-import Card from "./Card";
 import { CardProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
 import { ItemWrapper, Shelf } from "@components/common/common.styled";
+import Card from "@components/common/card/Card";
 
 const MoreRecentTales = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });

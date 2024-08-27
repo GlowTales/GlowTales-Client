@@ -48,9 +48,9 @@ const Card = (props: CardProps) => {
             <S.CardCreatedAt>{props.createdAt}</S.CardCreatedAt>
           </S.TitleWrapper>
           {props.btnText ? (
-            props.point ? (
+            props.firstQuizCount !== undefined ? (
               <S.BtnWrapper>
-                <div>{props.point}</div>
+                <div>{props.firstQuizCount}/10</div>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();

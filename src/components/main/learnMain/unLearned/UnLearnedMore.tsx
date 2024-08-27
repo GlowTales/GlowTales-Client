@@ -1,10 +1,10 @@
+import Card from "@components/common/card/Card";
 import {
   ItemWrapper,
   MainWrapper,
   Shelf,
 } from "@components/common/common.styled";
 import Header from "@components/common/header/Header";
-import Card from "@components/main/homeMain/homeRecentTales/Card";
 import { UnLearnedProps } from "@type/card";
 import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";

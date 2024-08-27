@@ -25,7 +25,7 @@ const HomeStatus = () => {
               <>
                 <S.State>생성한 동화 | {status.createdTaleCount}개</S.State>
                 <S.State>학습한 동화 | {status.studiedTaleCount}개</S.State>
-                <S.State>학습 횟수 | {status.studyCount}개</S.State>
+                <S.State>학습 횟수 | {status.studyCount}회</S.State>
                 <S.State>
                   학습 중인 언어 |{" "}
                   {status.learningLanguageList.map((language, index) => (

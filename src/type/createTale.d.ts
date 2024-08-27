@@ -10,4 +10,5 @@ export interface ResponseTaleData {
   taleId: number;
   title: string;
   story: string;
+  createdAt: string;
 }

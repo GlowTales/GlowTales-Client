@@ -64,7 +64,7 @@ const ReadTale = () => {
             <S.ReadTaleHead>
               <S.TitleWrapper>
                 <S.Complete>
-                  내가 동화를 만든 날 | {response.createdAt}
+                  내가 동화를 만든 날 | {data.createdAt}
                 </S.Complete>
                 <S.Title>제목: {data.title}</S.Title>
               </S.TitleWrapper>

@@ -7,15 +7,14 @@ import {
 } from "@components/common/common.styled";
 import { UnLearnedProps } from "@type/card";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
 const UnLearned = () => {
   const navigate = useNavigate();
-  const handleMoreClick = () => {
-    navigate("/learnTale/moreUnLearned", { state: { unLearned } });
-  };
+  const isMobile = useMediaQuery({ query: "(max-width: 710px)" });
   const [unLearned, setUnLearned] = useState<UnLearnedProps[]>([]);
-  const sliceUnLearned = unLearned.slice(0, 3);
+  const sliceUnLearned = unLearned.slice(0, isMobile ? 2 : 3);
 
   useEffect(() => {
     const fetchUnLearnTales = async () => {
@@ -25,6 +24,10 @@ const UnLearned = () => {
 
     fetchUnLearnTales();
   }, []);
+
+  const handleMoreClick = () => {
+    navigate("/learnTale/moreUnLearned", { state: { unLearned } });
+  };
 
   return (
     <>

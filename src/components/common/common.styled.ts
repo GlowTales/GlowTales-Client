@@ -86,7 +86,10 @@ export const Shelf = styled.img`
   @media (max-width: 710px) {
     width: 520px;
   }
-  @media (max-width: 519px) {
+  @media (max-width: 550px) {
+    width: 420px;
+  }
+  @media (max-width: 466px) {
     display: none;
   }
 `;

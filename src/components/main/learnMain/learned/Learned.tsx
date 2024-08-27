@@ -8,16 +8,14 @@ import {
 import { LearnedProps } from "@type/card";
 
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
 
 const Learned = () => {
   const navigate = useNavigate();
-  const handleMoreClick = () => {
-    navigate("/learnTale/moreLearned", { state: { learned } });
-  };
-
+  const isMobile = useMediaQuery({ query: "(max-width: 710px)" });
   const [learned, setLearned] = useState<LearnedProps[]>([]);
-  const sliceLearned = learned.slice(0, 3);
+  const sliceLearned = learned.slice(0, isMobile ? 2 : 3);
 
   useEffect(() => {
     const fetchGetStudiedTales = async () => {
@@ -26,6 +24,10 @@ const Learned = () => {
     };
     fetchGetStudiedTales();
   }, []);
+
+  const handleMoreClick = () => {
+    navigate("/learnTale/moreLearned", { state: { learned } });
+  };
 
   return (
     <>

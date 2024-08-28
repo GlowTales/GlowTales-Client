@@ -3,10 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <link rel="mask-icon" href="/pwaIcon.svg" color="#FFFFFF">
-    <meta name="theme-color" content="#ffffff">
+    <link rel="mask-icon" href="/pwaIcon.svg" color="#FFFFFF" />
+    <meta name="theme-color" content="#ffffff" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Glow Tales</title>
+    <meta name="title" content="Glow Tales" />
+    <meta
+      name="description"
+      content="글로우테일에서 동화를 만들고, 퀴즈로 학습의 재미를 더해보세요!"
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://glowtales.netlify.app/" />
+    <meta property="og:title" content="Glow Tales" />
+    <meta
+      property="og:description"
+      content="글로우테일에서 동화를 만들고, 퀴즈로 학습의 재미를 더해보세요!"
+    />
+
+    <link rel="canonical" href="https://glowtales.netlify.app/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Website",
+        "name": "Glow Tales",
+        "url": "https://glowtales.netlify.app/",
+        "description": "글로우테일에서 동화를 만들고, 퀴즈로 학습의 재미를 더해보세요!"
+      }
+    </script>
+
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    <meta
+      name="keywords"
+      content="Glow Tales, 이야기, 동화, 생성형ai, ChatGPT, 학습, 다문화, 문화, 지혜, 모험, 세계"
+    />
+
+    <link rel="preload" href="/src/main.tsx" as="script" />
+    <link rel="preload" href="/logo.svg" as="image" />
   </head>
   <body>
     <div id="root"></div>

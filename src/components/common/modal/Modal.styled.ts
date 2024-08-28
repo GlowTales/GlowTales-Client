@@ -22,7 +22,7 @@ export const ModalSection = styled.div<{ height: number }>`
 
 export const ModalWrapper = styled.div`
   width: 50%;
-  height: 25%;
+  height: 180px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -32,6 +32,10 @@ export const ModalWrapper = styled.div`
   background-color: #ffffff;
   border-radius: 14px;
   z-index: 6;
+  @media (max-width: 553px) {
+    width: 80%;
+    height: 150px;
+  }
 `;
 
 export const TextWrapper = styled.div`
@@ -48,12 +52,18 @@ export const TextWrapper = styled.div`
 export const ModalTitle = styled.div`
   font-size: 2.3rem;
   font-weight: 800;
+  @media (max-width: 560px) {
+    font-size: 2rem;
+  }
 `;
 
 export const ModalExplain = styled.div`
   font-size: 1.8rem;
   font-weight: 700;
   color: #777777;
+  @media (max-width: 560px) {
+    font-size: 1.6rem;
+  }
 `;
 
 export const ButtonWrapper = styled.div`

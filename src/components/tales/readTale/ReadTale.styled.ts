@@ -14,7 +14,6 @@ export const ReadTaleHead = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* padding: 2.8rem 0; */
 `;
 
 export const TitleWrapper = styled.div`

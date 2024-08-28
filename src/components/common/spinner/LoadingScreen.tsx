@@ -57,7 +57,7 @@ export default LoadingScreen;
 const LoadingContainer = styled.div`
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: 84vh;
   display: flex;
   flex-direction: column;
   align-items: center;

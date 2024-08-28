@@ -1,27 +1,23 @@
 # GlowTales-Client
+> 애자일 팀의 글로우테일 서비스 FE 레포지토리입니다
 
-애자일 팀의 글로우테일 서비스 FE 레포입니다
+![서비스표지](https://github.com/user-attachments/assets/28504bbb-1a44-4bb9-8bb9-285d18c76b8f)
 
 
 ## 글로우 테일 GlowTales
 
-<aside>
-팀 애자일은 청각장애인, 그리고 다문화 가정에서의 문제점을 찾았습니다. <br/>
 
-말이 어눌한 청각장애인 부모나 자녀와 구사하는 언어가 다른 다문화 가정의 부모님들은 동화책을 생생하게 읽어주며 언어를 함께 학습하는 것에 대한 어려움을 겪고 있습니다. 이러한 문제는 부모와 자녀 간의 정서적 유대감을 약화시키고, 아이들의 언어 발달에도 부정적인 영향을 미치고 있습니다.<br/>
-
-저희는 이 문제를 해결하기 위해 사진, 텍스트 등 일상에서 떠오른 것을 입력하면 다양한 언어로 Ai가 동화를 생성해주는 서비스를 제작하고자 합니다. 동화 생성에서 더 나아가 이를 기반으로 언어 학습까지 연계할 수 있습니다.<br/>
-
+> 팀 애자일은 청각장애인, 그리고 다문화 가정에서의 문제점을 찾았습니다. <br/><br/>
+말이 어눌한 청각장애인 부모나 자녀와 구사하는 언어가 다른 다문화 가정의 부모님들은 동화책을 생생하게 읽어주며 언어를 함께 학습하는 것에 대한 어려움을 겪고 있습니다. 이러한 문제는 부모와 자녀 간의 정서적 유대감을 약화시키고, 아이들의 언어 발달에도 부정적인 영향을 미치고 있습니다.<br/><br/>
+저희는 이 문제를 해결하기 위해 사진, 텍스트 등 일상에서 떠오른 것을 입력하면 다양한 언어로 Ai가 동화를 생성해주는 서비스를 제작하고자 합니다.<br/>동화 생성에서 더 나아가 이를 기반으로 언어 학습까지 연계할 수 있습니다.<br/>
 이 서비스는 청각장애인, 다문화 가정에서의 문제를 해결하고, 모든 아이들이 평등하게 언어 학습을 할 수 있도록 돕는 중요한 도구가 될 것 입니다.<br/>
-
-</aside>
 
 <br>
 
 ## 배포 주소
 
 > 프론트 서버 : https://glowtales.netlify.app/
-</br>StoryBook : https://66c36b48991224f3d12e1659-fqyfttmdwy.chromatic.com/?path=/docs/glowtales--docs
+</br>StoryBook : https://66c36b48991224f3d12e1659-nnlljkkkwz.chromatic.com/
 
 ## Usage
 
@@ -41,7 +37,7 @@ $ npm run dev
 |           | <img width="30" src="https://avatars.githubusercontent.com/u/101329724?v=4">[@gominzip](https://github.com/gominzip)                                                                                                 | <img width="30" src="https://github.com/user-attachments/assets/198c6cdb-9338-49a1-9bab-ee830ed7dd20">[@cjy3458](https://github.com/cjy3458)                          |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 역할      | 프론트엔드 개발                                                                                                                                                                                                      | 프론트엔드 개발                                                                                                                                                         |
-| 담당 부분 | <li>카카오 로그인 및 온보딩</li><li>스토리북 세팅 및 배포</li></li><li>학습 퀴즈</li><li>메인화면</li><li>공통 컴포넌트<ul><li>Dropdown</li><li>SelectOptionList</li><li>ProgressBar</li></ul> | <li>CICD 세팅          </li><li>동화 생성</li><li>동화 읽기</li></li><li>메인화면</li><li>공통 컴포넌트<ul><li>Card</li><li>TabBar</li><li>Modal</li></ul> |
+| 담당 부분 | <li>카카오 로그인 및 온보딩</li><li>스토리북 세팅 및 배포</li><li>PWA 적용</li></li><li>학습 퀴즈</li><li>메인화면</li><li>공통 컴포넌트<ul><li>Dropdown</li><li>SelectOptionList</li><li>ProgressBar</li></ul> | <li>CICD 세팅          </li><li>동화 생성</li><li>동화 읽기</li></li><li>메인화면</li><li>공통 컴포넌트<ul><li>Card</li><li>TabBar</li><li>Modal</li></ul> |
 
 </div>
 
@@ -115,9 +111,10 @@ GlowTales-Client
 | Framework     | React (v18.3.1)        |
 | Build Tool    | Vite (v5.4.1)          |
 | Styling       | Styled Components      |
-| Config        | NPM                    |
+| Performance   | PWA                    |
 | UI Testing    | Storybook, Chromatic   |
 | CI/CD         | Netlify, Github Action |
+| Config        | NPM                    |
 | Other Tool    | Notion, Postman, Figma |
 | Communication | Discord, GoogleMeet    |
 

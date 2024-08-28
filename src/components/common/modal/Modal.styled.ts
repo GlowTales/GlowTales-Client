@@ -25,7 +25,7 @@ export const ModalWrapper = styled.div`
   height: 25%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
   font-weight: bold;
@@ -39,18 +39,19 @@ export const TextWrapper = styled.div`
   height: 60%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: center;
-  padding-top: 3.5rem;
+  padding-top: 1rem;
+  gap: 10px;
 `;
 
 export const ModalTitle = styled.div`
-  font-size: 2.4rem;
+  font-size: 2.3rem;
   font-weight: 800;
 `;
 
 export const ModalExplain = styled.div`
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #777777;
 `;
@@ -59,7 +60,7 @@ export const ButtonWrapper = styled.div`
   width: 100%;
   height: 60px;
   display: flex;
-  border-top: 2.5px solid #d0d0d0;
+  border-top: 1px solid #d0d0d0;
 `;
 
 export const ButtonStyle = styled.div<{ isRightButton: boolean }>`
@@ -72,5 +73,5 @@ export const ButtonStyle = styled.div<{ isRightButton: boolean }>`
   font-weight: 700;
   padding: 2rem;
   border-left: ${(props) =>
-    props.isRightButton ? "2.5px solid #d0d0d0" : "none"};
+    props.isRightButton ? "1px solid #d0d0d0" : "none"};
 `;

@@ -13,12 +13,8 @@ const InputImg = ({ setIsLoading }: InputImgProps) => {
       const formData = new FormData();
       formData.append("file", file);
       if (setIsLoading) setIsLoading(true);
-      try {
-        const keywords: string[] = await createKeyword(formData);
-        navigate("/createTale/keyword", { state: { keywords } });
-      } catch {
-        alert("키워드가 이상");
-      }
+      const keywords: string[] = await createKeyword(formData);
+      navigate("/createTale/keyword", { state: { keywords } });
     }
   };
   return (

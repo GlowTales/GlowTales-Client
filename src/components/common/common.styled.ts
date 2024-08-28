@@ -52,6 +52,7 @@ export const CommonTitleWrapper = styled.div`
   align-items: flex-start;
   margin: 5px;
   .more {
+    display: flex;
     margin-right: 1rem;
     font-size: 1.8rem;
     text-align: center;

@@ -5,9 +5,9 @@ import {
 } from "@components/common/common.styled";
 import { WordProps } from "@type/card";
 import * as S from "./Word.styled";
-
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
 
 const Word = () => {
   const navigate = useNavigate();
@@ -43,7 +43,8 @@ const Word = () => {
       <CommonTitleWrapper>
         <CommonTitle>단어장</CommonTitle>
         <div className="more" onClick={handleMoreClick}>
-          {"더보기 >"}
+          {"더보기"}
+          <FaAngleRight />
         </div>
       </CommonTitleWrapper>
       <S.GridWrapper>

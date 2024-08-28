@@ -9,6 +9,7 @@ import { UnLearnedProps } from "@type/card";
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
 
 const UnLearned = () => {
   const navigate = useNavigate();
@@ -34,7 +35,8 @@ const UnLearned = () => {
       <CommonTitleWrapper>
         <CommonTitle>아직 학습하지 않은 동화</CommonTitle>
         <div className="more" onClick={handleMoreClick}>
-          {"더보기 >"}
+          {"더보기"}
+          <FaAngleRight />
         </div>
       </CommonTitleWrapper>
       <ItemWrapper>

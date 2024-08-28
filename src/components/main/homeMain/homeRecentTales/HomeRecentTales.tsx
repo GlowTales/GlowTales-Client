@@ -11,6 +11,7 @@ import { CardProps } from "@type/card";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Card from "@components/common/card/Card";
+import { FaAngleRight } from "react-icons/fa6";
 
 const HomeRecentTales = () => {
   const mediaQuery = useMediaQuery({ query: "(max-width: 710px)" });
@@ -41,7 +42,8 @@ const HomeRecentTales = () => {
       <CommonTitleWrapper>
         <CommonTitle>최근 생성한 동화</CommonTitle>
         <div className="more" onClick={handleMoreClick}>
-          {"더보기 >"}
+          {"더보기"}
+          <FaAngleRight />
         </div>
       </CommonTitleWrapper>
       {mediaQuery ? (

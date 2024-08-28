@@ -6,10 +6,10 @@ import {
   ItemWrapper,
 } from "@components/common/common.styled";
 import { LearnedProps } from "@type/card";
-
 import { useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { useNavigate } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
 
 const Learned = () => {
   const navigate = useNavigate();
@@ -34,7 +34,8 @@ const Learned = () => {
       <CommonTitleWrapper>
         <CommonTitle>최근 학습한 동화</CommonTitle>
         <div className="more" onClick={handleMoreClick}>
-          {"더보기 >"}
+          {"더보기"}
+          <FaAngleRight />
         </div>
       </CommonTitleWrapper>
       <ItemWrapper>

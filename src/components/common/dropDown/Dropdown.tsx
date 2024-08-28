@@ -39,7 +39,7 @@ const Dropdown = ({ selectList, setter, width }: DropdownProps) => {
         )}
         {selectedText || "옵션 선택"}
         <img
-          src="/dropdowntri.png"
+          src={isOpen?"/dropdowntrireverse.png":"/dropdowntri.png"}
           alt="드롭다운 삼각형"
           onClick={toggleDropdown}
         />

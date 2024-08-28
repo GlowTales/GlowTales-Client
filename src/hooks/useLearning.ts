@@ -9,11 +9,11 @@ const useLearning = (quizData: QuizData) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [isStepCompleted, setIsStepCompleted] = useState<boolean[]>([
     true,
-    ...Array(quizData.totalSteps - 1).fill(false),
+    ...Array(quizData.totalSteps + 1).fill(false),
   ]);
   const [isQuizGraded, setIsQuizGraded] = useState<boolean>(false);
   const [correctAnswers, setCorrectAnswers] = useState<number[]>(
-    Array(quizData.totalSteps).fill(0)
+    Array(quizData.totalSteps + 1).fill(0)
   );
 
   const handleNextStep = async () => {
@@ -26,14 +26,20 @@ const useLearning = (quizData: QuizData) => {
   };
 
   const getCurrentQuizType = (step: number): QuizType => {
-    if (
+    if (step < QUIZ_STAGES[QuizType.SpeakPractice].end(1)) {
+      return QuizType.SpeakPractice;
+    } else if (
       step <
-      QUIZ_STAGES[QuizType.MultipleChoice].end(quizData.multipleChoices.length)
+      QUIZ_STAGES[QuizType.MultipleChoice].end(
+        1,
+        quizData.multipleChoices.length
+      )
     ) {
       return QuizType.MultipleChoice;
     } else if (
       step <
       QUIZ_STAGES[QuizType.Essay].end(
+        1,
         quizData.multipleChoices.length,
         quizData.essayQuestions.length
       )
@@ -94,7 +100,7 @@ const useLearning = (quizData: QuizData) => {
     getCurrentQuizType,
     isQuizGraded,
     setCorrectAnswers,
-    correctAnswers
+    correctAnswers,
   };
 };
 

@@ -8,25 +8,37 @@ export enum QuizType {
 export const QUIZ_STAGES = {
   [QuizType.SpeakPractice]: {
     start: 0,
-    end: 1,
+    end: (speakPracticeLength: number) => speakPracticeLength,
   },
   [QuizType.MultipleChoice]: {
-    start: 1,
-    end: (multipleChoicesLength: number) => multipleChoicesLength,
+    start: (speakPracticeLength: number) => speakPracticeLength,
+    end: (speakPracticeLength: number, multipleChoicesLength: number) =>
+      speakPracticeLength + multipleChoicesLength,
   },
   [QuizType.Essay]: {
-    start: (multipleChoicesLength: number) => multipleChoicesLength,
-    end: (multipleChoicesLength: number, essayQuestionsLength: number) =>
-      multipleChoicesLength + essayQuestionsLength,
+    start: (speakPracticeLength: number, multipleChoicesLength: number) =>
+      speakPracticeLength + multipleChoicesLength,
+    end: (
+      speakPracticeLength: number,
+      multipleChoicesLength: number,
+      essayQuestionsLength: number
+    ) => speakPracticeLength + multipleChoicesLength + essayQuestionsLength,
   },
   [QuizType.SentenceArrangement]: {
-    start: (multipleChoicesLength: number, essayQuestionsLength: number) =>
-      multipleChoicesLength + essayQuestionsLength,
+    start: (
+      speakPracticeLength: number,
+      multipleChoicesLength: number,
+      essayQuestionsLength: number
+    ) => speakPracticeLength + multipleChoicesLength + essayQuestionsLength,
     end: (
+      speakPracticeLength: number,
       multipleChoicesLength: number,
       essayQuestionsLength: number,
       sentenceArrangementsLength: number
     ) =>
-      multipleChoicesLength + essayQuestionsLength + sentenceArrangementsLength,
+      speakPracticeLength +
+      multipleChoicesLength +
+      essayQuestionsLength +
+      sentenceArrangementsLength,
   },
 };

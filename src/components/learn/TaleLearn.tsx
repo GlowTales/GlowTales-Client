@@ -28,7 +28,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
   if (!quizData) {
     return;
   }
-  const totalSteps = quizData.totalSteps;
+  const totalSteps = quizData.totalSteps + 1;
 
   const {
     setChoice,
@@ -60,7 +60,7 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
     const postResult = async (languageTaleId: number, answerCounts: number) => {
       try {
         const response = await postAnswerCount(languageTaleId, answerCounts);
-        return response.data
+        return response.data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -90,27 +90,36 @@ const TaleLearn = ({ quizData }: TaleLearnProps) => {
       return null;
     } else if (
       currentStep <
-      QUIZ_STAGES[QuizType.MultipleChoice].end(quizData.multipleChoices.length)
+      QUIZ_STAGES[QuizType.MultipleChoice].end(
+        1,
+        quizData.multipleChoices.length
+      )
     ) {
       return quizData.multipleChoices[currentStep - 1];
     } else if (
       currentStep <
       QUIZ_STAGES[QuizType.Essay].end(
+        1,
         quizData.multipleChoices.length,
         quizData.essayQuestions.length
       )
     ) {
-      return quizData.essayQuestions[
-        currentStep - quizData.multipleChoices.length
-      ];
-    } else {
-      return quizData.sentenceArrangements[
+      const essayIndex =
         currentStep -
-          QUIZ_STAGES[QuizType.Essay].end(
-            quizData.multipleChoices.length,
-            quizData.essayQuestions.length
-          )
-      ];
+        QUIZ_STAGES[QuizType.MultipleChoice].end(
+          1,
+          quizData.multipleChoices.length
+        );
+      return quizData.essayQuestions[essayIndex];
+    } else {
+      const sentenceIndex =
+        currentStep -
+        QUIZ_STAGES[QuizType.Essay].end(
+          1,
+          quizData.multipleChoices.length,
+          quizData.essayQuestions.length
+        );
+      return quizData.sentenceArrangements[sentenceIndex];
     }
   };
 
